@@ -47,6 +47,9 @@ kotlin {
                 api(compose.components.resources)
 
                 implementation(libs.apollo.runtime)
+                implementation(libs.apollo.normalized.cache.inmemory)
+                implementation(libs.apollo.normalized.cache.sqlite)
+
                 implementation(libs.koin.core)
             }
         }

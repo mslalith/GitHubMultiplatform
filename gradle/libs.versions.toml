@@ -10,7 +10,7 @@ kotlin = "1.8.20"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
-apollo-normalized-cache-in-memory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
+apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
