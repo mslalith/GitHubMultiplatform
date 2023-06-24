@@ -1,0 +1,12 @@
+query GetRepositories($first: Int, $after: String) {
+    viewer {
+        repositories(first: $first, after: $after) {
+            edges {
+                cursor
+                node {
+                    name
+                }
+            }
+        }
+    }
+}

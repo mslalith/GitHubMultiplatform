@@ -1,9 +1,12 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
     id("com.apollographql.apollo3")
+    id("com.codingfeline.buildkonfig")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -43,6 +46,7 @@ kotlin {
                 api(compose.components.resources)
 
                 implementation(libs.apollo.runtime)
+                implementation(libs.koin.core)
             }
         }
         val commonTest by getting {
@@ -65,4 +69,17 @@ apollo {
     service("github") {
         packageName.set("dev.mslalith.githubmultiplatform")
     }
+}
+
+buildkonfig {
+    packageName = "dev.mslalith.githubmultiplatform"
+    defaultConfigs {
+        buildConfigField(FieldSpec.Type.STRING, "GITHUB_TOKEN", getGitHubToken())
+    }
+}
+
+fun getGitHubToken(): String {
+    val token = properties["github.token"] as? String
+    if (token.isNullOrEmpty()) throw IllegalStateException("github.token must be provided in gradle.properties file")
+    return token
 }

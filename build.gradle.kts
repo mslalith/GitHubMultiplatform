@@ -4,6 +4,7 @@ plugins {
     kotlin("multiplatform") version libs.versions.kotlin.get() apply false
     id("org.jetbrains.compose") version libs.versions.composeMultiplatform.get() apply false
     id("com.apollographql.apollo3") version libs.versions.apollo.get() apply false
+    id("com.codingfeline.buildkonfig") version libs.versions.buildkonfig.get() apply false
 }
 
 tasks.register("clean", Delete::class) {

@@ -12,6 +12,9 @@ kotlin {
                 implementation(project(":shared"))
                 implementation(libs.androidx.activity.compose)
                 implementation(compose.uiTooling)
+
+                implementation(libs.koin.core)
+                implementation(libs.koin.android)
             }
         }
     }
