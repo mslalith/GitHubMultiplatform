@@ -1,5 +1,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
 
+apply(from = "./buildScripts/install-git-hooks.gradle.kts")
+
 plugins {
     id("com.android.application") version libs.versions.agp.get() apply false
     id("com.android.library") version libs.versions.agp.get() apply false
