@@ -1,12 +1,12 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec
 
 plugins {
-    kotlin("multiplatform")
-    kotlin("native.cocoapods")
-    id("com.android.library")
-    id("org.jetbrains.compose")
-    id("com.apollographql.apollo3")
-    id("com.codingfeline.buildkonfig")
+    id(libs.plugins.jetbrainsMultiplatform.get().pluginId)
+    id(libs.plugins.jetbrainsNativeCocoapods.get().pluginId)
+    id(libs.plugins.androidLibrary.get().pluginId)
+    id(libs.plugins.jetbrainsCompose.get().pluginId)
+    id(libs.plugins.apollo.get().pluginId)
+    id(libs.plugins.buildkonfig.get().pluginId)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -20,8 +20,8 @@ kotlin {
             }
         }
     }
-//    iosX64()
-//    iosArm64()
+    iosX64()
+    iosArm64()
     iosSimulatorArm64()
 
     cocoapods {

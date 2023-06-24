@@ -3,13 +3,13 @@ import io.gitlab.arturbosch.detekt.Detekt
 apply(from = "./buildScripts/install-git-hooks.gradle.kts")
 
 plugins {
-    id("com.android.application") version libs.versions.agp.get() apply false
-    id("com.android.library") version libs.versions.agp.get() apply false
-    kotlin("multiplatform") version libs.versions.kotlin.get() apply false
-    id("org.jetbrains.compose") version libs.versions.composeMultiplatform.get() apply false
-    id("com.apollographql.apollo3") version libs.versions.apollo.get() apply false
-    id("com.codingfeline.buildkonfig") version libs.versions.buildkonfig.get() apply false
-    id("io.gitlab.arturbosch.detekt") version libs.versions.detekt.get()
+    id(libs.plugins.androidApplication.get().pluginId) version libs.versions.agp.get() apply false
+    id(libs.plugins.androidLibrary.get().pluginId) version libs.versions.agp.get() apply false
+    id(libs.plugins.jetbrainsMultiplatform.get().pluginId) version libs.versions.kotlin.get() apply false
+    id(libs.plugins.jetbrainsCompose.get().pluginId) version libs.versions.composeMultiplatform.get() apply false
+    id(libs.plugins.apollo.get().pluginId) version libs.versions.apollo.get() apply false
+    id(libs.plugins.buildkonfig.get().pluginId) version libs.versions.buildkonfig.get() apply false
+    id(libs.plugins.detekt.get().pluginId) version libs.versions.detekt.get()
 }
 
 allprojects {

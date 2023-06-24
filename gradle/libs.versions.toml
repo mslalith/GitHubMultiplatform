@@ -19,7 +19,14 @@ koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin"
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+jetbrainsMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "composeMultiplatform" }
+jetbrainsNativeCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "composeMultiplatform" }
+apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 [bundles]
 
