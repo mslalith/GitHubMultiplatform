@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.apollographql.apollo3")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -33,7 +34,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation(libs.apollo.runtime)
             }
         }
         val commonTest by getting {
@@ -49,5 +50,11 @@ android {
     compileSdk = 33
     defaultConfig {
         minSdk = 26
+    }
+}
+
+apollo {
+    service("github") {
+        packageName.set("dev.mslalith.githubmultiplatform")
     }
 }

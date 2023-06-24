@@ -1,5 +1,6 @@
 [versions]
 agp = "8.2.0-alpha09"
+apollo = "4.0.0-alpha.1"
 kotlin = "1.8.21"
 core-ktx = "1.9.0"
 junit = "4.13.2"
@@ -9,6 +10,14 @@ appcompat = "1.6.1"
 material = "1.8.0"
 
 [libraries]
+apollo-adapters = { module = "com.apollographql.apollo3:apollo-adapters" }
+apollo-normalized-cache-in-memory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
+apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
+apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
+apollo-annotations = { module = "com.apollographql.apollo3:apollo-annotations", version.ref = "apollo" }
+apollo-tooling = { module = "com.apollographql.apollo3:apollo-tooling", version.ref = "apollo" }
+apollo-testing = { module = "com.apollographql.apollo3:apollo-testing-support" }
+
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
