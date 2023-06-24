@@ -37,6 +37,7 @@ kotlin {
     }
     
     sourceSets {
+        @Suppress("UNUSED_VARIABLE")
         val commonMain by getting {
             dependencies {
                 api(compose.runtime)
@@ -49,6 +50,7 @@ kotlin {
                 implementation(libs.koin.core)
             }
         }
+        @Suppress("UNUSED_VARIABLE")
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -80,6 +82,6 @@ buildkonfig {
 
 fun getGitHubToken(): String {
     val token = properties["github.token"] as? String
-    if (token.isNullOrEmpty()) throw IllegalStateException("github.token must be provided in gradle.properties file")
+    if (token.isNullOrEmpty()) error("github.token must be provided in gradle.properties file")
     return token
 }

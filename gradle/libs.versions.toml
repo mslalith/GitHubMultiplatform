@@ -1,19 +1,21 @@
 [versions]
 agp = "8.2.0-alpha09"
 androidxActivityCompose = "1.7.1"
+apollo = "4.0.0-alpha.1"
 buildkonfig = "0.13.3"
 composeMultiplatform = "1.4.0"
-apollo = "4.0.0-alpha.1"
+detekt = "1.23.0"
 koin = "3.2.0"
 kotlin = "1.8.20"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
-apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 apollo-normalized-cache-in-memory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

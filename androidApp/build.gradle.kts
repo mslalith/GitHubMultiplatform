@@ -7,6 +7,7 @@ plugins {
 kotlin {
     android()
     sourceSets {
+        @Suppress("UNUSED_VARIABLE")
         val androidMain by getting {
             dependencies {
                 implementation(project(":shared"))
