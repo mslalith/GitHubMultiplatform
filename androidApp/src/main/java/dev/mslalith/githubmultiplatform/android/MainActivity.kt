@@ -31,8 +31,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val list by produceState(key1 = Unit, initialValue = emptyList()) {
-                        val res = useCase().firstOrNull()?.edgesFilterNotNull() ?: return@produceState
-                        value = res.mapNotNull { it.node?.name }
+                        value = useCase().firstOrNull()?.repositories.orEmpty().map { it.name }
                     }
                     GreetingView(list)
                 }

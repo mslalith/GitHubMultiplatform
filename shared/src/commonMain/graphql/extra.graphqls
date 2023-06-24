@@ -1,0 +1,1 @@
+extend type Repository @typePolicy(keyFields: "id")

@@ -3,14 +3,16 @@ package dev.mslalith.githubmultiplatform.model
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
 
 data class Repository(
-    val cursor: String,
+    val id: String,
     val name: String
 )
 
-fun GetRepositoriesQuery.Repositories.toRepository() = edgesFilterNotNull().orEmpty().mapNotNull {
-    val node = it.node ?: return@mapNotNull null
-    Repository(
-        cursor = it.cursor,
-        name = node.name
-    )
-}
+fun GetRepositoriesQuery.Repositories.toPagedRepositories() = PagedRepositories(
+    pageInfo = pageInfo.toPageInfo(),
+    repositories = nodes.orEmpty().filterNotNull().map {
+        Repository(
+            id = it.id,
+            name = it.name
+        )
+    }
+)
