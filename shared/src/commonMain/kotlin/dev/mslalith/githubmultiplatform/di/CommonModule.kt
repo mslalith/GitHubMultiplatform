@@ -7,7 +7,7 @@ import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
 import dev.mslalith.githubmultiplatform.network.AuthenticationInterceptor
 import dev.mslalith.githubmultiplatform.network.GitHubClient
 import dev.mslalith.githubmultiplatform.network.GitHubClientImpl
-import dev.mslalith.githubmultiplatform.usecase.GetRepositoriesUseCase
+import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
 import org.koin.dsl.module
 
 internal val commonModule = module {

@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.usecase.base
+package dev.mslalith.githubmultiplatform.domain.usecase.base
 
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.component.KoinComponent
