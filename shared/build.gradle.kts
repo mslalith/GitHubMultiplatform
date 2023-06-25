@@ -48,9 +48,10 @@ kotlin {
                 api(libs.moko.resources.compose)
                 implementation(libs.composeIcons.octicons)
 
-                implementation(libs.bundles.apollo)
-
                 implementation(libs.koin.core)
+
+                implementation(libs.bundles.apollo)
+                implementation(libs.bundles.voyager)
             }
         }
 

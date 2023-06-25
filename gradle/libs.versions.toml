@@ -8,6 +8,7 @@ detekt = "1.23.0"
 koin = "3.2.0"
 kotlin = "1.8.20"
 mokoResources = "0.23.0"
+voyager = "1.0.0-rc06"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
@@ -20,6 +21,11 @@ koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin"
 
 moko-resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResources" }
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResources" }
+
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -34,3 +40,4 @@ moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.re
 
 [bundles]
 apollo = ["apollo-runtime", "apollo-normalized-cache-inmemory", "apollo-normalized-cache-sqlite"]
+voyager = ["voyager-navigator", "voyager-bottomSheetNavigator", "voyager-tabNavigator", "voyager-transitions"]
