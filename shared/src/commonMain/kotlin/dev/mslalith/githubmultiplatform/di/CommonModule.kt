@@ -25,5 +25,5 @@ internal val commonModule = module {
         GitHubClientImpl(apolloClient = get())
     }
 
-    single { GetRepositoriesUseCase(githubClient = get()) }
+    single { GetRepositoriesUseCase() }
 }
