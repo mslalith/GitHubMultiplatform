@@ -14,6 +14,6 @@ struct ComposeView : UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        ComposeInteropViewControllerKt.ComposeInteropViewController()
+        ComposeInteropViewControllerKt.interop()
     }
 }
