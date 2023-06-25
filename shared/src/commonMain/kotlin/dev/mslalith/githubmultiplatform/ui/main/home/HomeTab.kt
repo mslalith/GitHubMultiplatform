@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.home
+package dev.mslalith.githubmultiplatform.ui.main.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
