@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.android
+package dev.mslalith.githubmultiplatform.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

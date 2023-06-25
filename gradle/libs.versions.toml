@@ -3,6 +3,7 @@ agp = "8.2.0-alpha09"
 androidxActivityCompose = "1.7.2"
 apollo = "4.0.0-alpha.1"
 buildkonfig = "0.13.3"
+composeIcons = "1.1.0"
 composeMultiplatform = "1.4.0"
 detekt = "1.23.0"
 koin = "3.2.0"
@@ -16,6 +17,9 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
+
+composeIcons-octicons = { module = "br.com.devsrsouza.compose.icons:octicons", version.ref = "composeIcons" }
+
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 
