@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.network
+package dev.mslalith.githubmultiplatform.data.network
 
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
 import kotlinx.coroutines.flow.Flow

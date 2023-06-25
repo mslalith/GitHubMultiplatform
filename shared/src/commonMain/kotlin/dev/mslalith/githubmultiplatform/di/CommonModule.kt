@@ -4,9 +4,9 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
 import com.apollographql.apollo3.cache.normalized.normalizedCache
 import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
-import dev.mslalith.githubmultiplatform.network.AuthenticationInterceptor
-import dev.mslalith.githubmultiplatform.network.GitHubClient
-import dev.mslalith.githubmultiplatform.network.GitHubClientImpl
+import dev.mslalith.githubmultiplatform.data.network.AuthenticationInterceptor
+import dev.mslalith.githubmultiplatform.data.network.GitHubClient
+import dev.mslalith.githubmultiplatform.data.network.GitHubClientImpl
 import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
 import org.koin.dsl.module
 

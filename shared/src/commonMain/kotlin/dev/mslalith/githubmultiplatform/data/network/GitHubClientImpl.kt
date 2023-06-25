@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.network
+package dev.mslalith.githubmultiplatform.data.network
 
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
