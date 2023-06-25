@@ -7,14 +7,19 @@ composeMultiplatform = "1.4.0"
 detekt = "1.23.0"
 koin = "3.2.0"
 kotlin = "1.8.20"
+mokoResources = "0.23.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
+
 apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+
+moko-resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResources" }
+moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResources" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -25,6 +30,7 @@ jetbrainsNativeCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", versi
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "mokoResources" }
 
 [bundles]
 apollo = ["apollo-runtime", "apollo-normalized-cache-inmemory", "apollo-normalized-cache-sqlite"]

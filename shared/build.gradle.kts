@@ -7,6 +7,7 @@ plugins {
     id(libs.plugins.jetbrainsCompose.get().pluginId)
     id(libs.plugins.apollo.get().pluginId)
     id(libs.plugins.buildkonfig.get().pluginId)
+    id(libs.plugins.moko.resources.get().pluginId)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -43,8 +44,9 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material3)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                api(compose.components.resources)
+
+                api(libs.moko.resources.compose)
+                implementation(libs.composeIcons.octicons)
 
                 implementation(libs.bundles.apollo)
 
@@ -80,6 +82,11 @@ buildkonfig {
     defaultConfigs {
         buildConfigField(FieldSpec.Type.STRING, "GITHUB_TOKEN", getGitHubToken())
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "dev.mslalith.githubmultiplatform"
+    multiplatformResourcesClassName = "SharedRes"
 }
 
 fun getGitHubToken(): String {

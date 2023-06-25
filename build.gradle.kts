@@ -12,6 +12,12 @@ plugins {
     id(libs.plugins.detekt.get().pluginId) version libs.versions.detekt.get()
 }
 
+buildscript {
+    dependencies {
+        classpath(libs.moko.resources.generator)
+    }
+}
+
 allprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
 }
