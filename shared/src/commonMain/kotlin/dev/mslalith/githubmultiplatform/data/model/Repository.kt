@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.model
+package dev.mslalith.githubmultiplatform.data.model
 
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
 

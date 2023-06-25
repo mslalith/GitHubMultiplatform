@@ -1,8 +1,8 @@
 package dev.mslalith.githubmultiplatform.domain.usecase
 
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
-import dev.mslalith.githubmultiplatform.model.PagedRepositories
-import dev.mslalith.githubmultiplatform.model.toPagedRepositories
+import dev.mslalith.githubmultiplatform.data.model.PagedRepositories
+import dev.mslalith.githubmultiplatform.data.model.toPagedRepositories
 import dev.mslalith.githubmultiplatform.data.network.GitHubClient
 import dev.mslalith.githubmultiplatform.domain.usecase.base.FlowUseCase
 import kotlinx.coroutines.flow.Flow

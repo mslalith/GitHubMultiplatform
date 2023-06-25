@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.model
+package dev.mslalith.githubmultiplatform.data.model
 
 data class PagedRepositories(
     val pageInfo: PageInfo,
