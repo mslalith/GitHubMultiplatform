@@ -46,13 +46,12 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 api(compose.components.resources)
 
-                implementation(libs.apollo.runtime)
-                implementation(libs.apollo.normalized.cache.inmemory)
-                implementation(libs.apollo.normalized.cache.sqlite)
+                implementation(libs.bundles.apollo)
 
                 implementation(libs.koin.core)
             }
         }
+
         @Suppress("UNUSED_VARIABLE")
         val commonTest by getting {
             dependencies {

@@ -1,6 +1,6 @@
 [versions]
 agp = "8.2.0-alpha09"
-androidxActivityCompose = "1.7.1"
+androidxActivityCompose = "1.7.2"
 apollo = "4.0.0-alpha.1"
 buildkonfig = "0.13.3"
 composeMultiplatform = "1.4.0"
@@ -13,14 +13,12 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
-detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 jetbrainsMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "composeMultiplatform" }
 jetbrainsNativeCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "composeMultiplatform" }
@@ -29,4 +27,4 @@ buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig"
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 [bundles]
-
+apollo = ["apollo-runtime", "apollo-normalized-cache-inmemory", "apollo-normalized-cache-sqlite"]
