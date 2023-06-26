@@ -1,4 +1,6 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id(libs.plugins.jetbrainsMultiplatform.get().pluginId)
@@ -64,6 +66,8 @@ kotlin {
     }
 }
 
+val secretProperties = loadSecretProperties()
+
 android {
     namespace = "dev.mslalith.githubmultiplatform"
     compileSdk = 33
@@ -81,7 +85,9 @@ apollo {
 buildkonfig {
     packageName = "dev.mslalith.githubmultiplatform"
     defaultConfigs {
-        buildConfigField(FieldSpec.Type.STRING, "GITHUB_TOKEN", getGitHubToken())
+        buildConfigField(FieldSpec.Type.STRING, "GITHUB_TOKEN", secretProperties["github.token"].toString())
+        buildConfigField(FieldSpec.Type.STRING, "GITHUB_CLIENT_ID", secretProperties["github.client_id"].toString())
+        buildConfigField(FieldSpec.Type.STRING, "GITHUB_CLIENT_SECRET", secretProperties["github.client_secret"].toString())
     }
 }
 
@@ -90,8 +96,14 @@ multiplatformResources {
     multiplatformResourcesClassName = "SharedRes"
 }
 
-fun getGitHubToken(): String {
-    val token = properties["github.token"] as? String
-    if (token.isNullOrEmpty()) error("github.token must be provided in gradle.properties file")
-    return token
+fun loadSecretProperties(): Properties {
+    val secretPropertiesFile = rootProject.file("secret.properties")
+    if (secretPropertiesFile.exists().not()) error("secret.properties file is required for GitHub configuration")
+
+    val localProperties = Properties().apply { load(FileInputStream(secretPropertiesFile)) }
+    if (localProperties["github.token"] == null) error("github.token field is required in secret.properties")
+    if (localProperties["github.client_id"] == null) error("github.client_id field is required in secret.properties")
+    if (localProperties["github.client_secret"] == null) error("github.client_secret field is required in secret.properties")
+
+    return localProperties
 }
