@@ -57,6 +57,7 @@ kotlin {
                 implementation(libs.bundles.apollo)
                 implementation(libs.bundles.ktor)
                 implementation(libs.bundles.voyager)
+                implementation(libs.bundles.multiplatformSettings)
             }
         }
 
@@ -71,6 +72,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(libs.ktor.android)
+                implementation(libs.androidx.security.crypto)
             }
         }
 

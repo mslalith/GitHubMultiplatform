@@ -1,6 +1,7 @@
 [versions]
 agp = "8.2.0-alpha09"
 androidxActivityCompose = "1.7.2"
+androidxSecurityCrypto = "1.0.0"
 apollo = "4.0.0-alpha.1"
 buildkonfig = "0.13.3"
 composeIcons = "1.1.0"
@@ -11,10 +12,12 @@ koinCompose = "1.0.3"
 kotlin = "1.8.20"
 ktor = "2.3.1"
 mokoResources = "0.23.0"
+multiplatformSettings = "1.0.0"
 voyager = "1.0.0-rc06"
 
 [libraries]
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "androidxSecurityCrypto" }
 
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
@@ -34,6 +37,9 @@ ktor-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 
 moko-resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResources" }
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResources" }
+
+multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
+multiplatform-settings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
 
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
@@ -57,3 +63,4 @@ moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.re
 apollo = ["apollo-runtime", "apollo-normalized-cache-inmemory", "apollo-normalized-cache-sqlite"]
 ktor = ["ktor-core", "ktor-contentNegotiation", "ktor-serialization-json"]
 voyager = ["voyager-navigator", "voyager-bottomSheetNavigator", "voyager-tabNavigator", "voyager-transitions", "voyager-koin"]
+multiplatformSettings = ["multiplatform-settings", "multiplatform-settings-coroutines"]
