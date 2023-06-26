@@ -7,6 +7,7 @@ plugins {
     id(libs.plugins.jetbrainsNativeCocoapods.get().pluginId)
     id(libs.plugins.androidLibrary.get().pluginId)
     id(libs.plugins.jetbrainsCompose.get().pluginId)
+    id(libs.plugins.kotlinx.serialization.get().pluginId)
     id(libs.plugins.apollo.get().pluginId)
     id(libs.plugins.buildkonfig.get().pluginId)
     id(libs.plugins.moko.resources.get().pluginId)
@@ -53,6 +54,7 @@ kotlin {
                 implementation(libs.koin.core)
 
                 implementation(libs.bundles.apollo)
+                implementation(libs.bundles.ktor)
                 implementation(libs.bundles.voyager)
             }
         }
@@ -61,6 +63,20 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+
+        @Suppress("UNUSED_VARIABLE")
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.ktor.android)
+            }
+        }
+
+        @Suppress("UNUSED_VARIABLE")
+        val iosMain by getting {
+            dependencies {
+                implementation(libs.ktor.darwin)
             }
         }
     }

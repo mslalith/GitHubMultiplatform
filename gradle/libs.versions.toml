@@ -8,6 +8,7 @@ composeMultiplatform = "1.4.0"
 detekt = "1.23.0"
 koin = "3.2.0"
 kotlin = "1.8.20"
+ktor = "2.3.1"
 mokoResources = "0.23.0"
 voyager = "1.0.0-rc06"
 
@@ -23,6 +24,12 @@ composeIcons-octicons = { module = "br.com.devsrsouza.compose.icons:octicons", v
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 
+ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+
 moko-resources-generator = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResources" }
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResources" }
 
@@ -37,6 +44,7 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 jetbrainsMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "composeMultiplatform" }
 jetbrainsNativeCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "composeMultiplatform" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
@@ -44,4 +52,5 @@ moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.re
 
 [bundles]
 apollo = ["apollo-runtime", "apollo-normalized-cache-inmemory", "apollo-normalized-cache-sqlite"]
+ktor = ["ktor-core", "ktor-contentNegotiation", "ktor-serialization-json"]
 voyager = ["voyager-navigator", "voyager-bottomSheetNavigator", "voyager-tabNavigator", "voyager-transitions"]

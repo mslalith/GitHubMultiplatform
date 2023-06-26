@@ -6,6 +6,7 @@ plugins {
     id(libs.plugins.androidApplication.get().pluginId) version libs.versions.agp.get() apply false
     id(libs.plugins.androidLibrary.get().pluginId) version libs.versions.agp.get() apply false
     id(libs.plugins.jetbrainsMultiplatform.get().pluginId) version libs.versions.kotlin.get() apply false
+    id(libs.plugins.kotlinx.serialization.get().pluginId) version libs.versions.kotlin.get() apply false
     id(libs.plugins.jetbrainsCompose.get().pluginId) version libs.versions.composeMultiplatform.get() apply false
     id(libs.plugins.apollo.get().pluginId) version libs.versions.apollo.get() apply false
     id(libs.plugins.buildkonfig.get().pluginId) version libs.versions.buildkonfig.get() apply false
