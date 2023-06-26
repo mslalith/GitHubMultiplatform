@@ -4,7 +4,7 @@ androidxActivityCompose = "1.7.2"
 apollo = "4.0.0-alpha.1"
 buildkonfig = "0.13.3"
 composeIcons = "1.1.0"
-composeMultiplatform = "1.4.0"
+composeMultiplatform = "1.4.1-rc01"
 detekt = "1.23.0"
 koin = "3.4.0"
 koinCompose = "1.0.3"
@@ -16,9 +16,9 @@ voyager = "1.0.0-rc06"
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
 
+apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
-apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 
 composeIcons-octicons = { module = "br.com.devsrsouza.compose.icons:octicons", version.ref = "composeIcons" }
 
