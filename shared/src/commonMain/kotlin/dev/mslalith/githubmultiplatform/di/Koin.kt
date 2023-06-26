@@ -7,6 +7,7 @@ fun initKoin() {
         modules(
             commonModule,
             networkModule,
+            voyagerModule,
             getPlatformModule()
         )
     }
