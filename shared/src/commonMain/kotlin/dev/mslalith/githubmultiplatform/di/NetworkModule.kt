@@ -46,7 +46,5 @@ internal val networkModule = module {
         }
     }
 
-    single<AuthClient> {
-        AuthClientImpl(httpClient = get())
-    }
+    single<AuthClient> { AuthClientImpl() }
 }

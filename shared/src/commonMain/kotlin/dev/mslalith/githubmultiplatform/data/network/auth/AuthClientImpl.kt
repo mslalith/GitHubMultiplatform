@@ -6,10 +6,12 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-internal class AuthClientImpl(
-    private val httpClient: HttpClient
-) : AuthClient {
+internal class AuthClientImpl : AuthClient, KoinComponent {
+
+    private val httpClient by inject<HttpClient>()
 
     companion object {
         private const val REDIRECT_URI = "githubmultiplatform://callback"
