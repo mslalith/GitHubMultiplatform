@@ -7,7 +7,7 @@ import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
 import org.koin.dsl.module
 
 internal val commonModule = module {
-    single<GitHubClient> { GitHubClientImpl(apolloClient = get()) }
+    single<GitHubClient> { GitHubClientImpl() }
     single { SharedSettings() }
 
     single { GetRepositoriesUseCase() }
