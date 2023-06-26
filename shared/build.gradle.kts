@@ -52,6 +52,7 @@ kotlin {
                 implementation(libs.composeIcons.octicons)
 
                 implementation(libs.koin.core)
+                implementation(libs.koin.compose)
 
                 implementation(libs.bundles.apollo)
                 implementation(libs.bundles.ktor)
