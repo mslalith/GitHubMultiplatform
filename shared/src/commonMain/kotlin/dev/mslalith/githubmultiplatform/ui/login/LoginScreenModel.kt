@@ -18,9 +18,20 @@ class LoginScreenModel : StateScreenModel<LoginScreenModel.State>(initialState =
     private val authClient by inject<AuthClient>()
     private val sharedSettings by inject<SharedSettings>()
 
+    init {
+        mutableState.update { it.copy(isLoggedIn = sharedSettings.isLoggedIn) }
+    }
+
     fun getAuthUrl(): String = authClient.getAuthUrl()
 
-    fun getAccessToken(code: String) {
+    fun parseDeepLinkAndFetchAccessToken(deepLink: String) {
+        deepLink.takeIf { it.startsWith(prefix = "githubmultiplatform://callback") }
+            ?.substringAfter(delimiter = "code=", missingDelimiterValue = "")
+            ?.takeIf { it.isNotEmpty() }
+            ?.let { getAccessToken(code = it) }
+    }
+
+    private fun getAccessToken(code: String) {
         coroutineScope.launch {
             val authResponse = authClient.getAccessToken(code = code)
             sharedSettings.updateAccessToken(token = authResponse.accessToken)

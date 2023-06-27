@@ -24,6 +24,7 @@ import compose.icons.Octicons
 import compose.icons.octicons.MarkGithub16
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.deeplink.DeepLinkHandler
 import dev.mslalith.githubmultiplatform.ui.main.MainScreen
 import dev.mslalith.githubmultiplatform.ui.theme.Dark_DarkGreyText
 import dev.mslalith.githubmultiplatform.ui.theme.Dark_GrayLight
@@ -41,6 +42,8 @@ class LoginScreen : Screen {
 
         val uriHandler = LocalUriHandler.current
         val navigator = LocalNavigator.current
+
+        DeepLinkHandler { screenModel.parseDeepLinkAndFetchAccessToken(deepLink = it) }
 
         LaunchedEffect(key1 = screenModel) {
             screenModel.state.map { it.isLoggedIn }.distinctUntilChanged().collectLatest {
