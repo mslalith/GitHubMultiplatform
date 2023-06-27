@@ -37,6 +37,9 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = true
+
+            export(libs.moko.resources)
+            export(libs.moko.graphics)
         }
     }
     
