@@ -11,6 +11,9 @@ struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
+                .onOpenURL { url in
+                    DeepLinkRegistry.shared.handle(deepLink: url.absoluteString)
+                }
 		}
 	}
 }
