@@ -15,7 +15,7 @@ import compose.icons.octicons.Bell24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 
-object NotificationsTab : Tab {
+internal object NotificationsTab : Tab {
 
     override val options: TabOptions
         @Composable

@@ -15,7 +15,7 @@ import compose.icons.octicons.Person24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 
-object ProfileTab : Tab {
+internal object ProfileTab : Tab {
 
     override val options: TabOptions
         @Composable

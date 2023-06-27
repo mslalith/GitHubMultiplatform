@@ -15,7 +15,7 @@ import compose.icons.octicons.Home24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 
-object HomeTab : Tab {
+internal object HomeTab : Tab {
 
     override val options: TabOptions
         @Composable

@@ -15,7 +15,7 @@ import compose.icons.octicons.Telescope24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 
-object ExploreTab : Tab {
+internal object ExploreTab : Tab {
 
     override val options: TabOptions
         @Composable
