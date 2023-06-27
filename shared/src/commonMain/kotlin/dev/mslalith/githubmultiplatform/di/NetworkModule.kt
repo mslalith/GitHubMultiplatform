@@ -18,9 +18,10 @@ internal val networkModule = module {
     single<ApolloClient> {
         val memoryFirstThenSqlCacheFactory = MemoryCacheFactory(maxSizeBytes = 10 * 1024 * 1024)
             .chain(factory = get<SqlNormalizedCacheFactory>())
+
         ApolloClient.Builder()
             .serverUrl(serverUrl = "https://api.github.com/graphql")
-            .addHttpInterceptor(httpInterceptor = AuthenticationInterceptor())
+            .addHttpInterceptor(httpInterceptor = AuthenticationInterceptor(sharedSettings = get()))
             .normalizedCache(normalizedCacheFactory = memoryFirstThenSqlCacheFactory)
             .build()
     }

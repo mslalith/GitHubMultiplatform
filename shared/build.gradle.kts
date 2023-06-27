@@ -108,7 +108,6 @@ apollo {
 buildkonfig {
     packageName = "dev.mslalith.githubmultiplatform"
     defaultConfigs {
-        buildConfigField(FieldSpec.Type.STRING, "GITHUB_TOKEN", secretProperties["github.token"].toString())
         buildConfigField(FieldSpec.Type.STRING, "GITHUB_CLIENT_ID", secretProperties["github.client_id"].toString())
         buildConfigField(FieldSpec.Type.STRING, "GITHUB_CLIENT_SECRET", secretProperties["github.client_secret"].toString())
     }
@@ -124,7 +123,6 @@ fun loadSecretProperties(): Properties {
     if (secretPropertiesFile.exists().not()) error("secret.properties file is required for GitHub configuration")
 
     val localProperties = Properties().apply { load(FileInputStream(secretPropertiesFile)) }
-    if (localProperties["github.token"] == null) error("github.token field is required in secret.properties")
     if (localProperties["github.client_id"] == null) error("github.client_id field is required in secret.properties")
     if (localProperties["github.client_secret"] == null) error("github.client_secret field is required in secret.properties")
 

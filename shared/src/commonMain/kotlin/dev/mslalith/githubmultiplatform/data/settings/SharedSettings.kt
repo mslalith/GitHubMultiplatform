@@ -8,7 +8,10 @@ class SharedSettings : KoinComponent {
 
     private val settings: Settings by inject()
 
-    val isLoggedIn: Boolean = settings.getStringOrNull(key = ACCESS_TOKEN_KEY) != null
+    val isLoggedIn: Boolean
+        get() = accessToken != null
+
+    val accessToken: String? = settings.getStringOrNull(key = ACCESS_TOKEN_KEY)
 
     fun updateAccessToken(token: String) = settings.putString(key = ACCESS_TOKEN_KEY, value = token)
 
