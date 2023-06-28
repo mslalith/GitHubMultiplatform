@@ -2,7 +2,7 @@ package dev.mslalith.githubmultiplatform.data.model.profile
 
 import dev.mslalith.githubmultiplatform.data.model.ProfilePinnedRepository
 
-data class ProfileTabState(
+data class ProfileTabUiState(
     val name: String,
     val login: String,
     val avatarUrl: String,

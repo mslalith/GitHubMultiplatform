@@ -1,7 +1,7 @@
 package dev.mslalith.githubmultiplatform.domain.usecase
 
 import dev.mslalith.githubmultiplatform.GetProfileQuery
-import dev.mslalith.githubmultiplatform.data.model.profile.ProfileTabState
+import dev.mslalith.githubmultiplatform.data.model.profile.ProfileTabUiState
 import dev.mslalith.githubmultiplatform.data.network.GitHubClient
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
 import dev.mslalith.githubmultiplatform.domain.dto.toProfilePinnedRepositories
@@ -10,20 +10,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import org.koin.core.component.inject
 
-class GetProfileUseCase : FlowUseCase.NoParams<ProfileTabState>() {
+class GetProfileTabInfoUseCase : FlowUseCase.NoParams<ProfileTabUiState>() {
 
     private val githubClient: GitHubClient by inject()
     private val sharedSettings by inject<SharedSettings>()
 
     private val login = sharedSettings.loggedInUser?.login ?: error(message = "User not logged in")
 
-    override suspend fun run(): Flow<ProfileTabState> = githubClient
+    override suspend fun run(): Flow<ProfileTabUiState> = githubClient
         .getProfileTabInfo(login = login)
         .mapNotNull { it.toProfileTabState() }
 
-    private fun GetProfileQuery.Data.toProfileTabState(): ProfileTabState? {
+    private fun GetProfileQuery.Data.toProfileTabState(): ProfileTabUiState? {
         user ?: return null
-        return ProfileTabState(
+        return ProfileTabUiState(
             name = user.name ?: login,
             login = login,
             avatarUrl = user.avatarUrl.toString(),
