@@ -20,7 +20,7 @@ fun GitHubApp() {
             color = MaterialTheme.colorScheme.background
         ) {
             Navigator(
-                screen = LoginScreen(),
+                screen = LoginScreen,
                 content = { SlideTransition(navigator = it) }
             )
         }

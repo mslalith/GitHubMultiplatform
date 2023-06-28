@@ -30,7 +30,6 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.navigator.LocalNavigator
 import compose.icons.Octicons
 import compose.icons.octicons.MarkGithub16
@@ -44,9 +43,7 @@ import kotlinx.coroutines.delay
 
 private const val SPLASH_TIMEOUT = 3000L
 
-class LoginScreen : Screen {
-
-    override val key: ScreenKey = toString()
+object LoginScreen : Screen {
 
     @Composable
     override fun Content() {
@@ -60,7 +57,7 @@ class LoginScreen : Screen {
             derivedStateOf { state is LoginScreenModel.State.Login }
         }
 
-        DeepLinkHandler { screenModel.parseDeepLinkAndFetchAccessToken(deepLink = it) }
+        DeepLinkHandler { screenModel.handleDeepLink(deepLink = it) }
 
         LaunchedEffect(key1 = Unit) {
             if (state is LoginScreenModel.State.Splash) {

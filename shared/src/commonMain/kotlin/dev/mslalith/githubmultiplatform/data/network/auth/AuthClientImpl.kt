@@ -2,9 +2,11 @@ package dev.mslalith.githubmultiplatform.data.network.auth
 
 import dev.mslalith.githubmultiplatform.BuildKonfig
 import dev.mslalith.githubmultiplatform.data.model.AuthResponse
+import dev.mslalith.githubmultiplatform.data.model.LoggedInUser
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -28,6 +30,12 @@ internal class AuthClientImpl : AuthClient, KoinComponent {
             parameter("client_id", BuildKonfig.GITHUB_CLIENT_ID)
             parameter("client_secret", BuildKonfig.GITHUB_CLIENT_SECRET)
             parameter("code", code)
+        }.body()
+    }
+
+    override suspend fun getUserInfo(token: String): LoggedInUser {
+        return httpClient.get(urlString = "https://api.github.com/user") {
+            header("Authorization", "Bearer $token")
         }.body()
     }
 }

@@ -2,6 +2,7 @@ package dev.mslalith.githubmultiplatform.ui.login
 
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
+import dev.mslalith.githubmultiplatform.data.model.LoggedInUser
 import dev.mslalith.githubmultiplatform.data.network.auth.AuthClient
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
 import dev.mslalith.githubmultiplatform.ui.login.LoginScreenModel.State.Login
@@ -27,19 +28,29 @@ class LoginScreenModel : StateScreenModel<LoginScreenModel.State>(initialState =
 
     fun getAuthUrl(): String = authClient.getAuthUrl()
 
-    fun parseDeepLinkAndFetchAccessToken(deepLink: String) {
+    fun handleDeepLink(deepLink: String) {
         deepLink.takeIf { it.startsWith(prefix = "githubmultiplatform://callback") }
             ?.substringAfter(delimiter = "code=", missingDelimiterValue = "")
             ?.takeIf { it.isNotEmpty() }
-            ?.let { getAccessToken(code = it) }
+            ?.let { handleDeepLinkInternal(code = it) }
     }
 
-    private fun getAccessToken(code: String) {
-        coroutineScope.launch {
-            val authResponse = authClient.getAccessToken(code = code)
-            sharedSettings.updateAccessToken(token = authResponse.accessToken)
-            moveStateTo(state = NavigateToMain)
-        }
+    private fun handleDeepLinkInternal(code: String) = coroutineScope.launch {
+        val token = getAccessToken(code = code)
+        getLoggedInUser(token = token)
+        moveStateTo(state = NavigateToMain)
+    }
+
+    private suspend fun getAccessToken(code: String): String {
+        val authResponse = authClient.getAccessToken(code = code)
+        sharedSettings.updateAccessToken(token = authResponse.accessToken)
+        return authResponse.accessToken
+    }
+
+    private suspend fun getLoggedInUser(token: String): LoggedInUser {
+        val loggedInUser = authClient.getUserInfo(token = token)
+        sharedSettings.updateLoggedInUser(user = loggedInUser)
+        return loggedInUser
     }
 
     private fun moveStateTo(state: State) = mutableState.update { state }
