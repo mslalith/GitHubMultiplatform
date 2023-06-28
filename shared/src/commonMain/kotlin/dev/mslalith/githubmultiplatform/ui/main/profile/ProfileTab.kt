@@ -1,13 +1,19 @@
 package dev.mslalith.githubmultiplatform.ui.main.profile
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
@@ -37,11 +43,27 @@ internal object ProfileTab : Tab {
 
     @Composable
     override fun Content() {
+        val screenModel = rememberScreenModel { ProfileTabModel() }
+        val state by screenModel.state.collectAsState()
+
+        LaunchedEffect(key1 = Unit) { screenModel.fetchProfile() }
+
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "Profile")
+            when (state) {
+                ProfileTabModel.State.Failed -> Text(text = "Failed")
+                ProfileTabModel.State.Loading -> CircularProgressIndicator()
+                is ProfileTabModel.State.Success -> {
+                    val user = (state as ProfileTabModel.State.Success).user
+                    Column {
+                        Text(text = user?.id?.toString() ?: "")
+                        Text(text = user?.login ?: "")
+                        Text(text = user?.name ?: "")
+                    }
+                }
+            }
         }
     }
 }
