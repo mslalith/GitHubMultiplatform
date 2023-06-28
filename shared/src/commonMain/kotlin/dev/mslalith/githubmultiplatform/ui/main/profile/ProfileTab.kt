@@ -20,6 +20,9 @@ import compose.icons.Octicons
 import compose.icons.octicons.Person24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
+import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
+import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Success
 
 internal object ProfileTab : Tab {
 
@@ -50,10 +53,10 @@ internal object ProfileTab : Tab {
             contentAlignment = Alignment.Center
         ) {
             when (state) {
-                ProfileTabModel.State.Failed -> Text(text = "Failed")
-                ProfileTabModel.State.Loading -> CircularProgressIndicator()
-                is ProfileTabModel.State.Success -> {
-                    val user = (state as ProfileTabModel.State.Success).user
+                Failed -> Text(text = "Failed")
+                Loading -> CircularProgressIndicator()
+                is Success -> {
+                    val user = (state as Success).user
                     Column {
                         Text(text = user?.id?.toString() ?: "")
                         Text(text = user?.login ?: "")
