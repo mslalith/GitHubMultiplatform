@@ -36,6 +36,9 @@ import compose.icons.octicons.MarkGithub16
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.deeplink.DeepLinkHandler
+import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Login
+import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.NavigateToMain
+import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Splash
 import dev.mslalith.githubmultiplatform.ui.main.MainScreen
 import dev.mslalith.githubmultiplatform.ui.theme.Dark_DarkGreyText
 import dev.mslalith.githubmultiplatform.ui.theme.Dark_GrayLight
@@ -54,20 +57,20 @@ object LoginScreen : Screen {
         val navigator = LocalNavigator.current
 
         val showLoginUi by remember {
-            derivedStateOf { state is LoginScreenModel.State.Login }
+            derivedStateOf { state is Login }
         }
 
         DeepLinkHandler { screenModel.handleDeepLink(deepLink = it) }
 
         LaunchedEffect(key1 = Unit) {
-            if (state is LoginScreenModel.State.Splash) {
+            if (state is Splash) {
                 delay(timeMillis = SPLASH_TIMEOUT)
                 screenModel.checkLogin()
             }
         }
 
         LaunchedEffect(key1 = state) {
-            if (state is LoginScreenModel.State.NavigateToMain) navigator?.replace(item = MainScreen())
+            if (state is NavigateToMain) navigator?.replace(item = MainScreen())
         }
 
         Box(

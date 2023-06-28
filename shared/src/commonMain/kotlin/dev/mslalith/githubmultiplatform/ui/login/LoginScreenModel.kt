@@ -5,21 +5,15 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.model.LoggedInUser
 import dev.mslalith.githubmultiplatform.data.network.auth.AuthClient
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenModel.State.Login
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenModel.State.NavigateToMain
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenModel.State.Splash
+import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Login
+import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.NavigateToMain
+import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Splash
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class LoginScreenModel : StateScreenModel<LoginScreenModel.State>(initialState = Splash), KoinComponent {
-
-    sealed class State {
-        object Splash : State()
-        object Login : State()
-        object NavigateToMain : State()
-    }
+class LoginScreenModel : StateScreenModel<LoginScreenState>(initialState = Splash), KoinComponent {
 
     private val authClient by inject<AuthClient>()
     private val sharedSettings by inject<SharedSettings>()
@@ -53,5 +47,5 @@ class LoginScreenModel : StateScreenModel<LoginScreenModel.State>(initialState =
         return loggedInUser
     }
 
-    private fun moveStateTo(state: State) = mutableState.update { state }
+    private fun moveStateTo(state: LoginScreenState) = mutableState.update { state }
 }
