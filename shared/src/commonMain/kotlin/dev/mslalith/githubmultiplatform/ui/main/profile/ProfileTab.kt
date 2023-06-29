@@ -1,11 +1,8 @@
 package dev.mslalith.githubmultiplatform.ui.main.profile
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,9 +21,12 @@ import compose.icons.Octicons
 import compose.icons.octicons.Person24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
+import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Success
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_900
 
 internal object ProfileTab : Tab {
 
@@ -71,12 +71,12 @@ internal object ProfileTab : Tab {
                             followingCount = profile.followingCount
                         )
 
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(height = 16.dp)
-                                .background(color = Color.Black)
-                        )
+                        HorizontalLine(height = 16.dp, color = Color.Black)
+                        PinnedRepositoriesSection(pinnedRepositories = profile.pinnedRepositories)
+
+                        VerticalSpace(space = 16.dp)
+                        HorizontalLine(height = 1.dp, color = Bg_Gray_Dark_900)
+                        VerticalSpace(space = 16.dp)
                     }
                 }
             }

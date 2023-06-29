@@ -21,8 +21,8 @@ fun GitHubMultiplatformTheme(
             primary = Color(0xFFBB86FC),
             primaryContainer = Color(0xFF3700B3),
             secondary = Color(0xFF03DAC5),
-            background = Bg_Grey_Dark,
-            surface = Bg_Grey_Dark,
+            background = Bg_Black,
+            surface = Bg_Black,
             onBackground = Text_White,
             onSurface = Text_White
         )

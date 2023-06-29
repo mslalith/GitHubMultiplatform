@@ -28,6 +28,7 @@ query GetProfile($login: String!) {
                     owner {
                         id
                         login
+                        avatarUrl
                     }
                 }
             }

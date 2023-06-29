@@ -7,4 +7,5 @@
     <string name="profile">Profile</string>
     <string name="followers_">followers</string>
     <string name="following_">following</string>
+    <string name="pinned">Pinned</string>
 </resources>

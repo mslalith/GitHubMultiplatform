@@ -8,6 +8,7 @@ fun GetProfileQuery.Node.toProfilePinnedRepository(): ProfilePinnedRepository? {
     return ProfilePinnedRepository(
         id = repo.id,
         owner = repo.owner.login,
+        ownerAvatarUrl = repo.owner.avatarUrl.toString(),
         name = repo.name,
         description = repo.description ?: "",
         stars = repo.stargazerCount,

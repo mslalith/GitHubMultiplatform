@@ -31,12 +31,13 @@ import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.Dot
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
-import dev.mslalith.githubmultiplatform.ui.theme.Text_Gray_Light
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 
 @Composable
-fun UserProfileInfo(
+internal fun UserProfileInfo(
     modifier: Modifier = Modifier,
     name: String,
     login: String,
@@ -75,18 +76,17 @@ fun UserProfileInfo(
                 ) {
                     Text(
                         text = login,
-                        color = Text_Gray_Light
+                        color = Bg_Gray_Dark_400
                     )
                     if (pronouns != null) {
                         Dot(
                             size = 4.dp,
-                            color = Text_Gray_Light,
+                            color = Bg_Gray_Dark_400,
                             horizontalSpace = 8.dp
                         )
                         Text(
                             text = pronouns,
-                            color = Text_Gray_Light,
-                            fontSize = 16.sp
+                            color = Bg_Gray_Dark_400
                         )
                     }
                 }
@@ -99,7 +99,7 @@ fun UserProfileInfo(
             Image(
                 painter = rememberVectorPainter(image = Octicons.Mail16),
                 contentDescription = "",
-                colorFilter = ColorFilter.tint(color = Text_Gray_Light)
+                colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_500)
             )
             HorizontalSpace(space = 12.dp)
             Text(
@@ -114,7 +114,7 @@ fun UserProfileInfo(
             Image(
                 painter = rememberVectorPainter(image = Octicons.Person16),
                 contentDescription = "",
-                colorFilter = ColorFilter.tint(color = Text_Gray_Light)
+                colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_500)
             )
             HorizontalSpace(space = 12.dp)
             FollowText(

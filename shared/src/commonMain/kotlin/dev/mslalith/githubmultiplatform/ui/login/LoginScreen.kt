@@ -40,7 +40,7 @@ import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Login
 import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.NavigateToMain
 import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Splash
 import dev.mslalith.githubmultiplatform.ui.main.MainScreen
-import dev.mslalith.githubmultiplatform.ui.theme.Bg_Grey_Dark
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_900
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Light
 import kotlinx.coroutines.delay
 
@@ -110,7 +110,7 @@ object LoginScreen : Screen {
                     ) {
                         Text(
                             text = stringResource(resource = SharedRes.strings.sign_in_with_github).uppercase(),
-                            color = Bg_Grey_Dark
+                            color = Bg_Gray_Dark_900
                         )
                     }
                 }
