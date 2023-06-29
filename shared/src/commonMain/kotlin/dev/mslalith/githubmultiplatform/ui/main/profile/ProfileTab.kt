@@ -19,6 +19,8 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
 import compose.icons.octicons.Person24
+import compose.icons.octicons.Repo16
+import compose.icons.octicons.Star16
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
@@ -26,7 +28,9 @@ import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Success
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_900
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Yellow
 
 internal object ProfileTab : Tab {
 
@@ -76,7 +80,22 @@ internal object ProfileTab : Tab {
 
                         VerticalSpace(space = 16.dp)
                         HorizontalLine(height = 1.dp, color = Bg_Gray_Dark_900)
-                        VerticalSpace(space = 16.dp)
+
+                        SectionItem(
+                            name = stringResource(resource = SharedRes.strings.repositories),
+                            icon = Octicons.Repo16,
+                            iconBackgroundColor = Bg_Gray_Dark_400,
+                            count = profile.repositoriesCount,
+                            onClick = {}
+                        )
+
+                        SectionItem(
+                            name = stringResource(resource = SharedRes.strings.starred),
+                            icon = Octicons.Star16,
+                            iconBackgroundColor = Bg_Yellow,
+                            count = profile.starredRepositoriesCount,
+                            onClick = {}
+                        )
                     }
                 }
             }

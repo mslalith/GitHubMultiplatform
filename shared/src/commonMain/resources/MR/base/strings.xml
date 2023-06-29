@@ -8,4 +8,6 @@
     <string name="followers_">followers</string>
     <string name="following_">following</string>
     <string name="pinned">Pinned</string>
+    <string name="repositories">Repositories</string>
+    <string name="starred">Starred</string>
 </resources>
