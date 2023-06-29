@@ -40,8 +40,8 @@ import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Login
 import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.NavigateToMain
 import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Splash
 import dev.mslalith.githubmultiplatform.ui.main.MainScreen
-import dev.mslalith.githubmultiplatform.ui.theme.Dark_DarkGreyText
-import dev.mslalith.githubmultiplatform.ui.theme.Dark_GrayLight
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Grey_Dark
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Light
 import kotlinx.coroutines.delay
 
 private const val SPLASH_TIMEOUT = 3000L
@@ -85,8 +85,8 @@ object LoginScreen : Screen {
             ) {
                 Image(
                     painter = rememberVectorPainter(Octicons.MarkGithub16),
-                    contentDescription = "GitHub Logo",
-                    colorFilter = ColorFilter.tint(color = Dark_GrayLight),
+                    contentDescription = "",
+                    colorFilter = ColorFilter.tint(color = Bg_Gray_Light),
                     modifier = Modifier.matchParentSize()
                 )
             }
@@ -105,12 +105,12 @@ object LoginScreen : Screen {
                             .fillMaxWidth()
                             .padding(horizontal = 24.dp, vertical = 12.dp),
                         colors = ButtonDefaults.elevatedButtonColors(
-                            containerColor = Dark_GrayLight
+                            containerColor = Bg_Gray_Light
                         )
                     ) {
                         Text(
                             text = stringResource(resource = SharedRes.strings.sign_in_with_github).uppercase(),
-                            color = Dark_DarkGreyText
+                            color = Bg_Grey_Dark
                         )
                     }
                 }

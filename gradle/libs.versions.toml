@@ -7,6 +7,7 @@ buildkonfig = "0.13.3"
 composeIcons = "1.1.0"
 composeMultiplatform = "1.4.1-rc01"
 detekt = "1.23.0"
+kamel = "0.6.0"
 koin = "3.4.0"
 koinCompose = "1.0.3"
 kotlin = "1.8.20"
@@ -25,6 +26,8 @@ apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
 
 composeIcons-octicons = { module = "br.com.devsrsouza.compose.icons:octicons", version.ref = "composeIcons" }
+
+kamel = { module = "media.kamel:kamel-image", version.ref = "kamel" }
 
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }

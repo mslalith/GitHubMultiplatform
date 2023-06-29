@@ -5,4 +5,6 @@
     <string name="notifications">Notifications</string>
     <string name="explore">Explore</string>
     <string name="profile">Profile</string>
+    <string name="followers_">followers</string>
+    <string name="following_">following</string>
 </resources>

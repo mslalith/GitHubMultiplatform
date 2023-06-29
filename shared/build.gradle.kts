@@ -57,6 +57,7 @@ kotlin {
 
                 api(libs.moko.resources.compose)
                 implementation(libs.composeIcons.octicons)
+                implementation(libs.kamel)
 
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
