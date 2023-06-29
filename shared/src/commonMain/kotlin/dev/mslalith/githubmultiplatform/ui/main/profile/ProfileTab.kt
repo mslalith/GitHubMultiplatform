@@ -3,6 +3,8 @@ package dev.mslalith.githubmultiplatform.ui.main.profile
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -64,7 +66,9 @@ internal object ProfileTab : Tab {
                 Loading -> CircularProgressIndicator()
                 is Success -> {
                     val profile = (state as Success).profileTabUiState
-                    Column {
+                    Column(
+                        modifier = Modifier.verticalScroll(state = rememberScrollState())
+                    ) {
                         UserProfileInfo(
                             name = profile.name,
                             login = profile.login,
