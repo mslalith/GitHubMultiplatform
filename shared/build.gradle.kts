@@ -18,12 +18,14 @@ kotlin {
     targetHierarchy.default()
 
     android {
+        java.toolchain.languageVersion.set(JavaLanguageVersion.of(11))
         compilations.all {
             kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_1_8.toString()
+                jvmTarget = JavaVersion.VERSION_11.toString()
             }
         }
     }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
