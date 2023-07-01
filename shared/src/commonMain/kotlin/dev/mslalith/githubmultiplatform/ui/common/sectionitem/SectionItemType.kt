@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.common.listitem
+package dev.mslalith.githubmultiplatform.ui.common.sectionitem
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector

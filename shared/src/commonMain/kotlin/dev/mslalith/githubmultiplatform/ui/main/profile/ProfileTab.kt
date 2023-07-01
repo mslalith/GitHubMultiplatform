@@ -27,8 +27,8 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
-import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionItemType
-import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionListItem
+import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
+import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
 import dev.mslalith.githubmultiplatform.ui.main.TabTitle
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
