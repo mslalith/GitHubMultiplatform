@@ -10,6 +10,15 @@ query GetRepositories($first: Int, $after: String) {
             nodes {
                 id
                 name
+                parent {
+                    id
+                    name
+                    owner {
+                        id
+                        login
+                        avatarUrl
+                    }
+                }
             }
         }
     }

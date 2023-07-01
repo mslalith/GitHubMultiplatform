@@ -1,20 +1,13 @@
 package dev.mslalith.githubmultiplatform.ui.screens.main.home
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import cafe.adriel.voyager.core.model.rememberScreenModel
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
@@ -26,13 +19,12 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.RoundIcon
 import dev.mslalith.githubmultiplatform.ui.common.TabSection
+import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
-import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
-import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
-import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Failed
-import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Loading
-import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Success
+import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreen
 
 internal object HomeTab : Tab, ScreenTitle, ScreenActions {
 
@@ -67,55 +59,53 @@ internal object HomeTab : Tab, ScreenTitle, ScreenActions {
 
     @Composable
     override fun Content() {
-        val screenModel = rememberScreenModel { HomeTabModel() }
-        val state by screenModel.state.collectAsState()
+        val navigator = LocalAppNavigator.currentOrThrow
 
-        LaunchedEffect(key1 = Unit) { screenModel.fetchRepositories() }
-
-        Box(
+        Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            when (state) {
-                Failed -> Text(text = "Failed")
-                Loading -> Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) { CircularProgressIndicator() }
-                is Success -> {
-                    Column {
-                        MyWork()
-                    }
-                }
-            }
+            MyWork(
+                onIssuesClick = {},
+                onPullRequestsClick = {},
+                onDiscussionsClick = {},
+                onRepositoriesClick = { navigator.push(item = RepositoryListScreen()) },
+                onStarredRepositoriesClick = {}
+            )
         }
     }
 }
 
 @Composable
-private fun MyWork() {
+private fun MyWork(
+    onIssuesClick: () -> Unit,
+    onPullRequestsClick: () -> Unit,
+    onDiscussionsClick: () -> Unit,
+    onRepositoriesClick: () -> Unit,
+    onStarredRepositoriesClick: () -> Unit,
+) {
     TabSection(
         title = SharedRes.strings.my_work,
         content = {
             Column {
                 SectionListItem(
                     sectionItemType = SectionItemType.Issues,
-                    onClick = {}
+                    onClick = onIssuesClick
                 )
                 SectionListItem(
                     sectionItemType = SectionItemType.PullRequests,
-                    onClick = {}
+                    onClick = onPullRequestsClick
                 )
                 SectionListItem(
                     sectionItemType = SectionItemType.Discussions,
-                    onClick = {}
+                    onClick = onDiscussionsClick
                 )
                 SectionListItem(
                     sectionItemType = SectionItemType.Repositories,
-                    onClick = {}
+                    onClick = onRepositoriesClick
                 )
                 SectionListItem(
                     sectionItemType = SectionItemType.StarredRepositories,
-                    onClick = {}
+                    onClick = onStarredRepositoriesClick
                 )
             }
         }

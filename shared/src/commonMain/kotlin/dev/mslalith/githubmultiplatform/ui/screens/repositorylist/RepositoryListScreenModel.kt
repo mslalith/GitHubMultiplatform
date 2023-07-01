@@ -1,17 +1,17 @@
-package dev.mslalith.githubmultiplatform.ui.screens.main.home
+package dev.mslalith.githubmultiplatform.ui.screens.repositorylist
 
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
-import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Loading
-import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Success
+import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Loading
+import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Success
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-internal class HomeTabModel : StateScreenModel<HomeTabState>(initialState = Loading), KoinComponent {
+internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreenState>(initialState = Loading), KoinComponent {
 
     private val getRepositoriesUseCase by inject<GetRepositoriesUseCase>()
 
