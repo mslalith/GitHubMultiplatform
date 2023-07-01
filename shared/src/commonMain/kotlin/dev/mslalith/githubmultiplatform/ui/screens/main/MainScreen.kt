@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.main
+package dev.mslalith.githubmultiplatform.ui.screens.main
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
