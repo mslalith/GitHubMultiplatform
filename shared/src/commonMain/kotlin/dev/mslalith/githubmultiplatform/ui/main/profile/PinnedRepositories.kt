@@ -31,13 +31,13 @@ import androidx.compose.ui.unit.sp
 import compose.icons.Octicons
 import compose.icons.octicons.Pin24
 import compose.icons.octicons.StarFill16
-import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.ProfilePinnedRepository
 import dev.mslalith.githubmultiplatform.data.model.RepositoryLanguage
 import dev.mslalith.githubmultiplatform.extensions.fromColor
 import dev.mslalith.githubmultiplatform.ui.common.Dot
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
+import dev.mslalith.githubmultiplatform.ui.common.TabSection
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Yellow
@@ -49,31 +49,17 @@ import io.kamel.image.asyncPainterResource
 internal fun PinnedRepositoriesSection(
     pinnedRepositories: List<ProfilePinnedRepository>
 ) {
-    Column {
-        VerticalSpace(space = 16.dp)
-        Header()
-        VerticalSpace(space = 16.dp)
-        PinnedRepositoriesList(pinnedRepositories = pinnedRepositories)
-    }
-}
-
-@Composable
-private fun Header() {
-    Row(
-        modifier = Modifier.padding(horizontal = 24.dp)
-    ) {
-        Image(
-            painter = rememberVectorPainter(image = Octicons.Pin24),
-            contentDescription = "",
-            colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_500)
-        )
-        HorizontalSpace(space = 16.dp)
-        Text(
-            text = stringResource(resource = SharedRes.strings.pinned),
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 18.sp
-        )
-    }
+    TabSection(
+        title = SharedRes.strings.pinned,
+        leading = {
+            Image(
+                painter = rememberVectorPainter(image = Octicons.Pin24),
+                contentDescription = "",
+                colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_500)
+            )
+        },
+        content = { PinnedRepositoriesList(pinnedRepositories = pinnedRepositories) }
+    )
 }
 
 @Composable
