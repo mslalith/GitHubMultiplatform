@@ -9,15 +9,15 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.with
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
-import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
+import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.common.screen.actions
 
 @Composable
 internal fun AnimatedScreenActions() {
-    val navigator = LocalNavigator.currentOrThrow
+    val navigator = LocalAppNavigator.currentOrThrow
     AnimatedActions(topBarActions = navigator.lastItem.actions())
 }
 

@@ -10,16 +10,16 @@ import androidx.compose.animation.with
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
-import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
+import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
 import dev.mslalith.githubmultiplatform.ui.common.screen.screenTitle
 
 @Composable
 internal fun AnimatedScreenTitle() {
-    val navigator = LocalNavigator.currentOrThrow
+    val navigator = LocalAppNavigator.currentOrThrow
     AnimatedTitle(title = navigator.lastItem.screenTitle())
 }
 

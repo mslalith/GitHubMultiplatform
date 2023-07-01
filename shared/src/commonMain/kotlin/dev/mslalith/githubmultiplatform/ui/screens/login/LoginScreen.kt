@@ -30,12 +30,13 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import compose.icons.Octicons
 import compose.icons.octicons.MarkGithub16
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.deeplink.DeepLinkHandler
+import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Login
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.NavigateToMain
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Splash
@@ -54,7 +55,7 @@ object LoginScreen : Screen {
         val state by screenModel.state.collectAsState()
 
         val uriHandler = LocalUriHandler.current
-        val navigator = LocalNavigator.current
+        val navigator = LocalAppNavigator.currentOrThrow
 
         val showLoginUi by remember {
             derivedStateOf { state is Login }
@@ -70,7 +71,7 @@ object LoginScreen : Screen {
         }
 
         LaunchedEffect(key1 = state) {
-            if (state is NavigateToMain) navigator?.replace(item = MainScreen())
+            if (state is NavigateToMain) navigator.replace(item = MainScreen())
         }
 
         Box(

@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
+import dev.mslalith.githubmultiplatform.ui.common.navigator.ProvideAppNavigator
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreen
 import dev.mslalith.githubmultiplatform.ui.theme.GitHubMultiplatformTheme
 
@@ -21,7 +22,12 @@ fun GitHubApp() {
         ) {
             Navigator(
                 screen = LoginScreen,
-                content = { SlideTransition(navigator = it) }
+                content = { navigator ->
+                    ProvideAppNavigator(
+                        navigator = navigator,
+                        content = { SlideTransition(navigator = navigator) }
+                    )
+                }
             )
         }
     }
