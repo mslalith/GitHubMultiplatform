@@ -29,7 +29,7 @@ import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
-import dev.mslalith.githubmultiplatform.ui.common.ScreenTitle
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Success

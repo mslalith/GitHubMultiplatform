@@ -15,7 +15,7 @@ import compose.icons.octicons.Bell24
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
-import dev.mslalith.githubmultiplatform.ui.common.ScreenTitle
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 
 internal object NotificationsTab : Tab, ScreenTitle {
 
