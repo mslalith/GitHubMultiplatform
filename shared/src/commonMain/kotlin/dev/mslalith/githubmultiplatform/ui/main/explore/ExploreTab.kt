@@ -12,10 +12,14 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
 import compose.icons.octicons.Telescope24
+import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.ui.main.TabTitle
 
-internal object ExploreTab : Tab {
+internal object ExploreTab : Tab, TabTitle {
+
+    override val tabTitle: StringResource = SharedRes.strings.explore
 
     override val options: TabOptions
         @Composable

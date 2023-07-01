@@ -16,4 +16,5 @@
     <string name="starred">Starred</string>
     <string name="projects">Projects</string>
     <string name="my_work">My Work</string>
+    <string name="_empty" />
 </resources>

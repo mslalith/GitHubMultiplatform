@@ -18,16 +18,20 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
 import compose.icons.octicons.Home24
+import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.TabSection
 import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionListItem
+import dev.mslalith.githubmultiplatform.ui.main.TabTitle
 import dev.mslalith.githubmultiplatform.ui.main.home.HomeTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.main.home.HomeTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.main.home.HomeTabState.Success
 
-internal object HomeTab : Tab {
+internal object HomeTab : Tab, TabTitle {
+
+    override val tabTitle: StringResource = SharedRes.strings.home
 
     override val options: TabOptions
         @Composable

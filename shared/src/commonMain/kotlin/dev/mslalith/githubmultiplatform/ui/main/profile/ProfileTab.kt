@@ -22,19 +22,23 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
 import compose.icons.octicons.Person24
+import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionListItem
+import dev.mslalith.githubmultiplatform.ui.main.TabTitle
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
-internal object ProfileTab : Tab {
+internal object ProfileTab : Tab, TabTitle {
+
+    override val tabTitle: StringResource = SharedRes.strings._empty
 
     override val options: TabOptions
         @Composable
