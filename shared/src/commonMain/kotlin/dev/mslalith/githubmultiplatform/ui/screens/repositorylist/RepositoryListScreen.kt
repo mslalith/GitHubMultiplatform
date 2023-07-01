@@ -1,10 +1,14 @@
 package dev.mslalith.githubmultiplatform.ui.screens.repositorylist
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,10 +29,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.core.screen.ScreenKey
+import dev.icerock.moko.resources.StringResource
+import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Repository
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Loading
@@ -37,10 +43,9 @@ import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 
-class RepositoryListScreen : Screen {
+class RepositoryListScreen : Screen, ScreenTitle {
 
-    override val key: ScreenKey
-        get() = super.key.also { println("key: $it") }
+    override val titleResource: StringResource = SharedRes.strings.repositories
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -53,17 +58,21 @@ class RepositoryListScreen : Screen {
         Scaffold(
             topBar = { ScreenAwareTopBar() }
         ) {
-            when (state) {
-                Failed -> Text(text = "Failed")
-                Loading -> Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) { CircularProgressIndicator() }
+            Box(
+                modifier = Modifier.padding(paddingValues = it)
+            ) {
+                when (state) {
+                    Failed -> Text(text = "Failed")
+                    Loading -> Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) { CircularProgressIndicator() }
 
-                is Success -> {
-                    Column {
-                        val repositories = (state as Success).repositories
-                        RepositoriesList(repositories = repositories)
+                    is Success -> {
+                        Column {
+                            val repositories = (state as Success).repositories
+                            RepositoriesList(repositories = repositories)
+                        }
                     }
                 }
             }
@@ -75,26 +84,39 @@ class RepositoryListScreen : Screen {
 private fun RepositoriesList(
     repositories: List<Repository>
 ) {
-    LazyColumn {
+    LazyColumn(
+        contentPadding = PaddingValues(vertical = 12.dp)
+    ) {
         items(
             items = repositories,
-            key = { it.id }
-        ) { RepositoryItem(repository = it) }
+            key = { it.id },
+        ) {
+            RepositoryItem(
+                repository = it,
+                onClick = {}
+            )
+        }
     }
 }
 
 @Composable
 private fun RepositoryItem(
-    repository: Repository
+    repository: Repository,
+    onClick: () -> Unit
 ) {
     Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() }
+            .padding(vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        HorizontalSpace(space = 24.dp)
         KamelImage(
             resource = asyncPainterResource(data = repository.ownerAvatarUrl),
             contentDescription = null,
             modifier = Modifier
-                .size(size = 56.dp)
+                .size(size = 36.dp)
                 .clip(shape = CircleShape)
         )
         HorizontalSpace(space = 12.dp)
@@ -103,22 +125,14 @@ private fun RepositoryItem(
         ) {
             Text(
                 text = repository.name,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
+                fontWeight = FontWeight.SemiBold
             )
-            VerticalSpace(space = 4.dp)
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = repository.name,
-                    color = Bg_Gray_Dark_400
-                )
-                Text(
-                    text = repository.ownerName,
-                    color = Bg_Gray_Dark_400
-                )
-            }
+            VerticalSpace(space = 2.dp)
+            Text(
+                text = repository.ownerName,
+                color = Bg_Gray_Dark_400,
+                fontSize = 14.sp
+            )
         }
     }
 }

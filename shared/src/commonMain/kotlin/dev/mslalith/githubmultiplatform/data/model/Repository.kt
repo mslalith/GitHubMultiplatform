@@ -11,13 +11,14 @@ data class Repository(
 
 fun GetRepositoriesQuery.Repositories.toPagedRepositories() = PagedRepositories(
     pageInfo = pageInfo.toPageInfo(),
-    repositories = nodes.orEmpty().filterNotNull().mapNotNull {
-        val owner = it.parent?.owner ?: return@mapNotNull null
+    repositories = nodes.orEmpty().filterNotNull().map {
+        val ownerName = it.parent?.owner?.login ?: it.owner.login
+        val ownerAvatarUrl = it.parent?.owner?.avatarUrl ?: it.owner.avatarUrl
         Repository(
             id = it.id,
             name = it.name,
-            ownerName = owner.login,
-            ownerAvatarUrl = owner.avatarUrl.toString()
+            ownerName = ownerName,
+            ownerAvatarUrl = ownerAvatarUrl.toString()
         )
     }
 )

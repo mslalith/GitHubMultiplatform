@@ -15,7 +15,7 @@ internal class GitHubClientImpl : GitHubClient, KoinComponent {
     private val apolloClient by inject<ApolloClient>()
 
     override suspend fun getRepositories(): Flow<GetRepositoriesQuery.Repositories> = apolloClient
-        .query(query = GetRepositoriesQuery(first = Optional.present(value = 10)))
+        .query(query = GetRepositoriesQuery(first = Optional.present(value = 50)))
         .watch()
         .mapNotNull { it.data?.viewer?.repositories }
 
