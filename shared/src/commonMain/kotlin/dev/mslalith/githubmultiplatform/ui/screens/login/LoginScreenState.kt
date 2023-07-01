@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.login
+package dev.mslalith.githubmultiplatform.ui.screens.login
 
 sealed class LoginScreenState {
     object Splash : LoginScreenState()

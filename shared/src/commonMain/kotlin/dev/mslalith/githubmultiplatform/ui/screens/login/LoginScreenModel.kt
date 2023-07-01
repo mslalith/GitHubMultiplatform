@@ -1,13 +1,13 @@
-package dev.mslalith.githubmultiplatform.ui.login
+package dev.mslalith.githubmultiplatform.ui.screens.login
 
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.model.LoggedInUser
 import dev.mslalith.githubmultiplatform.data.network.auth.AuthClient
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Login
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.NavigateToMain
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Splash
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Login
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.NavigateToMain
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Splash
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent

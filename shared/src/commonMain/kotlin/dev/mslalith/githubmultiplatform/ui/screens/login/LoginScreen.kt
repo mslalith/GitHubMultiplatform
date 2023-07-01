@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.login
+package dev.mslalith.githubmultiplatform.ui.screens.login
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -36,9 +36,9 @@ import compose.icons.octicons.MarkGithub16
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.deeplink.DeepLinkHandler
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Login
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.NavigateToMain
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreenState.Splash
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Login
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.NavigateToMain
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Splash
 import dev.mslalith.githubmultiplatform.ui.main.MainScreen
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_900
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Light

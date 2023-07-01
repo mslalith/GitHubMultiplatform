@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
-import dev.mslalith.githubmultiplatform.ui.login.LoginScreen
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreen
 import dev.mslalith.githubmultiplatform.ui.theme.GitHubMultiplatformTheme
 
 @OptIn(ExperimentalAnimationApi::class)
