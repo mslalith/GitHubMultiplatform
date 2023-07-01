@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.main.profile
+package dev.mslalith.githubmultiplatform.ui.screens.main.profile
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,9 +30,9 @@ import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
 import dev.mslalith.githubmultiplatform.ui.main.TabTitle
-import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
-import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
-import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Success
+import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Failed
+import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Loading
+import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 

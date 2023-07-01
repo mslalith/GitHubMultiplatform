@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.main.home
+package dev.mslalith.githubmultiplatform.ui.screens.main.home
 
 import dev.mslalith.githubmultiplatform.data.model.Repository
 

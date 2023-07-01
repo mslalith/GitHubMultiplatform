@@ -1,12 +1,12 @@
-package dev.mslalith.githubmultiplatform.ui.main.profile
+package dev.mslalith.githubmultiplatform.ui.screens.main.profile
 
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
 import dev.mslalith.githubmultiplatform.domain.usecase.GetProfileTabInfoUseCase
-import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
-import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
-import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Success
+import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Failed
+import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Loading
+import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Success
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch

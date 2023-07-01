@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.main.profile
+package dev.mslalith.githubmultiplatform.ui.screens.main.profile
 
 import dev.mslalith.githubmultiplatform.data.model.LoggedInUser
 import dev.mslalith.githubmultiplatform.data.model.profile.ProfileTabUiState

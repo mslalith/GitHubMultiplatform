@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.main.profile
+package dev.mslalith.githubmultiplatform.ui.screens.main.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

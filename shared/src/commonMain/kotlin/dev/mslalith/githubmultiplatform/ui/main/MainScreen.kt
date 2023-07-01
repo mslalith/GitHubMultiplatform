@@ -43,10 +43,10 @@ import compose.icons.octicons.ShareAndroid24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.RoundIcon
-import dev.mslalith.githubmultiplatform.ui.main.explore.ExploreTab
-import dev.mslalith.githubmultiplatform.ui.main.home.HomeTab
-import dev.mslalith.githubmultiplatform.ui.main.notifications.NotificationsTab
-import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTab
+import dev.mslalith.githubmultiplatform.ui.screens.main.explore.ExploreTab
+import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTab
+import dev.mslalith.githubmultiplatform.ui.screens.main.notifications.NotificationsTab
+import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTab
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
 
 class MainScreen : Screen {

@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.main.explore
+package dev.mslalith.githubmultiplatform.ui.screens.main.notifications
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,25 +11,25 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
-import compose.icons.octicons.Telescope24
+import compose.icons.octicons.Bell24
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.main.TabTitle
 
-internal object ExploreTab : Tab, TabTitle {
+internal object NotificationsTab : Tab, TabTitle {
 
-    override val tabTitle: StringResource = SharedRes.strings.explore
+    override val tabTitle: StringResource = SharedRes.strings.notifications
 
     override val options: TabOptions
         @Composable
         get() {
-            val title = stringResource(resource = SharedRes.strings.explore)
-            val icon = rememberVectorPainter(image = Octicons.Telescope24)
+            val title = stringResource(resource = SharedRes.strings.notifications)
+            val icon = rememberVectorPainter(image = Octicons.Bell24)
 
             return remember {
                 TabOptions(
-                    index = 2u,
+                    index = 1u,
                     title = title,
                     icon = icon
                 )
@@ -42,7 +42,7 @@ internal object ExploreTab : Tab, TabTitle {
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Text(text = "Explore")
+            Text(text = "Notifications")
         }
     }
 }
