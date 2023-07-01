@@ -41,9 +41,8 @@ import compose.icons.octicons.PlusCircle24
 import compose.icons.octicons.Search24
 import compose.icons.octicons.ShareAndroid24
 import dev.icerock.moko.resources.compose.stringResource
-import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.RoundIcon
-import dev.mslalith.githubmultiplatform.ui.common.ScreenTitle
+import dev.mslalith.githubmultiplatform.ui.common.screenTitle
 import dev.mslalith.githubmultiplatform.ui.screens.main.explore.ExploreTab
 import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTab
 import dev.mslalith.githubmultiplatform.ui.screens.main.notifications.NotificationsTab
@@ -117,7 +116,7 @@ private fun TabAwareAppBar() {
 @Composable
 private fun AnimatedTitle() {
     val tabNavigator = LocalTabNavigator.current
-    val screenTitle = (tabNavigator.current as? ScreenTitle)?.titleResource ?: SharedRes.strings._empty
+    val screenTitle = tabNavigator.current.screenTitle()
     AnimatedContent(
         targetState = screenTitle,
         transitionSpec = { expandHorizontally() + fadeIn() with shrinkHorizontally() + fadeOut() }
