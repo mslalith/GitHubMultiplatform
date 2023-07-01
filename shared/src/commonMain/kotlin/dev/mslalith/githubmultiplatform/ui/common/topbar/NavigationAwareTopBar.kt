@@ -18,7 +18,7 @@ fun ScreenAwareTopBar() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TabAwareTopBar(
-    showNav: (Tab) -> Boolean
+    showNav: (Tab) -> Boolean = { false }
 ) {
     TopAppBar(
         title = { AnimatedTabTitle() },

@@ -43,7 +43,7 @@ import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
 internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
 
-    override val titleResource: StringResource = SharedRes.strings._empty
+    override val titleResource: StringResource = SharedRes.strings.profile
 
     override val options: TabOptions
         @Composable

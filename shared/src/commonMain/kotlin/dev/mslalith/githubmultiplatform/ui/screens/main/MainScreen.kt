@@ -34,11 +34,7 @@ class MainScreen : Screen {
     override fun Content() {
         TabNavigator(tab = HomeTab) {
             Scaffold(
-                topBar = {
-                    TabAwareTopBar(
-                        showNav = { it is ProfileTab }
-                    )
-                },
+                topBar = { TabAwareTopBar() },
                 content = {
                     Box(
                         modifier = Modifier.padding(paddingValues = it)
