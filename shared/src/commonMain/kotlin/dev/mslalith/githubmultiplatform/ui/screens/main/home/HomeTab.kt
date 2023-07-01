@@ -29,12 +29,12 @@ import dev.mslalith.githubmultiplatform.ui.common.TabSection
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
-import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTopBarActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Success
 
-internal object HomeTab : Tab, ScreenTitle, ScreenTopBarActions {
+internal object HomeTab : Tab, ScreenTitle, ScreenActions {
 
     override val titleResource: StringResource = SharedRes.strings.home
 
@@ -54,7 +54,7 @@ internal object HomeTab : Tab, ScreenTitle, ScreenTopBarActions {
         }
 
     @Composable
-    override fun RowScope.TopBarActions() {
+    override fun RowScope.Actions() {
         RoundIcon(
             icon = Octicons.Search24,
             onClick = {}

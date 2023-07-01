@@ -12,32 +12,32 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
-import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTopBarActions
-import dev.mslalith.githubmultiplatform.ui.common.screen.topBarActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.actions
 
 @Composable
 internal fun AnimatedScreenActions() {
     val navigator = LocalNavigator.currentOrThrow
-    AnimatedActions(topBarActions = navigator.lastItem.topBarActions())
+    AnimatedActions(topBarActions = navigator.lastItem.actions())
 }
 
 @Composable
 internal fun AnimatedTabActions() {
     val tabNavigator = LocalTabNavigator.current
-    AnimatedActions(topBarActions = tabNavigator.current.topBarActions())
+    AnimatedActions(topBarActions = tabNavigator.current.actions())
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun AnimatedActions(
-    topBarActions: ScreenTopBarActions
+    topBarActions: ScreenActions
 ) {
     AnimatedContent(
         targetState = topBarActions,
         transitionSpec = { slideInHorizontally { it / 2 } + fadeIn() with slideOutHorizontally { it / 2 } + fadeOut() }
     ) {
         Row {
-            with(it) { TopBarActions() }
+            with(it) { Actions() }
         }
     }
 }

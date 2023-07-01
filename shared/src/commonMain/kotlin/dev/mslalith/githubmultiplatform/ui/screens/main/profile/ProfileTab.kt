@@ -34,14 +34,14 @@ import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
-import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTopBarActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
-internal object ProfileTab : Tab, ScreenTitle, ScreenTopBarActions {
+internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
 
     override val titleResource: StringResource = SharedRes.strings._empty
 
@@ -61,7 +61,7 @@ internal object ProfileTab : Tab, ScreenTitle, ScreenTopBarActions {
         }
 
     @Composable
-    override fun RowScope.TopBarActions() {
+    override fun RowScope.Actions() {
         RoundIcon(
             icon = Octicons.ShareAndroid24,
             onClick = {}
