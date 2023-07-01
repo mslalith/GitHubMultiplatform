@@ -35,7 +35,7 @@ internal fun SectionListItem(
             icon = sectionItemType.icon,
             backgroundColor = sectionItemType.iconBackgroundColor
         )
-        HorizontalSpace(space = 24.dp)
+        HorizontalSpace(space = 20.dp)
         Text(
             text = stringResource(resource = sectionItemType.stringResource),
             modifier = Modifier.weight(weight = 1f)
@@ -55,7 +55,7 @@ private fun RoundedSquareIcon(
 ) {
     Box(
         modifier = Modifier
-            .padding(vertical = 16.dp)
+            .padding(vertical = 12.dp)
             .background(
                 color = backgroundColor,
                 shape = RoundedCornerShape(size = 4.dp)

@@ -8,6 +8,12 @@
     <string name="followers_">followers</string>
     <string name="following_">following</string>
     <string name="pinned">Pinned</string>
+    <string name="issues">Issues</string>
+    <string name="pull_requests">Pull Requests</string>
+    <string name="discussions">Discussion</string>
     <string name="repositories">Repositories</string>
+    <string name="organizations">Organizations</string>
     <string name="starred">Starred</string>
+    <string name="projects">Projects</string>
+    <string name="my_work">My Work</string>
 </resources>

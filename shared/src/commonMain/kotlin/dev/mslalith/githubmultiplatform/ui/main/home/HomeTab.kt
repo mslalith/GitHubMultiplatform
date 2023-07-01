@@ -1,6 +1,7 @@
 package dev.mslalith.githubmultiplatform.ui.main.home
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,6 +25,9 @@ import compose.icons.octicons.Home24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Repository
+import dev.mslalith.githubmultiplatform.ui.common.TabSection
+import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionItemType
+import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionListItem
 import dev.mslalith.githubmultiplatform.ui.main.home.HomeTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.main.home.HomeTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.main.home.HomeTabState.Success
@@ -53,8 +57,7 @@ internal object HomeTab : Tab {
         LaunchedEffect(key1 = Unit) { screenModel.fetchRepositories() }
 
         Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            modifier = Modifier.fillMaxSize()
         ) {
             when (state) {
                 Failed -> Text(text = "Failed")
@@ -64,7 +67,36 @@ internal object HomeTab : Tab {
                 ) { CircularProgressIndicator() }
                 is Success -> {
                     val repos = (state as Success).repositories
-                    RepositoriesList(repositories = repos)
+//                    RepositoriesList(repositories = repos)
+                    Column {
+                        TabSection(
+                            title = SharedRes.strings.my_work,
+                            content = {
+                                Column {
+                                    SectionListItem(
+                                        sectionItemType = SectionItemType.Issues,
+                                        onClick = {}
+                                    )
+                                    SectionListItem(
+                                        sectionItemType = SectionItemType.PullRequests,
+                                        onClick = {}
+                                    )
+                                    SectionListItem(
+                                        sectionItemType = SectionItemType.Discussions,
+                                        onClick = {}
+                                    )
+                                    SectionListItem(
+                                        sectionItemType = SectionItemType.Repositories,
+                                        onClick = {}
+                                    )
+                                    SectionListItem(
+                                        sectionItemType = SectionItemType.StarredRepositories,
+                                        onClick = {}
+                                    )
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }

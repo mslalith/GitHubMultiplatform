@@ -18,7 +18,16 @@ internal val Bg_Gray_Dark_100 = Color(color = 0xFFF6F8FA)
 
 
 internal val Bg_Blue = Color(color = 0xFF0366D6)
+internal val Bg_Blue_Light = Color(color = 0xFFF1F8FF)
+internal val Bg_Green = Color(color = 0xFF28A745)
+internal val Bg_Green_Light = Color(color = 0xFFDCFFE4)
 internal val Bg_Yellow = Color(color = 0xFFFFD33D)
+internal val Bg_Yellow_Light = Color(color = 0xFFFFF5B1)
+internal val Bg_Yellow_Dark = Color(color = 0xFFDBAB09)
+internal val Bg_Red = Color(color = 0xFFD73A49)
+internal val Bg_Red_Light = Color(color = 0xFFFFDCE0)
+internal val Bg_Purple = Color(color = 0xFF6F42C1)
+internal val Bg_Purple_Light = Color(color = 0xFFF5F0FF)
 
 
 internal val Text_Gray_Dark = Color(color = 0xFF24292E)
