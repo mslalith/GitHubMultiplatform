@@ -3,11 +3,7 @@ package dev.mslalith.githubmultiplatform.ui.main.home
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,7 +20,6 @@ import compose.icons.Octicons
 import compose.icons.octicons.Home24
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
-import dev.mslalith.githubmultiplatform.data.model.Repository
 import dev.mslalith.githubmultiplatform.ui.common.TabSection
 import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.listitem.SectionListItem
@@ -66,51 +61,42 @@ internal object HomeTab : Tab {
                     contentAlignment = Alignment.Center
                 ) { CircularProgressIndicator() }
                 is Success -> {
-                    val repos = (state as Success).repositories
-//                    RepositoriesList(repositories = repos)
                     Column {
-                        TabSection(
-                            title = SharedRes.strings.my_work,
-                            content = {
-                                Column {
-                                    SectionListItem(
-                                        sectionItemType = SectionItemType.Issues,
-                                        onClick = {}
-                                    )
-                                    SectionListItem(
-                                        sectionItemType = SectionItemType.PullRequests,
-                                        onClick = {}
-                                    )
-                                    SectionListItem(
-                                        sectionItemType = SectionItemType.Discussions,
-                                        onClick = {}
-                                    )
-                                    SectionListItem(
-                                        sectionItemType = SectionItemType.Repositories,
-                                        onClick = {}
-                                    )
-                                    SectionListItem(
-                                        sectionItemType = SectionItemType.StarredRepositories,
-                                        onClick = {}
-                                    )
-                                }
-                            }
-                        )
+                        MyWork()
                     }
                 }
             }
         }
     }
+}
 
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    private fun RepositoriesList(repositories: List<Repository>) {
-        LazyColumn {
-            items(items = repositories) { item ->
-                ListItem(
-                    headlineText = { Text(text = item.name) }
+@Composable
+private fun MyWork() {
+    TabSection(
+        title = SharedRes.strings.my_work,
+        content = {
+            Column {
+                SectionListItem(
+                    sectionItemType = SectionItemType.Issues,
+                    onClick = {}
+                )
+                SectionListItem(
+                    sectionItemType = SectionItemType.PullRequests,
+                    onClick = {}
+                )
+                SectionListItem(
+                    sectionItemType = SectionItemType.Discussions,
+                    onClick = {}
+                )
+                SectionListItem(
+                    sectionItemType = SectionItemType.Repositories,
+                    onClick = {}
+                )
+                SectionListItem(
+                    sectionItemType = SectionItemType.StarredRepositories,
+                    onClick = {}
                 )
             }
         }
-    }
+    )
 }
