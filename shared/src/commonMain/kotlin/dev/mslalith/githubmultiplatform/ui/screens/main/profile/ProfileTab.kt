@@ -29,16 +29,16 @@ import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
-import dev.mslalith.githubmultiplatform.ui.main.TabTitle
+import dev.mslalith.githubmultiplatform.ui.common.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
-internal object ProfileTab : Tab, TabTitle {
+internal object ProfileTab : Tab, ScreenTitle {
 
-    override val tabTitle: StringResource = SharedRes.strings._empty
+    override val titleResource: StringResource = SharedRes.strings._empty
 
     override val options: TabOptions
         @Composable

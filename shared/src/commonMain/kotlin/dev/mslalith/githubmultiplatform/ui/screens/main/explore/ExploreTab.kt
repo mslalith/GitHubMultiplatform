@@ -15,11 +15,11 @@ import compose.icons.octicons.Telescope24
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
-import dev.mslalith.githubmultiplatform.ui.main.TabTitle
+import dev.mslalith.githubmultiplatform.ui.common.ScreenTitle
 
-internal object ExploreTab : Tab, TabTitle {
+internal object ExploreTab : Tab, ScreenTitle {
 
-    override val tabTitle: StringResource = SharedRes.strings.explore
+    override val titleResource: StringResource = SharedRes.strings.explore
 
     override val options: TabOptions
         @Composable

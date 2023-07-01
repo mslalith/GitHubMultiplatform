@@ -15,11 +15,11 @@ import compose.icons.octicons.Bell24
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
-import dev.mslalith.githubmultiplatform.ui.main.TabTitle
+import dev.mslalith.githubmultiplatform.ui.common.ScreenTitle
 
-internal object NotificationsTab : Tab, TabTitle {
+internal object NotificationsTab : Tab, ScreenTitle {
 
-    override val tabTitle: StringResource = SharedRes.strings.notifications
+    override val titleResource: StringResource = SharedRes.strings.notifications
 
     override val options: TabOptions
         @Composable

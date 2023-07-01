@@ -24,14 +24,14 @@ import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.TabSection
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
-import dev.mslalith.githubmultiplatform.ui.main.TabTitle
+import dev.mslalith.githubmultiplatform.ui.common.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.main.home.HomeTabState.Success
 
-internal object HomeTab : Tab, TabTitle {
+internal object HomeTab : Tab, ScreenTitle {
 
-    override val tabTitle: StringResource = SharedRes.strings.home
+    override val titleResource: StringResource = SharedRes.strings.home
 
     override val options: TabOptions
         @Composable
