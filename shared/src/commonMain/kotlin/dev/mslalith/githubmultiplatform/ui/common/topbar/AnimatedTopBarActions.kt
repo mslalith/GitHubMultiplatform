@@ -1,0 +1,43 @@
+package dev.mslalith.githubmultiplatform.ui.common.topbar
+
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.with
+import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.Composable
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTopBarActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.topBarActions
+
+@Composable
+internal fun AnimatedScreenActions() {
+    val navigator = LocalNavigator.currentOrThrow
+    AnimatedActions(topBarActions = navigator.lastItem.topBarActions())
+}
+
+@Composable
+internal fun AnimatedTabActions() {
+    val tabNavigator = LocalTabNavigator.current
+    AnimatedActions(topBarActions = tabNavigator.current.topBarActions())
+}
+
+@OptIn(ExperimentalAnimationApi::class)
+@Composable
+private fun AnimatedActions(
+    topBarActions: ScreenTopBarActions
+) {
+    AnimatedContent(
+        targetState = topBarActions,
+        transitionSpec = { slideInHorizontally { it / 2 } + fadeIn() with slideOutHorizontally { it / 2 } + fadeOut() }
+    ) {
+        Row {
+            with(it) { TopBarActions() }
+        }
+    }
+}
