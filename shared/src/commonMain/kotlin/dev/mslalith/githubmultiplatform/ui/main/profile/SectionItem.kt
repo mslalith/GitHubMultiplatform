@@ -61,7 +61,7 @@ private fun RoundedSquareIcon(
             .padding(vertical = 16.dp)
             .background(
                 color = backgroundColor,
-                shape = RoundedCornerShape(size = 2.dp)
+                shape = RoundedCornerShape(size = 4.dp)
             )
             .padding(all = 8.dp)
     ) {

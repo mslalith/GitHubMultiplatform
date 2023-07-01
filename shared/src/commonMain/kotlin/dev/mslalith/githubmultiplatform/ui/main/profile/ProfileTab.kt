@@ -6,14 +6,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
@@ -31,8 +32,8 @@ import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.main.profile.ProfileTabState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
-import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_900
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Yellow
+import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
 internal object ProfileTab : Tab {
 
@@ -63,7 +64,10 @@ internal object ProfileTab : Tab {
         ) {
             when (state) {
                 Failed -> Text(text = "Failed")
-                Loading -> CircularProgressIndicator()
+                Loading -> Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) { CircularProgressIndicator() }
                 is Success -> {
                     val profile = (state as Success).profileTabUiState
                     Column(
@@ -79,11 +83,11 @@ internal object ProfileTab : Tab {
                             followingCount = profile.followingCount
                         )
 
-                        HorizontalLine(height = 16.dp, color = Color.Black)
+                        HorizontalLine(height = 1.dp, color = MaterialTheme.colorScheme.borderLight)
                         PinnedRepositoriesSection(pinnedRepositories = profile.pinnedRepositories)
 
                         VerticalSpace(space = 16.dp)
-                        HorizontalLine(height = 1.dp, color = Bg_Gray_Dark_900)
+                        HorizontalLine(height = 1.dp, color = MaterialTheme.colorScheme.borderLight)
 
                         SectionItem(
                             name = stringResource(resource = SharedRes.strings.repositories),

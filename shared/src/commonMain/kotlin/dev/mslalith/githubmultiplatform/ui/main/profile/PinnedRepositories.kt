@@ -1,7 +1,6 @@
 package dev.mslalith.githubmultiplatform.ui.main.profile
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -15,6 +14,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,9 +40,8 @@ import dev.mslalith.githubmultiplatform.ui.common.Dot
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
-import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_900
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Yellow
-import dev.mslalith.githubmultiplatform.ui.theme.Border_Gray_Darker
+import dev.mslalith.githubmultiplatform.ui.theme.border
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 
@@ -102,42 +102,46 @@ private fun BoxWithConstraintsScope.PinnedRepository(
     modifier: Modifier = Modifier,
     pinnedRepository: ProfilePinnedRepository
 ) {
-    Column(
+    Surface(
         modifier = modifier
             .width(width = maxWidth * 0.8f)
             .clip(shape = RoundedCornerShape(size = 12.dp))
             .border(
                 width = 0.5.dp,
-                color = Border_Gray_Darker,
+                color = MaterialTheme.colorScheme.border,
                 shape = RoundedCornerShape(size = 12.dp)
             )
-            .background(color = Bg_Gray_Dark_900)
-            .clickable { }
-            .padding(horizontal = 20.dp, vertical = 20.dp)
+            .clickable { },
+        shadowElevation = 4.dp,
+        tonalElevation = 0.2.dp
     ) {
-        RepoOwnerInfo(
-            name = pinnedRepository.owner,
-            avatarUrl = pinnedRepository.ownerAvatarUrl
-        )
-        VerticalSpace(space = 4.dp)
-        Text(
-            text = pinnedRepository.name,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
-        VerticalSpace(space = 4.dp)
-        Text(
-            text = pinnedRepository.description,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            fontSize = 14.sp
-        )
-        VerticalSpace(space = 16.dp)
-        StarsAndLanguage(
-            stars = pinnedRepository.stars,
-            language = pinnedRepository.language
-        )
+        Column(
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
+        ) {
+            RepoOwnerInfo(
+                name = pinnedRepository.owner,
+                avatarUrl = pinnedRepository.ownerAvatarUrl
+            )
+            VerticalSpace(space = 4.dp)
+            Text(
+                text = pinnedRepository.name,
+                fontWeight = FontWeight.SemiBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            VerticalSpace(space = 4.dp)
+            Text(
+                text = pinnedRepository.description,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                fontSize = 14.sp
+            )
+            VerticalSpace(space = 16.dp)
+            StarsAndLanguage(
+                stars = pinnedRepository.stars,
+                language = pinnedRepository.language
+            )
+        }
     }
 }
 

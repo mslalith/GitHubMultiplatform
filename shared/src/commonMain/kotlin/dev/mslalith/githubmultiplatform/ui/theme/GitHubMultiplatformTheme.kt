@@ -2,6 +2,7 @@ package dev.mslalith.githubmultiplatform.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
@@ -11,6 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+val ColorScheme.border: Color
+    get() = onSurface.copy(alpha = 0.15f)
+
+val ColorScheme.borderLight: Color
+    get() = onSurface.copy(alpha = 0.08f)
+
 @Composable
 fun GitHubMultiplatformTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -18,7 +25,7 @@ fun GitHubMultiplatformTheme(
 ) {
     val colorScheme = if (darkTheme) {
         darkColorScheme(
-            primary = Color(0xFFBB86FC),
+            primary = Bg_Blue,
             primaryContainer = Color(0xFF3700B3),
             secondary = Color(0xFF03DAC5),
             background = Bg_Black,
@@ -28,7 +35,7 @@ fun GitHubMultiplatformTheme(
         )
     } else {
         lightColorScheme(
-            primary = Color(0xFF6200EE),
+            primary = Bg_Blue,
             primaryContainer = Color(0xFF3700B3),
             secondary = Color(0xFF03DAC5),
             background = Bg_Gray_Light,

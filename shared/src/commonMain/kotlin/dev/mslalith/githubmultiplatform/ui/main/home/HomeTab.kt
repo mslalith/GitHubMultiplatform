@@ -58,7 +58,10 @@ internal object HomeTab : Tab {
         ) {
             when (state) {
                 Failed -> Text(text = "Failed")
-                Loading -> CircularProgressIndicator()
+                Loading -> Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) { CircularProgressIndicator() }
                 is Success -> {
                     val repos = (state as Success).repositories
                     RepositoriesList(repositories = repos)
