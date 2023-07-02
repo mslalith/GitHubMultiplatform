@@ -61,7 +61,7 @@ private fun AnimatedNavIcon(
             false -> HorizontalSpace(space = 12.dp)
             true -> RoundIcon(
                 icon = Octicons.ArrowLeft24,
-                contentColor = MaterialTheme.colorScheme.onBackground,
+                contentColor = MaterialTheme.colorScheme.onSurface,
                 onClick = onClick
             )
         }

@@ -92,8 +92,8 @@ fun FilterItem(
         label = { Text(text = stringResource(resource = text)) },
         colors = FilterChipDefaults.filterChipColors(
             containerColor = MaterialTheme.colorScheme.borderLight,
-            labelColor = MaterialTheme.colorScheme.onBackground,
-            iconColor = MaterialTheme.colorScheme.onBackground,
+            labelColor = MaterialTheme.colorScheme.onSurface,
+            iconColor = MaterialTheme.colorScheme.onSurface,
             selectedContainerColor = Bg_Blue,
             selectedLabelColor = Text_White,
             selectedLeadingIconColor = Text_White,

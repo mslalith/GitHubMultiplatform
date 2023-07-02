@@ -123,7 +123,7 @@ internal fun UserProfileInfo(
             )
             Dot(
                 size = 4.dp,
-                color = MaterialTheme.colorScheme.onBackground,
+                color = MaterialTheme.colorScheme.onSurface,
                 horizontalSpace = 8.dp
             )
             FollowText(
