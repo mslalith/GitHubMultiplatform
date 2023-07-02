@@ -22,14 +22,14 @@ import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
 @Composable
-fun FilterItem(
-    filterStateHolder: FilterStateHolder<StringResource>,
+fun <T> FilterItem(
+    filterStateHolder: FilterStateHolder<T>,
     trailingIcon: ImageVector = Octicons.ChevronDown16,
     onClick: () -> Unit
 ) {
     FilterItem(
         selected = !filterStateHolder.isInitial,
-        text = filterStateHolder.selectedType,
+        text = filterStateHolder.mapToStringResource(value = filterStateHolder.selectedType),
         trailingIcon = trailingIcon,
         onClick = onClick
     )

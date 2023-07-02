@@ -3,6 +3,7 @@ package dev.mslalith.githubmultiplatform.ui.filters
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import dev.icerock.moko.resources.StringResource
 
 abstract class FilterStateHolder<T>(
     private val initial: T
@@ -13,7 +14,9 @@ abstract class FilterStateHolder<T>(
     val isInitial: Boolean
         get() = selectedType == initial
 
-    fun update(string: T) {
-        selectedType = string
+    abstract fun mapToStringResource(value: T): StringResource
+
+    fun update(value: T) {
+        selectedType = value
     }
 }

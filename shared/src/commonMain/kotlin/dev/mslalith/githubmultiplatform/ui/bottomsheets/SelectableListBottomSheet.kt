@@ -32,13 +32,11 @@ import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
 
-data class SelectableListBottomSheetItem(
+data class SelectableListBottomSheetItem<T>(
+    override val value: T,
     val text: StringResource,
     val selected: Boolean
-) : Selectable<StringResource>() {
-
-    override val value: StringResource
-        get() = text
+) : Selectable<T>() {
 
     override val isSelected: Boolean
         get() = selected
@@ -46,10 +44,10 @@ data class SelectableListBottomSheetItem(
     override fun text(): StringResource = text
 }
 
-class SelectableListBottomSheet(
+class SelectableListBottomSheet<T>(
     private val header: StringResource,
-    private val items: List<SelectableListBottomSheetItem>,
-    private val onSelected: (SelectableListBottomSheetItem) -> Unit
+    private val items: List<SelectableListBottomSheetItem<T>>,
+    private val onSelected: (T) -> Unit
 ) : Screen {
 
     @Composable
@@ -76,7 +74,7 @@ class SelectableListBottomSheet(
                         text = stringResource(resource = it.text()),
                         selected = it.isSelected,
                         onClick = {
-                            onSelected(it)
+                            onSelected(it.value)
                             bottomSheetNavigator.hide()
                         }
                     )

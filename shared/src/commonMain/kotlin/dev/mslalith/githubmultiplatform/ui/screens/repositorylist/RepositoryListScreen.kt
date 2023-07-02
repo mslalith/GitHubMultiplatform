@@ -64,7 +64,7 @@ class RepositoryListScreen : Screen, ScreenTitle, ScreenFilters {
                     screen = SelectableListBottomSheet(
                         header = SharedRes.strings.filter_by,
                         items = screenModel.repositoryTypeFilterState.listForUi(),
-                        onSelected = { screenModel.repositoryTypeFilterState.update(string = it.text) }
+                        onSelected = { screenModel.repositoryTypeFilterState.update(value = it) }
                     )
                 )
             }
