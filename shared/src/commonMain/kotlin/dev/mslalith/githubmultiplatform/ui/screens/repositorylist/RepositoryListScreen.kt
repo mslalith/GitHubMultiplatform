@@ -51,14 +51,14 @@ import kotlin.jvm.Transient
 
 class RepositoryListScreen : Screen, ScreenTitle, ScreenFilters {
 
+    @Transient
+    override val titleResource: StringResource = SharedRes.strings.repositories
+
     @Composable
     override fun activeFilterCountAndClear(): Pair<Int, () -> Unit> {
         val screenModel = rememberScreenModel { RepositoryListScreenModel() }
         return screenModel.activeFilterCount to screenModel::clearFilters
     }
-
-    @Transient
-    override val titleResource: StringResource = SharedRes.strings.repositories
 
     @Composable
     override fun RowScope.Filters() {
