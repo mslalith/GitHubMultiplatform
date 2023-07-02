@@ -27,6 +27,7 @@ internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreen
     @delegate:Transient
     val repositoryTypeFilterState by inject<RepositoryTypeFilterState>()
 
+    private val allFilters = listOf(repositoryTypeFilterState)
     private var repositories: List<Repository> = emptyList()
 
     init {
@@ -34,6 +35,11 @@ internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreen
             .onEach(::updateReposByRepositoryTypeFilter)
             .launchIn(scope = coroutineScope)
     }
+
+    val activeFilterCount: Int
+        get() = allFilters.count { !it.isInitial }
+
+    fun clearFilters() = allFilters.forEach { it.reset() }
 
     fun fetchRepositories() {
         coroutineScope.launch {

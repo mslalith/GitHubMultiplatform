@@ -6,13 +6,17 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.tab.Tab
 
 interface ScreenFilters {
+
+    @Composable
+    fun activeFilterCountAndClear(): Pair<Int, () -> Unit>
+
     @Composable
     fun RowScope.Filters()
 }
 
 private object EmptyScreenFilters : ScreenFilters {
-    @Composable
-    override fun RowScope.Filters() = Unit
+    @Composable override fun activeFilterCountAndClear() = 0 to {}
+    @Composable override fun RowScope.Filters() = Unit
 }
 
 fun Screen.filters(): ScreenFilters = (this as? ScreenFilters) ?: EmptyScreenFilters

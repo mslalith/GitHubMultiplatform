@@ -19,4 +19,6 @@ abstract class FilterStateHolder<T>(
     fun update(value: T) {
         selectedType = value
     }
+
+    fun reset() = update(value = initial)
 }
