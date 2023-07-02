@@ -1,10 +1,10 @@
 package dev.mslalith.githubmultiplatform.ui.filters.repository
 
 import dev.icerock.moko.resources.StringResource
-import dev.mslalith.githubmultiplatform.ui.bottomsheets.SelectableListBottomSheetItem
+import dev.mslalith.githubmultiplatform.data.model.Selectable
 import dev.mslalith.githubmultiplatform.ui.filters.FilterState
 
-class RepositoryTypeFilterState : FilterState<RepositoryTypeFilter, SelectableListBottomSheetItem<RepositoryTypeFilter>>(
+class RepositoryTypeFilterState : FilterState<RepositoryTypeFilter, Selectable<RepositoryTypeFilter>>(
     initial = RepositoryTypeFilter.ALL
 ) {
     override val allTypes = RepositoryTypeFilter.values().toList()
@@ -13,9 +13,8 @@ class RepositoryTypeFilterState : FilterState<RepositoryTypeFilter, SelectableLi
         return value.stringResource
     }
 
-    override fun mapToUi(value: RepositoryTypeFilter) = SelectableListBottomSheetItem(
+    override fun mapToUi(value: RepositoryTypeFilter) = Selectable(
         value = value,
-        text = mapToStringResource(value = value),
-        selected = selectedType == value
+        isSelected = selectedType == value
     )
 }

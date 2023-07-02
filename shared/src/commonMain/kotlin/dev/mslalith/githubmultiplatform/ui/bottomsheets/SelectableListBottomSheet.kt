@@ -31,22 +31,13 @@ import dev.mslalith.githubmultiplatform.data.model.Selectable
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
-
-data class SelectableListBottomSheetItem<T>(
-    override val value: T,
-    val text: StringResource,
-    val selected: Boolean
-) : Selectable<T>() {
-
-    override val isSelected: Boolean
-        get() = selected
-
-    override fun text(): StringResource = text
-}
+import kotlin.jvm.Transient
 
 class SelectableListBottomSheet<T>(
+    @Transient
     private val header: StringResource,
-    private val items: List<SelectableListBottomSheetItem<T>>,
+    private val items: List<Selectable<T>>,
+    private val itemToUiStringProvider: (T) -> StringResource,
     private val onSelected: (T) -> Unit
 ) : Screen {
 
@@ -71,7 +62,7 @@ class SelectableListBottomSheet<T>(
                     items = items
                 ) {
                     SelectableListItem(
-                        text = stringResource(resource = it.text()),
+                        text = stringResource(resource = itemToUiStringProvider(it.value)),
                         selected = it.isSelected,
                         onClick = {
                             onSelected(it.value)

@@ -1,10 +1,8 @@
 package dev.mslalith.githubmultiplatform.data.model
 
-import dev.icerock.moko.resources.StringResource
+import dev.mslalith.githubmultiplatform.platform.CommonSerializable
 
-abstract class Selectable<T> {
-    abstract val value: T
-    abstract val isSelected: Boolean
-
-    abstract fun text(): StringResource
-}
+data class Selectable<T>(
+    val value: T,
+    val isSelected: Boolean
+) : CommonSerializable

@@ -5,6 +5,7 @@ import dev.mslalith.githubmultiplatform.data.network.GitHubClientImpl
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
 import dev.mslalith.githubmultiplatform.domain.usecase.GetProfileTabInfoUseCase
 import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
+import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilterState
 import org.koin.dsl.module
 
 internal val commonModule = module {
@@ -13,4 +14,6 @@ internal val commonModule = module {
 
     single { GetRepositoriesUseCase() }
     single { GetProfileTabInfoUseCase() }
+
+    factory { RepositoryTypeFilterState() }
 }

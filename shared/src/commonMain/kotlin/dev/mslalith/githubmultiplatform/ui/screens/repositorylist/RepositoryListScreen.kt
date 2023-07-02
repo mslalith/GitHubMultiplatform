@@ -47,9 +47,11 @@ import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryList
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
+import kotlin.jvm.Transient
 
 class RepositoryListScreen : Screen, ScreenTitle, ScreenFilters {
 
+    @Transient
     override val titleResource: StringResource = SharedRes.strings.repositories
 
     @Composable
@@ -64,6 +66,7 @@ class RepositoryListScreen : Screen, ScreenTitle, ScreenFilters {
                     screen = SelectableListBottomSheet(
                         header = SharedRes.strings.filter_by,
                         items = screenModel.repositoryTypeFilterState.listForUi(),
+                        itemToUiStringProvider = { it.stringResource },
                         onSelected = { screenModel.repositoryTypeFilterState.update(value = it) }
                     )
                 )
