@@ -24,6 +24,8 @@ query GetRepositories($first: Int, $after: String) {
                         avatarUrl
                     }
                 }
+                isFork
+                isPrivate
             }
         }
     }
