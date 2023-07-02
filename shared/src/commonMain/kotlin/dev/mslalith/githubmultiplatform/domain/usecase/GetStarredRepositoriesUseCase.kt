@@ -1,10 +1,10 @@
 package dev.mslalith.githubmultiplatform.domain.usecase
 
 import dev.mslalith.githubmultiplatform.GetStarredRepositoriesQuery
-import dev.mslalith.githubmultiplatform.data.model.PageInfo
 import dev.mslalith.githubmultiplatform.data.model.PagedStarredRepositories
 import dev.mslalith.githubmultiplatform.data.model.StarredRepository
 import dev.mslalith.githubmultiplatform.data.network.GitHubClient
+import dev.mslalith.githubmultiplatform.domain.dto.toPageInfo
 import dev.mslalith.githubmultiplatform.domain.dto.toRepositoryLanguage
 import dev.mslalith.githubmultiplatform.domain.usecase.base.FlowUseCase
 import kotlinx.coroutines.flow.Flow
@@ -33,11 +33,4 @@ private fun GetStarredRepositoriesQuery.StarredRepositories.toPagedRepositories(
             language = it.languages?.nodes?.firstOrNull()?.toRepositoryLanguage()
         )
     }
-)
-
-fun GetStarredRepositoriesQuery.PageInfo.toPageInfo() = PageInfo(
-    startCursor = startCursor,
-    endCursor = endCursor,
-    hasPreviousPage = hasPreviousPage,
-    hasNextPage = hasNextPage
 )

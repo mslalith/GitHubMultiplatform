@@ -1,10 +1,10 @@
 package dev.mslalith.githubmultiplatform.domain.usecase
 
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
-import dev.mslalith.githubmultiplatform.data.model.PageInfo
 import dev.mslalith.githubmultiplatform.data.model.PagedRepositories
 import dev.mslalith.githubmultiplatform.data.model.Repository
 import dev.mslalith.githubmultiplatform.data.network.GitHubClient
+import dev.mslalith.githubmultiplatform.domain.dto.toPageInfo
 import dev.mslalith.githubmultiplatform.domain.usecase.base.FlowUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -33,11 +33,4 @@ private fun GetRepositoriesQuery.Repositories.toPagedRepositories() = PagedRepos
             isPrivate = it.isPrivate
         )
     }
-)
-
-fun GetRepositoriesQuery.PageInfo.toPageInfo() = PageInfo(
-    startCursor = startCursor,
-    endCursor = endCursor,
-    hasPreviousPage = hasPreviousPage,
-    hasNextPage = hasNextPage
 )
