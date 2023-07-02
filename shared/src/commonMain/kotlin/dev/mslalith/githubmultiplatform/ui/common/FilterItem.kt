@@ -13,10 +13,27 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
+import compose.icons.Octicons
+import compose.icons.octicons.ChevronDown16
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
+import dev.mslalith.githubmultiplatform.ui.filters.FilterStateHolder
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight
+
+@Composable
+fun FilterItem(
+    filterStateHolder: FilterStateHolder<StringResource>,
+    trailingIcon: ImageVector = Octicons.ChevronDown16,
+    onClick: () -> Unit
+) {
+    FilterItem(
+        selected = !filterStateHolder.isInitial,
+        text = filterStateHolder.selectedType,
+        trailingIcon = trailingIcon,
+        onClick = onClick
+    )
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -3,6 +3,7 @@ package dev.mslalith.githubmultiplatform.ui.screens.repositorylist
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
+import dev.mslalith.githubmultiplatform.ui.filters.RepositoryTypeFilterState
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Success
 import kotlinx.coroutines.flow.firstOrNull
@@ -14,6 +15,8 @@ import org.koin.core.component.inject
 internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreenState>(initialState = Loading), KoinComponent {
 
     private val getRepositoriesUseCase by inject<GetRepositoriesUseCase>()
+
+    val repositoryTypeFilterState = RepositoryTypeFilterState()
 
     fun fetchRepositories() {
         coroutineScope.launch {
