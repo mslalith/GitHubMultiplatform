@@ -10,10 +10,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,20 +25,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.StarredRepository
+import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.StarsAndLanguage
+import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
 import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
+import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kotlin.jvm.Transient
@@ -86,16 +88,24 @@ private fun StarredRepositoriesList(
     repositories: List<StarredRepository>
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(vertical = 12.dp)
+        contentPadding = PaddingValues(bottom = 12.dp)
     ) {
         items(
-            items = repositories,
-            key = { it.id },
-        ) {
+            count = repositories.size,
+            key = { repositories[it].id },
+        ) { index ->
+            val repository = repositories[index]
+
             RepositoryItem(
-                repository = it,
+                repository = repository,
                 onClick = {}
             )
+            if (index != repositories.lastIndex) {
+                HorizontalLine(
+                    height = 1.dp,
+                    color = MaterialTheme.colorScheme.borderLight
+                )
+            }
         }
     }
 }
@@ -109,38 +119,38 @@ private fun RepositoryItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
-            .padding(vertical = 12.dp),
+            .padding(horizontal = 12.dp, vertical = 12.dp),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            HorizontalSpace(space = 24.dp)
             KamelImage(
                 resource = asyncPainterResource(data = repository.ownerAvatarUrl),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(size = 36.dp)
+                    .size(size = 16.dp)
                     .clip(shape = CircleShape)
             )
-            HorizontalSpace(space = 12.dp)
+            HorizontalSpace(space = 8.dp)
             Text(
                 text = repository.ownerName,
                 color = Bg_Gray_Dark_400,
-                fontSize = 14.sp
             )
         }
 
+        VerticalSpace(space = 4.dp)
         Text(
             text = repository.name,
             fontWeight = FontWeight.SemiBold
         )
+        VerticalSpace(space = 4.dp)
 
         if (repository.description != null) {
             Text(
                 text = repository.description,
                 color = Bg_Gray_Dark_400,
-                fontSize = 14.sp
             )
+            VerticalSpace(space = 8.dp)
         }
 
         StarsAndLanguage(
