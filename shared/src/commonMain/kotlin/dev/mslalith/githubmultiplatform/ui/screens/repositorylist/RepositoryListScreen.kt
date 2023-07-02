@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,6 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,11 +32,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
+import compose.icons.Octicons
+import compose.icons.octicons.ChevronDown16
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Repository
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.SelectableListBottomSheet
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.SelectableListBottomSheetItem
+import dev.mslalith.githubmultiplatform.ui.common.FilterItem
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenFilters
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Failed
@@ -43,9 +53,35 @@ import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 
-class RepositoryListScreen : Screen, ScreenTitle {
+class RepositoryListScreen : Screen, ScreenTitle, ScreenFilters {
 
     override val titleResource: StringResource = SharedRes.strings.repositories
+
+    private var filterType by mutableStateOf(SharedRes.strings.all)
+
+    @Composable
+    override fun RowScope.Filters() {
+        val bottomSheetNavigator = LocalBottomSheetNavigator.current
+        FilterItem(
+            selected = filterType != SharedRes.strings.all,
+            text = filterType,
+            trailingIcon = Octicons.ChevronDown16,
+            onClick = {
+                bottomSheetNavigator.show(
+                    screen = SelectableListBottomSheet(
+                        header = SharedRes.strings.filter_by,
+                        items = listOf(SharedRes.strings.all, SharedRes.strings.fork, SharedRes.strings.private_).map {
+                            SelectableListBottomSheetItem(
+                                text = it,
+                                selected = filterType == it
+                            )
+                        },
+                        onSelected = { filterType = it.text }
+                    )
+                )
+            }
+        )
+    }
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable

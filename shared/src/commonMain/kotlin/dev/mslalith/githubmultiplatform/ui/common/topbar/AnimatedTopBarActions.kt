@@ -16,20 +16,20 @@ import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.common.screen.actions
 
 @Composable
-internal fun AnimatedScreenActions() {
+internal inline fun AnimatedScreenActions() {
     val navigator = LocalAppNavigator.currentOrThrow
     AnimatedActions(topBarActions = navigator.lastItem.actions())
 }
 
 @Composable
-internal fun AnimatedTabActions() {
+internal inline fun AnimatedTabActions() {
     val tabNavigator = LocalTabNavigator.current
     AnimatedActions(topBarActions = tabNavigator.current.actions())
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-private fun AnimatedActions(
+private inline fun AnimatedActions(
     topBarActions: ScreenActions
 ) {
     AnimatedContent(

@@ -1,8 +1,8 @@
 package dev.mslalith.githubmultiplatform.ui.common.topbar
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,7 +16,8 @@ fun ScreenAwareTopBar() {
     TopBar(
         title = { AnimatedScreenTitle() },
         navigationIcon = { AnimatedScreenNavIcon() },
-        actions = { AnimatedScreenActions() }
+        actions = { AnimatedScreenActions() },
+        filters = { AnimatedScreenFilters() }
     )
 }
 
@@ -27,7 +28,8 @@ fun TabAwareTopBar(
     TopBar(
         title = { AnimatedTabTitle() },
         navigationIcon = { AnimatedTabNavIcon(showNavIcon = showNavIcon) },
-        actions = { AnimatedTabActions() }
+        actions = { AnimatedTabActions() },
+        filters = { AnimatedTabFilters() }
     )
 }
 
@@ -35,22 +37,26 @@ fun TabAwareTopBar(
 private fun TopBar(
     title: @Composable () -> Unit,
     navigationIcon: @Composable () -> Unit,
-    actions: @Composable RowScope.() -> Unit
+    actions: @Composable () -> Unit,
+    filters: @Composable () -> Unit
 ) {
-    Row(
-        modifier = Modifier.height(height = 64.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        HorizontalSpace(space = 4.dp)
-        navigationIcon()
-        HorizontalSpace(space = 4.dp)
+    Column {
+        Row(
+            modifier = Modifier.height(height = 64.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            HorizontalSpace(space = 4.dp)
+            navigationIcon()
+            HorizontalSpace(space = 4.dp)
 
-        Box(
-            modifier = Modifier.weight(weight = 1f)
-        ) { title() }
+            Box(
+                modifier = Modifier.weight(weight = 1f)
+            ) { title() }
 
-        HorizontalSpace(space = 4.dp)
-        actions()
-        HorizontalSpace(space = 4.dp)
+            HorizontalSpace(space = 4.dp)
+            actions()
+            HorizontalSpace(space = 4.dp)
+        }
+        filters()
     }
 }
