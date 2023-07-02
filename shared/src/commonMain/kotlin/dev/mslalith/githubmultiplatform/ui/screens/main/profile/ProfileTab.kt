@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -31,15 +30,14 @@ import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.RoundIcon
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
-import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
-import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Failed
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
-import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
 internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
 
@@ -104,11 +102,11 @@ internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
                             followingCount = profile.followingCount
                         )
 
-                        HorizontalLine(height = 1.dp, color = MaterialTheme.colorScheme.borderLight)
+                        HorizontalLine(height = 1.dp)
                         PinnedRepositoriesSection(pinnedRepositories = profile.pinnedRepositories)
 
                         VerticalSpace(space = 16.dp)
-                        HorizontalLine(height = 1.dp, color = MaterialTheme.colorScheme.borderLight)
+                        HorizontalLine(height = 1.dp)
 
                         SectionListItem(
                             sectionItemType = SectionItemType.Repositories,

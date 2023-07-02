@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
+import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
 @Composable
 fun HorizontalSpace(space: Dp) = Spacer(modifier = Modifier.width(width = space))
@@ -21,7 +23,7 @@ fun VerticalSpace(space: Dp) = Spacer(modifier = Modifier.height(height = space)
 @Composable
 fun HorizontalLine(
     height: Dp,
-    color: Color
+    color: Color = MaterialTheme.colorScheme.borderLight
 ) {
     Box(
         modifier = Modifier

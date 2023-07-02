@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,7 +39,6 @@ import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.Starred
 import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
-import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kotlin.jvm.Transient
@@ -101,10 +99,7 @@ private fun StarredRepositoriesList(
                 onClick = {}
             )
             if (index != repositories.lastIndex) {
-                HorizontalLine(
-                    height = 1.dp,
-                    color = MaterialTheme.colorScheme.borderLight
-                )
+                HorizontalLine(height = 1.dp)
             }
         }
     }
