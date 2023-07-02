@@ -25,6 +25,7 @@ import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreen
+import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreen
 
 internal object HomeTab : Tab, ScreenTitle, ScreenActions {
 
@@ -69,7 +70,7 @@ internal object HomeTab : Tab, ScreenTitle, ScreenActions {
                 onPullRequestsClick = {},
                 onDiscussionsClick = {},
                 onRepositoriesClick = { navigator.push(item = RepositoryListScreen()) },
-                onStarredRepositoriesClick = {}
+                onStarredRepositoriesClick = { navigator.push(item = StarredRepositoryListScreen()) }
             )
         }
     }

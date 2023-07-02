@@ -30,3 +30,34 @@ query GetRepositories($first: Int, $after: String) {
         }
     }
 }
+
+query GetStarredRepositories($first: Int, $after: String) {
+    viewer {
+        starredRepositories(first: $first, after: $after) {
+            pageInfo {
+                startCursor
+                endCursor
+                hasPreviousPage
+                hasNextPage
+            }
+            nodes {
+                id
+                name
+                description
+                owner {
+                    id
+                    login
+                    avatarUrl
+                }
+                stargazerCount
+                languages(first: 1) {
+                    nodes {
+                        id
+                        name
+                        color
+                    }
+                }
+            }
+        }
+    }
+}
