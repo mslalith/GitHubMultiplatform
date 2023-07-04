@@ -3,19 +3,15 @@ package dev.mslalith.githubmultiplatform.ui.filters.base
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import dev.icerock.moko.resources.StringResource
 
 abstract class FilterStateHolder<T>(
     private val initial: T
-) {
+) where T : FilterUiValue {
     var selectedType by mutableStateOf(value = initial)
         private set
 
     val isInitial: Boolean
         get() = selectedType == initial
-
-    abstract fun mapToStringResource(value: T): StringResource
-    abstract fun mapSelectedToStringResource(value: T): StringResource
 
     fun update(value: T) {
         selectedType = value

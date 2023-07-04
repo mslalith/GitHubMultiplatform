@@ -50,9 +50,9 @@ internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreen
 
     private fun updateReposByRepositoryTypeFilter(filter: RepositoryTypeFilter) {
         val repos = when (filter) {
-            RepositoryTypeFilter.ALL -> repositories
-            RepositoryTypeFilter.FORK -> repositories.filter { it.isFork }
-            RepositoryTypeFilter.PRIVATE -> repositories.filter { it.isPrivate }
+            RepositoryTypeFilter.All -> repositories
+            RepositoryTypeFilter.Fork -> repositories.filter { it.isFork }
+            RepositoryTypeFilter.Private -> repositories.filter { it.isPrivate }
         }
         mutableState.update { Success(repositories = repos) }
     }

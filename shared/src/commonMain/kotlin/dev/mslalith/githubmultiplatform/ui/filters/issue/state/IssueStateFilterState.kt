@@ -1,16 +1,15 @@
 package dev.mslalith.githubmultiplatform.ui.filters.issue.state
 
-import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.data.model.Selectable
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterState
+import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter.All
+import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter.Closed
+import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter.Open
 
 class IssueStateFilterState : FilterState<IssueStateFilter, Selectable<IssueStateFilter>>(
-    initial = IssueStateFilter.OPEN
+    initial = Open
 ) {
-    override val allTypes = IssueStateFilter.values().toList()
-
-    override fun mapToStringResource(value: IssueStateFilter): StringResource = value.stringResource
-    override fun mapSelectedToStringResource(value: IssueStateFilter): StringResource = value.stringResource
+    override val allTypes = listOf(Open, Closed, All)
 
     override fun mapToUi(value: IssueStateFilter) = Selectable(
         value = value,

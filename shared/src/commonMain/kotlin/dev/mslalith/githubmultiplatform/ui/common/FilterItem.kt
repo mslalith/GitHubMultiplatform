@@ -20,19 +20,20 @@ import compose.icons.octicons.ChevronDown16
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterStateHolder
+import dev.mslalith.githubmultiplatform.ui.filters.base.FilterUiValue
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
 import dev.mslalith.githubmultiplatform.ui.theme.Text_White
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight
 
 @Composable
-fun <T> FilterItem(
+fun <T : FilterUiValue> FilterItem(
     filterStateHolder: FilterStateHolder<T>,
     trailingIcon: ImageVector = Octicons.ChevronDown16,
     onClick: () -> Unit
 ) {
     val text = if (filterStateHolder.isInitial) {
-        filterStateHolder.mapSelectedToStringResource(value = filterStateHolder.selectedType)
-    } else filterStateHolder.mapToStringResource(value = filterStateHolder.selectedType)
+        filterStateHolder.selectedType.selectedStringResource
+    } else filterStateHolder.selectedType.stringResource
 
     FilterItem(
         selected = !filterStateHolder.isInitial,

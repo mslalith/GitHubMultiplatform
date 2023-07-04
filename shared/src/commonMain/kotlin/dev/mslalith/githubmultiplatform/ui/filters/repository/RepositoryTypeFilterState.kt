@@ -1,16 +1,15 @@
 package dev.mslalith.githubmultiplatform.ui.filters.repository
 
-import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.data.model.Selectable
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterState
+import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilter.All
+import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilter.Fork
+import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilter.Private
 
 class RepositoryTypeFilterState : FilterState<RepositoryTypeFilter, Selectable<RepositoryTypeFilter>>(
-    initial = RepositoryTypeFilter.ALL
+    initial = All
 ) {
-    override val allTypes = RepositoryTypeFilter.values().toList()
-
-    override fun mapToStringResource(value: RepositoryTypeFilter): StringResource = value.stringResource
-    override fun mapSelectedToStringResource(value: RepositoryTypeFilter): StringResource = value.stringResource
+    override val allTypes = listOf(All, Fork, Private)
 
     override fun mapToUi(value: RepositoryTypeFilter) = Selectable(
         value = value,

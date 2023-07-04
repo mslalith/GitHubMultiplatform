@@ -2,7 +2,7 @@ package dev.mslalith.githubmultiplatform.ui.filters.base
 
 abstract class FilterState<T, UI>(
     initial: T
-) : FilterStateHolder<T>(initial = initial) {
+) : FilterStateHolder<T>(initial = initial) where T : FilterUiValue {
 
     abstract val allTypes: List<T>
 

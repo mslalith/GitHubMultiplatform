@@ -48,9 +48,9 @@ class IssuesListScreenModel : StateScreenModel<IssuesListScreenState>(initialSta
 
     private fun updateIssuesByIssueStateFilter(issueStateFilter: IssueStateFilter) {
         val issues = when (issueStateFilter) {
-            IssueStateFilter.ALL -> issues
-            IssueStateFilter.OPEN -> issues.filter { !it.isClosed }
-            IssueStateFilter.CLOSED -> issues.filter { it.isClosed }
+            IssueStateFilter.All -> issues
+            IssueStateFilter.Open -> issues.filter { !it.isClosed }
+            IssueStateFilter.Closed -> issues.filter { it.isClosed }
         }
         mutableState.update { Success(issues = issues) }
     }
