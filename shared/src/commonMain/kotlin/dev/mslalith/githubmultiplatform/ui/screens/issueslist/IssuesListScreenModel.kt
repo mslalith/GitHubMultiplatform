@@ -7,6 +7,7 @@ import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.domain.usecase.GetIssuesUseCase
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilterState
+import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilterState
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Success
 import kotlinx.coroutines.flow.firstOrNull
@@ -22,8 +23,9 @@ class IssuesListScreenModel : StateScreenModel<IssuesListScreenState>(initialSta
     private val getIssuesUseCase by inject<GetIssuesUseCase>()
 
     val issueStateFilterState by inject<IssueStateFilterState>()
+    val issueVisibilityFilterState by inject<IssueVisibilityFilterState>()
 
-    private val allFilters = listOf(issueStateFilterState)
+    private val allFilters = listOf(issueStateFilterState, issueVisibilityFilterState)
     private var issues = emptyList<Issue>()
 
     val activeFilterCount: Int

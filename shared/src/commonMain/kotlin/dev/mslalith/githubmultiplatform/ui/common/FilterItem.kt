@@ -30,9 +30,13 @@ fun <T> FilterItem(
     trailingIcon: ImageVector = Octicons.ChevronDown16,
     onClick: () -> Unit
 ) {
+    val text = if (filterStateHolder.isInitial) {
+        filterStateHolder.mapSelectedToStringResource(value = filterStateHolder.selectedType)
+    } else filterStateHolder.mapToStringResource(value = filterStateHolder.selectedType)
+
     FilterItem(
         selected = !filterStateHolder.isInitial,
-        text = filterStateHolder.mapToStringResource(value = filterStateHolder.selectedType),
+        text = text,
         trailingIcon = trailingIcon,
         onClick = onClick
     )

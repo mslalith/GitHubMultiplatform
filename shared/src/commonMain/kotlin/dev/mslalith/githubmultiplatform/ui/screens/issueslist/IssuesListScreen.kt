@@ -103,6 +103,21 @@ class IssuesListScreen : Screen, ScreenTitle, ScreenActions, ScreenFilters {
                 )
             }
         )
+
+        HorizontalSpace(space = 12.dp)
+        FilterItem(
+            filterStateHolder = screenModel.issueVisibilityFilterState,
+            onClick = {
+                bottomSheetNavigator.show(
+                    screen = SelectableListBottomSheet(
+                        header = SharedRes.strings.filter_by,
+                        items = screenModel.issueVisibilityFilterState.listForUi(),
+                        itemToUiStringProvider = { it.stringResource },
+                        onSelected = { screenModel.issueVisibilityFilterState.update(value = it) }
+                    )
+                )
+            }
+        )
     }
 
     @OptIn(ExperimentalMaterial3Api::class)

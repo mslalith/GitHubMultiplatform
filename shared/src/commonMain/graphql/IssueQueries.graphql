@@ -16,6 +16,7 @@ query GetIssues($first: Int, $after: String) {
                         id
                         login
                     }
+                    isPrivate
                 }
                 comments {
                     totalCount

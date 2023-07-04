@@ -9,9 +9,8 @@ class RepositoryTypeFilterState : FilterState<RepositoryTypeFilter, Selectable<R
 ) {
     override val allTypes = RepositoryTypeFilter.values().toList()
 
-    override fun mapToStringResource(value: RepositoryTypeFilter): StringResource {
-        return value.stringResource
-    }
+    override fun mapToStringResource(value: RepositoryTypeFilter): StringResource = value.stringResource
+    override fun mapSelectedToStringResource(value: RepositoryTypeFilter): StringResource = value.stringResource
 
     override fun mapToUi(value: RepositoryTypeFilter) = Selectable(
         value = value,

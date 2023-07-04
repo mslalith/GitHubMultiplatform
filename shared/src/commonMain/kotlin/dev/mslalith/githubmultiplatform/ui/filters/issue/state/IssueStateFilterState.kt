@@ -10,6 +10,7 @@ class IssueStateFilterState : FilterState<IssueStateFilter, Selectable<IssueStat
     override val allTypes = IssueStateFilter.values().toList()
 
     override fun mapToStringResource(value: IssueStateFilter): StringResource = value.stringResource
+    override fun mapSelectedToStringResource(value: IssueStateFilter): StringResource = value.stringResource
 
     override fun mapToUi(value: IssueStateFilter) = Selectable(
         value = value,

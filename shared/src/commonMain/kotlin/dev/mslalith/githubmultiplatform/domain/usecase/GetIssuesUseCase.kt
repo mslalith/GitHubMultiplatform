@@ -29,6 +29,7 @@ private fun GetIssuesQuery.Node.toIssue() = Issue(
     title = title,
     repoName = repository.name,
     repoAuthor = repository.owner.login,
+    isRepoPrivate = repository.isPrivate,
     number = number,
     totalComments = comments.totalCount,
     assigneeAvatarUrl = assignees.nodes?.firstOrNull()?.avatarUrl?.toString(),

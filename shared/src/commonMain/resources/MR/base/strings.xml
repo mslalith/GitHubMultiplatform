@@ -25,4 +25,8 @@
     <string name="all">All</string>
     <string name="open">Open</string>
     <string name="closed">Closed</string>
+    <string name="visibility">Visiblity</string>
+    <string name="show_all">Show all</string>
+    <string name="private_repositories_only">Private repositories only</string>
+    <string name="public_repositories_only">Public repositories only</string>
 </resources>

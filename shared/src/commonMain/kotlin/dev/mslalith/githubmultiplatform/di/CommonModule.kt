@@ -8,6 +8,7 @@ import dev.mslalith.githubmultiplatform.domain.usecase.GetProfileTabInfoUseCase
 import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
 import dev.mslalith.githubmultiplatform.domain.usecase.GetStarredRepositoriesUseCase
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilterState
+import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilterState
 import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilterState
 import org.koin.dsl.module
 
@@ -22,4 +23,5 @@ internal val commonModule = module {
 
     factory { RepositoryTypeFilterState() }
     factory { IssueStateFilterState() }
+    factory { IssueVisibilityFilterState() }
 }

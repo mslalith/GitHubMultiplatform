@@ -15,6 +15,7 @@ abstract class FilterStateHolder<T>(
         get() = selectedType == initial
 
     abstract fun mapToStringResource(value: T): StringResource
+    abstract fun mapSelectedToStringResource(value: T): StringResource
 
     fun update(value: T) {
         selectedType = value

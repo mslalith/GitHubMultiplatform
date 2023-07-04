@@ -8,6 +8,7 @@ data class Issue(
     val title: String,
     val repoName: String,
     val repoAuthor: String,
+    val isRepoPrivate: Boolean,
     val number: Int,
     val totalComments: Int,
     val assigneeAvatarUrl: String?,
