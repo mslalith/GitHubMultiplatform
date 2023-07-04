@@ -19,7 +19,7 @@ import compose.icons.Octicons
 import compose.icons.octicons.ChevronDown16
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
-import dev.mslalith.githubmultiplatform.ui.filters.FilterStateHolder
+import dev.mslalith.githubmultiplatform.ui.filters.base.FilterStateHolder
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
 import dev.mslalith.githubmultiplatform.ui.theme.Text_White
 import dev.mslalith.githubmultiplatform.ui.theme.borderLight

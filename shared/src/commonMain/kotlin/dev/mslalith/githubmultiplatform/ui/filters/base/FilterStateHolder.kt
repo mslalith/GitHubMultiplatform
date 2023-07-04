@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.filters
+package dev.mslalith.githubmultiplatform.ui.filters.base
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

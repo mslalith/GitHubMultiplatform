@@ -3,7 +3,7 @@ package dev.mslalith.githubmultiplatform.ui.filters.issue.visibility
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Selectable
-import dev.mslalith.githubmultiplatform.ui.filters.FilterState
+import dev.mslalith.githubmultiplatform.ui.filters.base.FilterState
 
 class IssueVisibilityFilterState : FilterState<IssueVisibilityFilter, Selectable<IssueVisibilityFilter>>(
     initial = IssueVisibilityFilter.ALL
