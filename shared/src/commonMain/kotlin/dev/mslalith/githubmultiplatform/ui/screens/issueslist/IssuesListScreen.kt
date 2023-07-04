@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import compose.icons.Octicons
 import compose.icons.octicons.CheckCircle24
 import compose.icons.octicons.Comment24
@@ -49,11 +50,14 @@ import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.type.IssueState
 import dev.mslalith.githubmultiplatform.type.IssueStateReason
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.SelectableListBottomSheet
+import dev.mslalith.githubmultiplatform.ui.common.FilterItem
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.RoundIcon
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
+import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenFilters
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
@@ -63,7 +67,7 @@ import dev.mslalith.githubmultiplatform.ui.theme.Bg_Purple
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 
-class IssuesListScreen : Screen, ScreenTitle, ScreenActions {
+class IssuesListScreen : Screen, ScreenTitle, ScreenActions, ScreenFilters {
 
     override val titleResource: StringResource = SharedRes.strings.issues
 
@@ -72,6 +76,32 @@ class IssuesListScreen : Screen, ScreenTitle, ScreenActions {
         RoundIcon(
             icon = Octicons.Search24,
             onClick = {}
+        )
+    }
+
+    @Composable
+    override fun activeFilterCountAndClear(): Pair<Int, () -> Unit> {
+        val screenModel = rememberScreenModel { IssuesListScreenModel() }
+        return screenModel.activeFilterCount to screenModel::clearFilters
+    }
+
+    @Composable
+    override fun RowScope.Filters() {
+        val screenModel = rememberScreenModel { IssuesListScreenModel() }
+        val bottomSheetNavigator = LocalBottomSheetNavigator.current
+
+        FilterItem(
+            filterStateHolder = screenModel.issueStateFilterState,
+            onClick = {
+                bottomSheetNavigator.show(
+                    screen = SelectableListBottomSheet(
+                        header = SharedRes.strings.filter_by,
+                        items = screenModel.issueStateFilterState.listForUi(),
+                        itemToUiStringProvider = { it.stringResource },
+                        onSelected = { screenModel.issueStateFilterState.update(value = it) }
+                    )
+                )
+            }
         )
     }
 

@@ -22,4 +22,7 @@
     <string name="fork">Fork</string>
     <string name="private_">Private</string>
     <string name="starred_repositories">Starred Repositories</string>
+    <string name="all">All</string>
+    <string name="open">Open</string>
+    <string name="closed">Closed</string>
 </resources>
