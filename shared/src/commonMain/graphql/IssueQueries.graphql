@@ -1,0 +1,40 @@
+query GetIssues($first: Int, $after: String) {
+    viewer {
+        issues(first: $first, after: $after orderBy: {field: CREATED_AT, direction: DESC}) {
+            nodes {
+                id
+                title
+                number
+                createdAt
+                state
+                stateReason
+                closed
+                repository {
+                    id
+                    name
+                    owner {
+                        id
+                        login
+                    }
+                }
+                comments {
+                    totalCount
+                }
+                assignees(first: 6) {
+                    nodes {
+                        name
+                        login
+                        avatarUrl
+                        id
+                    }
+                }
+            }
+            pageInfo {
+                startCursor
+                endCursor
+                hasPreviousPage
+                hasNextPage
+            }
+        }
+    }
+}

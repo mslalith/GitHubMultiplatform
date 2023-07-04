@@ -1,5 +1,6 @@
 package dev.mslalith.githubmultiplatform.data.network
 
+import dev.mslalith.githubmultiplatform.GetIssuesQuery
 import dev.mslalith.githubmultiplatform.GetProfileQuery
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
 import dev.mslalith.githubmultiplatform.GetStarredRepositoriesQuery
@@ -9,4 +10,5 @@ interface GitHubClient {
     suspend fun getRepositories(): Flow<GetRepositoriesQuery.Repositories>
     suspend fun getStarredRepositories(): Flow<GetStarredRepositoriesQuery.StarredRepositories>
     suspend fun getProfileTabInfo(login: String): Flow<GetProfileQuery.Data>
+    suspend fun getIssues(): Flow<GetIssuesQuery.Issues>
 }
