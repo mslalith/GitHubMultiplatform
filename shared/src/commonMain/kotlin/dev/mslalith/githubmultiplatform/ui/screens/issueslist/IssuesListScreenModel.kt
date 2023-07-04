@@ -5,8 +5,8 @@ import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.domain.usecase.GetIssuesUseCase
-import dev.mslalith.githubmultiplatform.ui.filters.issue.IssueStateFilter
-import dev.mslalith.githubmultiplatform.ui.filters.issue.IssueStateFilterState
+import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter
+import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilterState
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Success
 import kotlinx.coroutines.flow.firstOrNull

@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.ui.filters.issue
+package dev.mslalith.githubmultiplatform.ui.filters.issue.state
 
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.data.model.Selectable
