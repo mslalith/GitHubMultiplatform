@@ -1,4 +1,4 @@
-package dev.mslalith.githubmultiplatform.deeplink
+package dev.mslalith.githubmultiplatform.utils.deeplink
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

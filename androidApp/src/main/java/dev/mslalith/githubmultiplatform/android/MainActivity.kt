@@ -3,7 +3,7 @@ package dev.mslalith.githubmultiplatform.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import dev.mslalith.githubmultiplatform.deeplink.DeepLinkRegistry
+import dev.mslalith.githubmultiplatform.utils.deeplink.DeepLinkRegistry
 import dev.mslalith.githubmultiplatform.ui.GitHubApp
 
 class MainActivity : ComponentActivity() {

@@ -35,7 +35,7 @@ import compose.icons.Octicons
 import compose.icons.octicons.MarkGithub16
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
-import dev.mslalith.githubmultiplatform.deeplink.DeepLinkHandler
+import dev.mslalith.githubmultiplatform.utils.deeplink.DeepLinkHandler
 import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Login
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.NavigateToMain
