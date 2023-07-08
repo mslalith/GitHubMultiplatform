@@ -2,7 +2,9 @@ package dev.mslalith.githubmultiplatform.ui.screens.issueslist
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -64,6 +66,7 @@ import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_800
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Green
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Purple
+import dev.mslalith.githubmultiplatform.ui.theme.border
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kotlin.jvm.Transient
@@ -296,12 +299,21 @@ private fun OwnerInfoAndComments(
 
 @Composable
 private fun Comments(
-    count: Int
+    count: Int,
+    darkTheme: Boolean = isSystemInDarkTheme()
 ) {
+    val containerColor = if (darkTheme) Bg_Gray_Dark_800 else MaterialTheme.colorScheme.surface
+    val contentColor = if (darkTheme) Bg_Gray_Dark_400 else MaterialTheme.colorScheme.onSurface
+
     Row(
         modifier = Modifier
             .clip(shape = RoundedCornerShape(size = 36.dp))
-            .background(color = Bg_Gray_Dark_800)
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.border,
+                shape = RoundedCornerShape(size = 36.dp)
+            )
+            .background(color = containerColor)
             .height(height = 24.dp)
             .padding(horizontal = 8.dp, vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -309,13 +321,13 @@ private fun Comments(
         Image(
             painter = rememberVectorPainter(image = Octicons.Comment24),
             contentDescription = "",
-            colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_400),
+            colorFilter = ColorFilter.tint(color = contentColor),
             modifier = Modifier.size(size = 14.dp)
         )
         HorizontalSpace(space = 6.dp)
         Text(
             text = count.toString(),
-            color = Bg_Gray_Dark_400,
+            color = contentColor,
             fontSize = 14.sp
         )
     }
