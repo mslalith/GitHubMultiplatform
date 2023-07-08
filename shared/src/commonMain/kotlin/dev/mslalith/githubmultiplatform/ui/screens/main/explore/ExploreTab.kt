@@ -1,11 +1,9 @@
 package dev.mslalith.githubmultiplatform.ui.screens.main.explore
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import cafe.adriel.voyager.navigator.tab.Tab
@@ -15,7 +13,10 @@ import compose.icons.octicons.Telescope24
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.ui.common.TabSection
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
+import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
+import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
 
 internal object ExploreTab : Tab, ScreenTitle {
 
@@ -38,11 +39,35 @@ internal object ExploreTab : Tab, ScreenTitle {
 
     @Composable
     override fun Content() {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+        Column(
+            modifier = Modifier.fillMaxSize()
         ) {
-            Text(text = "Explore")
+            Discover(
+                onTrendingRepositoriesClick = {},
+                onAwesomeListsClick = {}
+            )
         }
     }
+}
+
+@Composable
+private fun Discover(
+    onTrendingRepositoriesClick: () -> Unit,
+    onAwesomeListsClick: () -> Unit
+) {
+    TabSection(
+        title = SharedRes.strings.discover,
+        content = {
+            Column {
+                SectionListItem(
+                    sectionItemType = SectionItemType.TrendingRepositories,
+                    onClick = onTrendingRepositoriesClick
+                )
+                SectionListItem(
+                    sectionItemType = SectionItemType.AwesomeLists,
+                    onClick = onAwesomeListsClick
+                )
+            }
+        }
+    )
 }

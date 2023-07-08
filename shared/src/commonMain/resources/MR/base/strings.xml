@@ -29,4 +29,7 @@
     <string name="show_all">Show all</string>
     <string name="private_repositories_only">Private repositories only</string>
     <string name="public_repositories_only">Public repositories only</string>
+    <string name="discover">Discover</string>
+    <string name="trending_repositories">Trending Repositories</string>
+    <string name="awesome_lists">Awesome Lists</string>
 </resources>

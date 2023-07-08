@@ -4,9 +4,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import compose.icons.Octicons
 import compose.icons.octicons.CommentDiscussion16
+import compose.icons.octicons.Flame16
 import compose.icons.octicons.GitPullRequest16
 import compose.icons.octicons.IssueOpened16
 import compose.icons.octicons.Repo16
+import compose.icons.octicons.Smiley16
 import compose.icons.octicons.Star16
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
@@ -14,6 +16,7 @@ import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Green
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Purple
+import dev.mslalith.githubmultiplatform.ui.theme.Bg_Red
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Yellow
 
 sealed class SectionItemType(
@@ -49,5 +52,17 @@ sealed class SectionItemType(
         stringResource = SharedRes.strings.starred,
         icon = Octicons.Star16,
         iconBackgroundColor = Bg_Yellow,
+    )
+
+    object TrendingRepositories : SectionItemType(
+        stringResource = SharedRes.strings.trending_repositories,
+        icon = Octicons.Flame16,
+        iconBackgroundColor = Bg_Red,
+    )
+
+    object AwesomeLists : SectionItemType(
+        stringResource = SharedRes.strings.awesome_lists,
+        icon = Octicons.Smiley16,
+        iconBackgroundColor = Bg_Purple,
     )
 }
