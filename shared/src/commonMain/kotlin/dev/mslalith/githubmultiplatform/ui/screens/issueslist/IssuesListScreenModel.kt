@@ -36,7 +36,7 @@ class IssuesListScreenModel : StateScreenModel<IssuesListScreenState>(initialSta
     fun clearFilters() = allFilters.forEach { it.reset() }
 
     private val issues: Flow<List<Issue>> = getIssuesUseCase.run()
-        .map { it.issues }
+        .map { pagedIssues -> pagedIssues.issues.sortedByDescending { it.createdAt } }
         .combine(
             flow = snapshotFlow { issueStateFilterState.selectedType },
             transform = ::filterByIssueState

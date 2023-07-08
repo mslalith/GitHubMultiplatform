@@ -2,6 +2,7 @@ package dev.mslalith.githubmultiplatform.data.model
 
 import dev.mslalith.githubmultiplatform.type.IssueState
 import dev.mslalith.githubmultiplatform.type.IssueStateReason
+import kotlinx.datetime.LocalDateTime
 
 data class Issue(
     val id: String,
@@ -12,6 +13,7 @@ data class Issue(
     val number: Int,
     val totalComments: Int,
     val assigneeAvatarUrl: String?,
+    val createdAt: LocalDateTime,
     val state: IssueState,
     val stateReason: IssueStateReason?,
     val isClosed: Boolean

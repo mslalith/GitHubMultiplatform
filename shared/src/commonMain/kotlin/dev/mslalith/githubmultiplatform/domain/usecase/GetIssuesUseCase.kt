@@ -33,6 +33,7 @@ private fun GetIssuesQuery.Node.toIssue() = Issue(
     number = number,
     totalComments = comments.totalCount,
     assigneeAvatarUrl = assignees.nodes?.firstOrNull()?.avatarUrl?.toString(),
+    createdAt = createdAt,
     state = state,
     stateReason = stateReason,
     isClosed = closed

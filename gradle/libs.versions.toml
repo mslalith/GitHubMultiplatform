@@ -11,6 +11,7 @@ kamel = "0.6.0"
 koin = "3.4.0"
 koinCompose = "1.0.3"
 kotlin = "1.8.20"
+kotlinxDateTime = "0.4.0"
 ktor = "2.3.1"
 mokoResources = "0.23.0"
 mokoGraphics = "0.9.0"
@@ -24,6 +25,7 @@ androidx-security-crypto = { module = "androidx.security:security-crypto", versi
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
+apollo-adapters = { module = "com.apollographql.apollo3:apollo-adapters" }
 
 composeIcons-octicons = { module = "br.com.devsrsouza.compose.icons:octicons", version.ref = "composeIcons" }
 
@@ -32,6 +34,8 @@ kamel = { module = "media.kamel:kamel-image", version.ref = "kamel" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
+
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDateTime" }
 
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }

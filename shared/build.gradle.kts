@@ -55,6 +55,7 @@ kotlin {
                 api(compose.material3)
                 api(compose.animation)
 
+                api(libs.kotlinx.datetime)
                 api(libs.moko.resources.compose)
                 implementation(libs.composeIcons.octicons)
                 implementation(libs.kamel)
@@ -106,6 +107,7 @@ android {
 apollo {
     service("github") {
         packageName.set("dev.mslalith.githubmultiplatform")
+        mapScalar("DateTime", "kotlinx.datetime.LocalDateTime", "dev.mslalith.githubmultiplatform.utils.LocalDateTimeAdapter")
     }
 }
 
