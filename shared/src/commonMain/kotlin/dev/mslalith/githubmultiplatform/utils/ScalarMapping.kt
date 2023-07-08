@@ -14,11 +14,14 @@ object LocalDateTimeAdapter : Adapter<LocalDateTime> {
             .substringBefore(delimiter = "T")
             .split('-')
             .map { it.toInt() }
+            .let { if (it.size < 3) it + List(size = 3 - it.size) { 0 } else it }
+
         val (hour, minute, second) = isoString
             .substringAfter(delimiter = "T")
             .substringBefore(delimiter = "Z")
             .split(':')
             .map { it.toInt() }
+            .let { if (it.size < 3) it + List(size = 3 - it.size) { 0 } else it }
 
         return LocalDateTime(year, month, day, hour, minute, second)
     }

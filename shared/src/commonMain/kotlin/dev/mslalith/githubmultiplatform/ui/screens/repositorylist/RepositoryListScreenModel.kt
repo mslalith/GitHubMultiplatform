@@ -1,15 +1,14 @@
 package dev.mslalith.githubmultiplatform.ui.screens.repositorylist
 
 import androidx.compose.runtime.snapshotFlow
-import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.model.Repository
 import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
-import dev.mslalith.githubmultiplatform.platform.CommonSerializable
 import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilter
 import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilterState
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Success
+import dev.mslalith.githubmultiplatform.utils.screen.SerializableStateScreenModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
@@ -17,11 +16,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
-import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.jvm.Transient
 
-internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreenState>(initialState = Loading), KoinComponent, CommonSerializable {
+internal class RepositoryListScreenModel : SerializableStateScreenModel<RepositoryListScreenState>(initialState = Loading) {
 
     @delegate:Transient
     private val getRepositoriesUseCase by inject<GetRepositoriesUseCase>()

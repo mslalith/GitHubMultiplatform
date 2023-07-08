@@ -1,12 +1,10 @@
 package dev.mslalith.githubmultiplatform.ui.screens.issueslist
 
 import androidx.compose.runtime.snapshotFlow
-import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.data.model.Selectable
 import dev.mslalith.githubmultiplatform.domain.usecase.GetIssuesUseCase
-import dev.mslalith.githubmultiplatform.platform.CommonSerializable
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterState
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterUiValue
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter
@@ -15,6 +13,7 @@ import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibil
 import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilterState
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Success
+import dev.mslalith.githubmultiplatform.utils.screen.SerializableStateScreenModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
@@ -22,11 +21,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
-import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.jvm.Transient
 
-class IssuesListScreenModel : StateScreenModel<IssuesListScreenState>(initialState = Loading), KoinComponent, CommonSerializable {
+class IssuesListScreenModel : SerializableStateScreenModel<IssuesListScreenState>(initialState = Loading) {
 
     @delegate:Transient
     private val getIssuesUseCase by inject<GetIssuesUseCase>()
