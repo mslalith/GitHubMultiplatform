@@ -1,6 +1,5 @@
 package dev.mslalith.githubmultiplatform.ui.common.sectionitem
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -12,11 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import dev.icerock.moko.resources.compose.stringResource
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.theme.Text_White
 
@@ -62,10 +60,9 @@ private fun RoundedSquareIcon(
             )
             .padding(all = 8.dp)
     ) {
-        Image(
-            painter = rememberVectorPainter(image = icon),
-            contentDescription = "",
-            colorFilter = ColorFilter.tint(color = Text_White),
+        ImageVectorIcon(
+            icon = icon,
+            color = Text_White
         )
     }
 }

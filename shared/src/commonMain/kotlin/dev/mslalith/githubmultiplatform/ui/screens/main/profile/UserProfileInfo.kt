@@ -1,6 +1,5 @@
 package dev.mslalith.githubmultiplatform.ui.screens.main.profile
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,8 +13,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +25,7 @@ import compose.icons.octicons.Person16
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.common.Dot
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
@@ -96,10 +94,9 @@ internal fun UserProfileInfo(
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = rememberVectorPainter(image = Octicons.Mail16),
-                contentDescription = "",
-                colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_500)
+            ImageVectorIcon(
+                icon = Octicons.Mail16,
+                color = Bg_Gray_Dark_500
             )
             HorizontalSpace(space = 12.dp)
             Text(
@@ -111,10 +108,9 @@ internal fun UserProfileInfo(
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = rememberVectorPainter(image = Octicons.Person16),
-                contentDescription = "",
-                colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_500)
+            ImageVectorIcon(
+                icon = Octicons.Person16,
+                color = Bg_Gray_Dark_500
             )
             HorizontalSpace(space = 12.dp)
             FollowText(

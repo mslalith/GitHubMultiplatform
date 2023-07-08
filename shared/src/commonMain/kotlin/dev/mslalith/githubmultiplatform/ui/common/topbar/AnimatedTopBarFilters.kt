@@ -7,7 +7,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.with
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -25,14 +24,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import compose.icons.Octicons
 import compose.icons.octicons.Filter16
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.common.FilterItem
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
@@ -94,10 +92,9 @@ private fun ClearActiveFilterCount(
                     selected = false,
                     text = SharedRes.strings._empty,
                     leading = {
-                        Image(
-                            painter = rememberVectorPainter(image = Octicons.Filter16),
-                            contentDescription = "",
-                            colorFilter = ColorFilter.tint(color = countBackgroundColor)
+                        ImageVectorIcon(
+                            icon = Octicons.Filter16,
+                            color = countBackgroundColor
                         )
                     },
                     trailing = {

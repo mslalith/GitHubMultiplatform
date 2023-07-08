@@ -1,6 +1,5 @@
 package dev.mslalith.githubmultiplatform.ui.screens.issueslist
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -30,8 +29,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -51,6 +48,7 @@ import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.type.IssueState
 import dev.mslalith.githubmultiplatform.type.IssueStateReason
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.bottomsheets.SelectableListBottomSheet
 import dev.mslalith.githubmultiplatform.ui.common.FillSpace
 import dev.mslalith.githubmultiplatform.ui.common.FilterItem
@@ -266,10 +264,9 @@ private fun IssueStateIcon(
         }
     }
 
-    Image(
-        painter = rememberVectorPainter(image = icon),
-        contentDescription = "",
-        colorFilter = ColorFilter.tint(color = color)
+    ImageVectorIcon(
+        icon = icon,
+        color = color
     )
 }
 
@@ -318,11 +315,10 @@ private fun Comments(
             .padding(horizontal = 8.dp, vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
-            painter = rememberVectorPainter(image = Octicons.Comment24),
-            contentDescription = "",
-            colorFilter = ColorFilter.tint(color = contentColor),
-            modifier = Modifier.size(size = 14.dp)
+        ImageVectorIcon(
+            modifier = Modifier.size(size = 14.dp),
+            icon = Octicons.Comment24,
+            color = contentColor
         )
         HorizontalSpace(space = 6.dp)
         Text(

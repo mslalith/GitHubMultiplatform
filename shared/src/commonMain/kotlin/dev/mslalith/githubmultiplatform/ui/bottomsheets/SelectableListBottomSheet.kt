@@ -1,7 +1,6 @@
 package dev.mslalith.githubmultiplatform.ui.bottomsheets
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,8 +15,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -96,11 +93,10 @@ private fun SelectableListItem(
             fontSize = 16.sp
         )
         AnimatedVisibility(visible = selected) {
-            Image(
-                painter = rememberVectorPainter(image = Octicons.Check24),
-                contentDescription = "",
-                colorFilter = ColorFilter.tint(color = Bg_Blue),
-                modifier = Modifier.padding(start = 16.dp)
+            ImageVectorIcon(
+                modifier = Modifier.padding(start = 16.dp),
+                icon = Octicons.Check24,
+                color = Bg_Blue,
             )
         }
         HorizontalSpace(space = 24.dp)

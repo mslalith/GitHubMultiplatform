@@ -1,6 +1,5 @@
 package dev.mslalith.githubmultiplatform.ui.screens.main.profile
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -21,8 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -31,6 +28,7 @@ import compose.icons.Octicons
 import compose.icons.octicons.Pin24
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.ProfilePinnedRepository
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.common.StarsAndLanguage
 import dev.mslalith.githubmultiplatform.ui.common.TabSection
@@ -47,10 +45,9 @@ internal fun PinnedRepositoriesSection(
     TabSection(
         title = SharedRes.strings.pinned,
         leading = {
-            Image(
-                painter = rememberVectorPainter(image = Octicons.Pin24),
-                contentDescription = "",
-                colorFilter = ColorFilter.tint(color = Bg_Gray_Dark_500)
+            ImageVectorIcon(
+                icon = Octicons.Pin24,
+                color = Bg_Gray_Dark_500
             )
         },
         content = { PinnedRepositoriesList(pinnedRepositories = pinnedRepositories) }

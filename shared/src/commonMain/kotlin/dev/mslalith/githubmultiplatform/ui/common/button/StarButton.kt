@@ -1,6 +1,5 @@
 package dev.mslalith.githubmultiplatform.ui.common.button
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,13 +9,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_200
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_700
@@ -42,10 +40,9 @@ fun StarButton(
         )
     ) {
         if (icon != null) {
-            Image(
-                painter = rememberVectorPainter(image = icon),
-                contentDescription = "",
-                colorFilter = ColorFilter.tint(color = contentColor)
+            ImageVectorIcon(
+                icon = icon,
+                color = contentColor
             )
             HorizontalSpace(space = 12.dp)
         }

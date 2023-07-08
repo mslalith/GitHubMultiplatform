@@ -5,7 +5,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,8 +23,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
@@ -35,7 +32,7 @@ import compose.icons.Octicons
 import compose.icons.octicons.MarkGithub16
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
-import dev.mslalith.githubmultiplatform.utils.deeplink.DeepLinkHandler
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Login
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.NavigateToMain
@@ -43,6 +40,7 @@ import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Splash
 import dev.mslalith.githubmultiplatform.ui.screens.main.MainScreen
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_900
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Light
+import dev.mslalith.githubmultiplatform.utils.deeplink.DeepLinkHandler
 import kotlinx.coroutines.delay
 
 private const val SPLASH_TIMEOUT = 3000L
@@ -84,11 +82,10 @@ object LoginScreen : Screen {
                     .fillMaxHeight(),
                 contentAlignment = Alignment.Center
             ) {
-                Image(
-                    painter = rememberVectorPainter(Octicons.MarkGithub16),
-                    contentDescription = "",
-                    colorFilter = ColorFilter.tint(color = Bg_Gray_Light),
-                    modifier = Modifier.matchParentSize()
+                ImageVectorIcon(
+                    modifier = Modifier.matchParentSize(),
+                    icon = Octicons.MarkGithub16,
+                    color = Bg_Gray_Light
                 )
             }
 

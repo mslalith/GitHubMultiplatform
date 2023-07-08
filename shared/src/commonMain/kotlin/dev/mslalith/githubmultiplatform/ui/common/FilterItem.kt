@@ -1,6 +1,5 @@
 package dev.mslalith.githubmultiplatform.ui.common
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -11,14 +10,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import compose.icons.Octicons
 import compose.icons.octicons.ChevronDown16
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
+import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterStateHolder
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterUiValue
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Blue
@@ -58,19 +56,17 @@ fun FilterItem(
         text = text,
         leading = if (leadingIcon != null) {
             @Composable {
-                Image(
-                    painter = rememberVectorPainter(image = leadingIcon),
-                    contentDescription = "",
-                    colorFilter = ColorFilter.tint(color = LocalContentColor.current)
+                ImageVectorIcon(
+                    icon = leadingIcon,
+                    color = LocalContentColor.current
                 )
             }
         } else null,
         trailing = if (trailingIcon != null) {
             @Composable {
-                Image(
-                    painter = rememberVectorPainter(image = trailingIcon),
-                    contentDescription = "",
-                    colorFilter = ColorFilter.tint(color = LocalContentColor.current)
+                ImageVectorIcon(
+                    icon = trailingIcon,
+                    color = LocalContentColor.current
                 )
             }
         } else null,
