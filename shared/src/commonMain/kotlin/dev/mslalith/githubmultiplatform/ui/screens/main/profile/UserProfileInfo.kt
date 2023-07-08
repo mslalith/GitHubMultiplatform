@@ -56,7 +56,7 @@ internal fun UserProfileInfo(
         ) {
             KamelImage(
                 resource = asyncPainterResource(data = avatarUrl),
-                contentDescription = null,
+                contentDescription = "",
                 modifier = Modifier
                     .size(size = 56.dp)
                     .clip(shape = CircleShape)

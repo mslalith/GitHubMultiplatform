@@ -279,7 +279,7 @@ private fun OwnerInfoAndComments(
         if (assigneeAvatarUrl != null) {
             KamelImage(
                 resource = asyncPainterResource(data = assigneeAvatarUrl),
-                contentDescription = null,
+                contentDescription = "",
                 modifier = Modifier
                     .size(size = 22.dp)
                     .clip(shape = CircleShape)

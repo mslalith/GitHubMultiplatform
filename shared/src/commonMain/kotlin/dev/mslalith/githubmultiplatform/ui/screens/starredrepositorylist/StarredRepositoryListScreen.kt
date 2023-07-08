@@ -121,7 +121,7 @@ private fun RepositoryItem(
         ) {
             KamelImage(
                 resource = asyncPainterResource(data = repository.ownerAvatarUrl),
-                contentDescription = null,
+                contentDescription = "",
                 modifier = Modifier
                     .size(size = 16.dp)
                     .clip(shape = CircleShape)

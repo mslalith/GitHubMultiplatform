@@ -136,7 +136,7 @@ private fun RepoOwnerInfo(
     ) {
         KamelImage(
             resource = asyncPainterResource(data = avatarUrl),
-            contentDescription = null,
+            contentDescription = "",
             modifier = Modifier
                 .size(size = 16.dp)
                 .clip(shape = CircleShape)
