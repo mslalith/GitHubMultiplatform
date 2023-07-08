@@ -3,6 +3,7 @@ package dev.mslalith.githubmultiplatform.data.network
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
 import com.apollographql.apollo3.cache.normalized.watch
+import dev.mslalith.githubmultiplatform.GetAwesomeListQuery
 import dev.mslalith.githubmultiplatform.GetIssuesQuery
 import dev.mslalith.githubmultiplatform.GetProfileQuery
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
@@ -35,4 +36,9 @@ internal class GitHubClientImpl : GitHubClient, KoinComponent {
         .query(query = GetIssuesQuery(first = Optional.present(value = 50)))
         .watch()
         .mapNotNull { it.data?.viewer?.issues }
+
+    override fun getAwesomeList(): Flow<GetAwesomeListQuery.Search> = apolloClient
+        .query(query = GetAwesomeListQuery(first = Optional.present(value = 30)))
+        .watch()
+        .mapNotNull { it.data?.search }
 }

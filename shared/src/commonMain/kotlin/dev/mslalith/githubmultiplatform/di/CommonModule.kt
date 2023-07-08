@@ -3,6 +3,7 @@ package dev.mslalith.githubmultiplatform.di
 import dev.mslalith.githubmultiplatform.data.network.GitHubClient
 import dev.mslalith.githubmultiplatform.data.network.GitHubClientImpl
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
+import dev.mslalith.githubmultiplatform.domain.usecase.GetAwesomeListUseCase
 import dev.mslalith.githubmultiplatform.domain.usecase.GetIssuesUseCase
 import dev.mslalith.githubmultiplatform.domain.usecase.GetProfileTabInfoUseCase
 import dev.mslalith.githubmultiplatform.domain.usecase.GetRepositoriesUseCase
@@ -20,6 +21,7 @@ internal val commonModule = module {
     single { GetStarredRepositoriesUseCase() }
     single { GetProfileTabInfoUseCase() }
     single { GetIssuesUseCase() }
+    single { GetAwesomeListUseCase() }
 
     factory { RepositoryTypeFilterState() }
     factory { IssueStateFilterState() }

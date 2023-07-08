@@ -1,5 +1,6 @@
 package dev.mslalith.githubmultiplatform.data.network
 
+import dev.mslalith.githubmultiplatform.GetAwesomeListQuery
 import dev.mslalith.githubmultiplatform.GetIssuesQuery
 import dev.mslalith.githubmultiplatform.GetProfileQuery
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
@@ -11,4 +12,5 @@ interface GitHubClient {
     fun getStarredRepositories(): Flow<GetStarredRepositoriesQuery.StarredRepositories>
     fun getProfileTabInfo(login: String): Flow<GetProfileQuery.Data>
     fun getIssues(): Flow<GetIssuesQuery.Issues>
+    fun getAwesomeList(): Flow<GetAwesomeListQuery.Search>
 }

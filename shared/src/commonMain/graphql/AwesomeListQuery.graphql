@@ -1,0 +1,25 @@
+query GetAwesomeList($first: Int) {
+    search(query: "topic:awesome", type: REPOSITORY, first: $first) {
+        nodes {
+            ... on Repository {
+                id
+                name
+                description
+                owner {
+                    id
+                    login
+                    avatarUrl
+                }
+                stargazerCount
+                openGraphImageUrl
+                languages(first: 1) {
+                    nodes {
+                        id
+                        name
+                        color
+                    }
+                }
+            }
+        }
+    }
+}
