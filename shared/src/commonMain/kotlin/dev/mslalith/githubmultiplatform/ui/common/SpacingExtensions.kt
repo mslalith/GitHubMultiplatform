@@ -2,6 +2,8 @@ package dev.mslalith.githubmultiplatform.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +21,12 @@ fun HorizontalSpace(space: Dp) = Spacer(modifier = Modifier.width(width = space)
 
 @Composable
 fun VerticalSpace(space: Dp) = Spacer(modifier = Modifier.height(height = space))
+
+@Composable
+fun RowScope.FillSpace(weight: Float = 1f) = Spacer(modifier = Modifier.weight(weight = weight))
+
+@Composable
+fun ColumnScope.FillSpace(weight: Float = 1f) = Spacer(modifier = Modifier.weight(weight = weight))
 
 @Composable
 fun HorizontalLine(

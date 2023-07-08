@@ -50,6 +50,7 @@ import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.type.IssueState
 import dev.mslalith.githubmultiplatform.type.IssueStateReason
 import dev.mslalith.githubmultiplatform.ui.bottomsheets.SelectableListBottomSheet
+import dev.mslalith.githubmultiplatform.ui.common.FillSpace
 import dev.mslalith.githubmultiplatform.ui.common.FilterItem
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
@@ -190,7 +191,9 @@ private fun IssueItem(
             stateReason = issue.stateReason
         )
         HorizontalSpace(space = 16.dp)
-        Column {
+        Column(
+            modifier = Modifier.weight(weight = 1f)
+        ) {
             Row {
                 Text(
                     text = issue.repoAuthor,
@@ -214,6 +217,12 @@ private fun IssueItem(
                     color = Bg_Gray_Dark_400,
                     fontSize = 14.sp
                 )
+                FillSpace()
+                Text(
+                    text = issue.createAgo,
+                    color = Bg_Gray_Dark_400,
+                    fontSize = 14.sp
+                )
             }
             VerticalSpace(space = 4.dp)
             Text(
@@ -228,7 +237,7 @@ private fun IssueItem(
                 totalComments = issue.totalComments
             )
         }
-        HorizontalSpace(space = 24.dp)
+        HorizontalSpace(space = 16.dp)
     }
 }
 
