@@ -10,8 +10,11 @@ query GetAwesomeList($first: Int) {
                     login
                     avatarUrl
                 }
-                stargazerCount
                 openGraphImageUrl
+                stargazerCount
+                mentionableUsers {
+                    totalCount
+                }
                 languages(first: 1) {
                     nodes {
                         id

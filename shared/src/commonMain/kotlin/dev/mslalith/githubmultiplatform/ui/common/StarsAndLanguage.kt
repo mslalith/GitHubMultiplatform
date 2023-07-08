@@ -8,9 +8,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import compose.icons.Octicons
+import compose.icons.octicons.DotFill24
 import compose.icons.octicons.StarFill16
 import dev.mslalith.githubmultiplatform.data.model.RepositoryLanguage
 import dev.mslalith.githubmultiplatform.extensions.format
@@ -33,27 +35,41 @@ fun StarsAndLanguage(
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
-            painter = rememberVectorPainter(image = Octicons.StarFill16),
-            contentDescription = "",
-            colorFilter = ColorFilter.tint(color = Bg_Yellow)
-        )
-        HorizontalSpace(space = 8.dp)
-        Text(
+        IconInfoText(
             text = formattedStars,
-            color = Bg_Gray_Dark_500
+            icon = Octicons.StarFill16,
+            iconColor = Bg_Yellow
         )
         if (language != null) {
             HorizontalSpace(space = 12.dp)
-            Dot(
-                size = 12.dp,
-                color = Color.fromColor(hexString = language.color)
-            )
-            HorizontalSpace(space = 8.dp)
-            Text(
+            IconInfoText(
                 text = language.name,
-                color = Bg_Gray_Dark_500
+                icon = Octicons.DotFill24,
+                iconColor = Color.fromColor(hexString = language.color)
             )
         }
+    }
+}
+
+@Composable
+fun IconInfoText(
+    text: String,
+    icon: ImageVector,
+    textColor: Color = Bg_Gray_Dark_500,
+    iconColor: Color = Bg_Gray_Dark_500
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = rememberVectorPainter(image = icon),
+            contentDescription = "",
+            colorFilter = ColorFilter.tint(color = iconColor)
+        )
+        HorizontalSpace(space = 8.dp)
+        Text(
+            text = text,
+            color = textColor
+        )
     }
 }

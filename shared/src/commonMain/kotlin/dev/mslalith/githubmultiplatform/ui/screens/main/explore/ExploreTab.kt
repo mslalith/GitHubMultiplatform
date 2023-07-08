@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
@@ -14,9 +15,11 @@ import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.TabSection
+import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
+import dev.mslalith.githubmultiplatform.ui.screens.awesomelist.AwesomeListScreen
 
 internal object ExploreTab : Tab, ScreenTitle {
 
@@ -39,12 +42,14 @@ internal object ExploreTab : Tab, ScreenTitle {
 
     @Composable
     override fun Content() {
+        val navigator = LocalAppNavigator.currentOrThrow
+
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
             Discover(
                 onTrendingRepositoriesClick = {},
-                onAwesomeListsClick = {}
+                onAwesomeListsClick = { navigator.push(item = AwesomeListScreen()) }
             )
         }
     }

@@ -30,8 +30,9 @@ private fun GetAwesomeListQuery.Search.toAwesomeListRepositories() = nodes
             ownerAvatarUrl = it.owner.avatarUrl.toString(),
             name = it.name,
             description = it.description,
-            stars = it.stargazerCount,
             graphImageUrl = it.openGraphImageUrl.toString(),
+            stars = it.stargazerCount,
+            contributorsCount = it.mentionableUsers.totalCount,
             language = it.languages?.nodes?.firstOrNull()?.toRepositoryLanguage()
         )
     }

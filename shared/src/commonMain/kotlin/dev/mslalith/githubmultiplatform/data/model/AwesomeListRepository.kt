@@ -8,7 +8,8 @@ data class AwesomeListRepository(
     val ownerAvatarUrl: String,
     val name: String,
     val description: String?,
-    val stars: Int,
     val graphImageUrl: String,
+    val stars: Int,
+    val contributorsCount: Int,
     val language: RepositoryLanguage?
 )
