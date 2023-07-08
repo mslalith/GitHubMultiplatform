@@ -26,6 +26,8 @@ query GetRepositories($first: Int, $after: String) {
                 }
                 isFork
                 isPrivate
+                createdAt
+                updatedAt
             }
         }
     }

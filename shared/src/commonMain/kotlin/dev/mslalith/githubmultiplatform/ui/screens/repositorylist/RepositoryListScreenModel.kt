@@ -10,11 +10,13 @@ import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilt
 import dev.mslalith.githubmultiplatform.ui.filters.repository.RepositoryTypeFilterState
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Success
-import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import kotlin.jvm.Transient
@@ -28,32 +30,29 @@ internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreen
     val repositoryTypeFilterState by inject<RepositoryTypeFilterState>()
 
     private val allFilters = listOf(repositoryTypeFilterState)
-    private var repositories: List<Repository> = emptyList()
-
-    init {
-        snapshotFlow { repositoryTypeFilterState.selectedType }
-            .onEach(::updateReposByRepositoryTypeFilter)
-            .launchIn(scope = coroutineScope)
-    }
 
     val activeFilterCount: Int
         get() = allFilters.count { !it.isInitial }
 
     fun clearFilters() = allFilters.forEach { it.reset() }
 
-    fun fetchRepositories() {
-        coroutineScope.launch {
-            repositories = getRepositoriesUseCase.run().firstOrNull()?.repositories.orEmpty()
-            mutableState.update { Success(repositories = repositories) }
-        }
+    private val repositories: Flow<List<Repository>> = getRepositoriesUseCase.run()
+        .map { pagedIssues -> pagedIssues.repositories.sortedByDescending { it.updatedAt } }
+        .combine(
+            flow = snapshotFlow { repositoryTypeFilterState.selectedType },
+            transform = ::filterByRepositoryType
+        )
+
+    init {
+        repositories
+            .onStart { mutableState.update { Loading } }
+            .onEach { issues -> mutableState.update { Success(repositories = issues) } }
+            .launchIn(scope = coroutineScope)
     }
 
-    private fun updateReposByRepositoryTypeFilter(filter: RepositoryTypeFilter) {
-        val repos = when (filter) {
-            RepositoryTypeFilter.All -> repositories
-            RepositoryTypeFilter.Fork -> repositories.filter { it.isFork }
-            RepositoryTypeFilter.Private -> repositories.filter { it.isPrivate }
-        }
-        mutableState.update { Success(repositories = repos) }
+    private fun filterByRepositoryType(repositories: List<Repository>, filter: RepositoryTypeFilter): List<Repository> = when (filter) {
+        RepositoryTypeFilter.All -> repositories
+        RepositoryTypeFilter.Fork -> repositories.filter { it.isFork }
+        RepositoryTypeFilter.Private -> repositories.filter { it.isPrivate }
     }
 }

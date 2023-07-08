@@ -29,6 +29,8 @@ private fun GetRepositoriesQuery.Repositories.toPagedRepositories() = PagedRepos
             name = it.name,
             ownerName = ownerName,
             ownerAvatarUrl = ownerAvatarUrl.toString(),
+            createdAt = it.createdAt,
+            updatedAt = it.updatedAt,
             isFork = it.isFork,
             isPrivate = it.isPrivate
         )
