@@ -31,7 +31,7 @@ class GetProfileTabInfoUseCase : FlowUseCase.NoParams<ProfileTabUiState>() {
             email = user.email,
             followersCount = user.followers.totalCount,
             followingCount = user.following.totalCount,
-            pinnedRepositories = user.pinnableItems.toProfilePinnedRepositories(),
+            pinnedRepositories = user.itemShowcase.toProfilePinnedRepositories(),
             repositoriesCount = user.repositories.totalCount,
             starredRepositoriesCount = user.starredRepositories.totalCount
         )

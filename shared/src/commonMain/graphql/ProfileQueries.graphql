@@ -11,24 +11,26 @@ query GetProfile($login: String!) {
         following {
             totalCount
         }
-        pinnableItems(first: 6) {
-            nodes {
-                ... on Repository {
-                    id
-                    name
-                    description
-                    stargazerCount
-                    languages(first: 1) {
-                        nodes {
-                            id
-                            name
-                            color
-                        }
-                    }
-                    owner {
+        itemShowcase {
+            items(first: 10) {
+                nodes {
+                    ... on Repository {
                         id
-                        login
-                        avatarUrl
+                        name
+                        description
+                        stargazerCount
+                        languages(first: 1) {
+                            nodes {
+                                id
+                                name
+                                color
+                            }
+                        }
+                        owner {
+                            id
+                            login
+                            avatarUrl
+                        }
                     }
                 }
             }

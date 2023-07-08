@@ -16,6 +16,6 @@ fun GetProfileQuery.Node.toProfilePinnedRepository(): ProfilePinnedRepository? {
     )
 }
 
-fun GetProfileQuery.PinnableItems.toProfilePinnedRepositories(): List<ProfilePinnedRepository> {
-    return nodes?.mapNotNull { it?.toProfilePinnedRepository() }.orEmpty()
+fun GetProfileQuery.ItemShowcase.toProfilePinnedRepositories(): List<ProfilePinnedRepository> {
+    return items.nodes?.mapNotNull { it?.toProfilePinnedRepository() }.orEmpty()
 }
