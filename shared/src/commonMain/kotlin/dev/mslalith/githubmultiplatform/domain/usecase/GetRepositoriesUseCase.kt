@@ -14,7 +14,7 @@ class GetRepositoriesUseCase : FlowUseCase.NoParams<PagedRepositories>() {
 
     private val githubClient: GitHubClient by inject()
 
-    override suspend fun run(): Flow<PagedRepositories> = githubClient
+    override fun run(): Flow<PagedRepositories> = githubClient
         .getRepositories()
         .map(GetRepositoriesQuery.Repositories::toPagedRepositories)
 }

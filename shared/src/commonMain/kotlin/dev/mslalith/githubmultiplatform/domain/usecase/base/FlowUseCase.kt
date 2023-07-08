@@ -7,7 +7,7 @@ abstract class FlowUseCase<I, O> : KoinComponent {
     abstract suspend fun run(input: I): Flow<O>
 
     abstract class NoParams<O> : FlowUseCase<Unit, O>() {
-        abstract suspend fun run(): Flow<O>
+        abstract fun run(): Flow<O>
         override suspend fun run(input: Unit): Flow<O> = run()
     }
 }

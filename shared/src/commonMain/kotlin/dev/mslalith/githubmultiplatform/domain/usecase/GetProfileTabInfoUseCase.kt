@@ -17,7 +17,7 @@ class GetProfileTabInfoUseCase : FlowUseCase.NoParams<ProfileTabUiState>() {
 
     private val login = sharedSettings.loggedInUser?.login ?: error(message = "User not logged in")
 
-    override suspend fun run(): Flow<ProfileTabUiState> = githubClient
+    override fun run(): Flow<ProfileTabUiState> = githubClient
         .getProfileTabInfo(login = login)
         .mapNotNull { it.toProfileTabState() }
 

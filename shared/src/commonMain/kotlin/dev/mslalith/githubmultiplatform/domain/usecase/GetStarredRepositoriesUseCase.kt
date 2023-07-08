@@ -15,7 +15,7 @@ class GetStarredRepositoriesUseCase : FlowUseCase.NoParams<PagedStarredRepositor
 
     private val githubClient: GitHubClient by inject()
 
-    override suspend fun run(): Flow<PagedStarredRepositories> = githubClient
+    override fun run(): Flow<PagedStarredRepositories> = githubClient
         .getStarredRepositories()
         .map(GetStarredRepositoriesQuery.StarredRepositories::toPagedRepositories)
 }

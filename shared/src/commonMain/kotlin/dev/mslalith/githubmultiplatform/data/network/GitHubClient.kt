@@ -7,8 +7,8 @@ import dev.mslalith.githubmultiplatform.GetStarredRepositoriesQuery
 import kotlinx.coroutines.flow.Flow
 
 interface GitHubClient {
-    suspend fun getRepositories(): Flow<GetRepositoriesQuery.Repositories>
-    suspend fun getStarredRepositories(): Flow<GetStarredRepositoriesQuery.StarredRepositories>
-    suspend fun getProfileTabInfo(login: String): Flow<GetProfileQuery.Data>
-    suspend fun getIssues(): Flow<GetIssuesQuery.Issues>
+    fun getRepositories(): Flow<GetRepositoriesQuery.Repositories>
+    fun getStarredRepositories(): Flow<GetStarredRepositoriesQuery.StarredRepositories>
+    fun getProfileTabInfo(login: String): Flow<GetProfileQuery.Data>
+    fun getIssues(): Flow<GetIssuesQuery.Issues>
 }

@@ -14,7 +14,7 @@ class GetIssuesUseCase : FlowUseCase.NoParams<PagedIssues>() {
 
     private val githubClient: GitHubClient by inject()
 
-    override suspend fun run(): Flow<PagedIssues> = githubClient
+    override fun run(): Flow<PagedIssues> = githubClient
         .getIssues()
         .mapNotNull { it.toPagedIssues() }
 }
