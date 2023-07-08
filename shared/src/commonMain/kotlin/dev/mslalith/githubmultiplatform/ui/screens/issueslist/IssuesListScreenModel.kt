@@ -7,14 +7,17 @@ import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.domain.usecase.GetIssuesUseCase
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilterState
+import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilter
 import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilterState
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Loading
 import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Success
-import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -26,32 +29,39 @@ class IssuesListScreenModel : StateScreenModel<IssuesListScreenState>(initialSta
     val issueVisibilityFilterState by inject<IssueVisibilityFilterState>()
 
     private val allFilters = listOf(issueStateFilterState, issueVisibilityFilterState)
-    private var issues = emptyList<Issue>()
 
     val activeFilterCount: Int
         get() = allFilters.count { !it.isInitial }
 
     fun clearFilters() = allFilters.forEach { it.reset() }
 
+    private val issues: Flow<List<Issue>> = getIssuesUseCase.run()
+        .map { it.issues }
+        .combine(
+            flow = snapshotFlow { issueStateFilterState.selectedType },
+            transform = ::filterByIssueState
+        )
+        .combine(
+            flow = snapshotFlow { issueVisibilityFilterState.selectedType },
+            transform = ::filterByIssueVisibility
+        )
+
     init {
-        snapshotFlow { issueStateFilterState.selectedType }
-            .onEach(::updateIssuesByIssueStateFilter)
+        issues
+            .onStart { mutableState.update { Loading } }
+            .onEach { issues -> mutableState.update { Success(issues = issues) } }
             .launchIn(scope = coroutineScope)
     }
 
-    fun fetchIssues() {
-        coroutineScope.launch {
-            issues = getIssuesUseCase.run().firstOrNull()?.issues.orEmpty()
-            mutableState.update { Success(issues = issues) }
-        }
+    private fun filterByIssueState(issues: List<Issue>, state: IssueStateFilter): List<Issue> = when (state) {
+        IssueStateFilter.All -> issues
+        IssueStateFilter.Open -> issues.filterNot { it.isClosed }
+        IssueStateFilter.Closed -> issues.filter { it.isClosed }
     }
 
-    private fun updateIssuesByIssueStateFilter(issueStateFilter: IssueStateFilter) {
-        val issues = when (issueStateFilter) {
-            IssueStateFilter.All -> issues
-            IssueStateFilter.Open -> issues.filter { !it.isClosed }
-            IssueStateFilter.Closed -> issues.filter { it.isClosed }
-        }
-        mutableState.update { Success(issues = issues) }
+    private fun filterByIssueVisibility(issues: List<Issue>, state: IssueVisibilityFilter): List<Issue> = when (state) {
+        IssueVisibilityFilter.All -> issues
+        IssueVisibilityFilter.Private -> issues.filter { it.isRepoPrivate }
+        IssueVisibilityFilter.Public -> issues.filterNot { it.isRepoPrivate }
     }
 }
