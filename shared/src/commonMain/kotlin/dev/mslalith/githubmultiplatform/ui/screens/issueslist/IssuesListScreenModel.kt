@@ -4,7 +4,11 @@ import androidx.compose.runtime.snapshotFlow
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.model.Issue
+import dev.mslalith.githubmultiplatform.data.model.Selectable
 import dev.mslalith.githubmultiplatform.domain.usecase.GetIssuesUseCase
+import dev.mslalith.githubmultiplatform.platform.CommonSerializable
+import dev.mslalith.githubmultiplatform.ui.filters.base.FilterState
+import dev.mslalith.githubmultiplatform.ui.filters.base.FilterUiValue
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilterState
 import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilter
@@ -20,21 +24,30 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import kotlin.jvm.Transient
 
-class IssuesListScreenModel : StateScreenModel<IssuesListScreenState>(initialState = Loading), KoinComponent {
+class IssuesListScreenModel : StateScreenModel<IssuesListScreenState>(initialState = Loading), KoinComponent, CommonSerializable {
 
+    @delegate:Transient
     private val getIssuesUseCase by inject<GetIssuesUseCase>()
 
+    @delegate:Transient
     val issueStateFilterState by inject<IssueStateFilterState>()
+
+    @delegate:Transient
     val issueVisibilityFilterState by inject<IssueVisibilityFilterState>()
 
-    private val allFilters = listOf(issueStateFilterState, issueVisibilityFilterState)
+    private val allFilters: List<FilterState<out FilterUiValue, out Selectable<out FilterUiValue>>> = listOf(
+        issueStateFilterState,
+        issueVisibilityFilterState
+    )
 
     val activeFilterCount: Int
         get() = allFilters.count { !it.isInitial }
 
     fun clearFilters() = allFilters.forEach { it.reset() }
 
+    @Transient
     private val issues: Flow<List<Issue>> = getIssuesUseCase.run()
         .map { pagedIssues -> pagedIssues.issues.sortedByDescending { it.createdAt } }
         .combine(

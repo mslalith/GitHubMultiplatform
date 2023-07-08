@@ -66,9 +66,11 @@ import dev.mslalith.githubmultiplatform.ui.theme.Bg_Green
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Purple
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
+import kotlin.jvm.Transient
 
 class IssuesListScreen : Screen, ScreenTitle, ScreenActions, ScreenFilters {
 
+    @Transient
     override val titleResource: StringResource = SharedRes.strings.issues
 
     @Composable

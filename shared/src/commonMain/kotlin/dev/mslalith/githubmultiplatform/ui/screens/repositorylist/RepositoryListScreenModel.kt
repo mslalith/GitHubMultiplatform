@@ -36,6 +36,7 @@ internal class RepositoryListScreenModel : StateScreenModel<RepositoryListScreen
 
     fun clearFilters() = allFilters.forEach { it.reset() }
 
+    @Transient
     private val repositories: Flow<List<Repository>> = getRepositoriesUseCase.run()
         .map { pagedIssues -> pagedIssues.repositories.sortedByDescending { it.updatedAt } }
         .combine(
