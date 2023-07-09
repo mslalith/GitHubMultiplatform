@@ -7,7 +7,7 @@ data class PagedRepositories(
 
 data class PagedStarredRepositories(
     val pageInfo: PageInfo,
-    val repositories: List<StarredRepository>
+    val repositories: StarredRepositories
 )
 
 data class PagedIssues(

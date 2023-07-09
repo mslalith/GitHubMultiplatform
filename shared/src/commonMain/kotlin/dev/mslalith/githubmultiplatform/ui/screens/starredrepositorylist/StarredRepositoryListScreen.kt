@@ -28,6 +28,7 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.data.model.StarredRepositories
 import dev.mslalith.githubmultiplatform.data.model.StarredRepository
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalSpace
@@ -35,9 +36,9 @@ import dev.mslalith.githubmultiplatform.ui.common.StarsAndLanguage
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
-import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Failed
-import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Loading
-import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreenState.Success
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Failed
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Loading
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
@@ -71,7 +72,7 @@ class StarredRepositoryListScreen : Screen, ScreenTitle {
 
                     is Success -> {
                         Column {
-                            val repositories = (state as Success).repositories
+                            val repositories = (state as Success).value
                             StarredRepositoriesList(repositories = repositories)
                         }
                     }
@@ -83,7 +84,7 @@ class StarredRepositoryListScreen : Screen, ScreenTitle {
 
 @Composable
 private fun StarredRepositoriesList(
-    repositories: List<StarredRepository>
+    repositories: StarredRepositories
 ) {
     LazyColumn(
         contentPadding = PaddingValues(bottom = 12.dp)
