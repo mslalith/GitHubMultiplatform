@@ -34,9 +34,9 @@ import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
-import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Failed
-import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Loading
-import dev.mslalith.githubmultiplatform.ui.screens.main.profile.ProfileTabState.Success
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Failed
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Loading
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_500
 
 internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
@@ -88,7 +88,7 @@ internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
                 ) { CircularProgressIndicator() }
 
                 is Success -> {
-                    val profile = (state as Success).profileTabUiState
+                    val profile = (state as Success).value
                     Column(
                         modifier = Modifier.verticalScroll(state = rememberScrollState())
                     ) {
