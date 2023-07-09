@@ -6,11 +6,11 @@ plugins {
     id(libs.plugins.jetbrainsMultiplatform.get().pluginId)
     id(libs.plugins.jetbrainsNativeCocoapods.get().pluginId)
     id(libs.plugins.androidLibrary.get().pluginId)
-    id(libs.plugins.jetbrainsCompose.get().pluginId)
-    id(libs.plugins.kotlinx.serialization.get().pluginId)
-    id(libs.plugins.apollo.get().pluginId)
-    id(libs.plugins.buildkonfig.get().pluginId)
     id(libs.plugins.moko.resources.get().pluginId)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.apollo)
+    alias(libs.plugins.buildkonfig)
     alias(libs.plugins.sqldelight)
 }
 
