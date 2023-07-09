@@ -8,6 +8,10 @@ import dev.mslalith.githubmultiplatform.GetIssuesQuery
 import dev.mslalith.githubmultiplatform.GetProfileQuery
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
 import dev.mslalith.githubmultiplatform.GetStarredRepositoriesQuery
+import dev.mslalith.githubmultiplatform.data.model.remote.TrendingRepositoryRemote
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import org.koin.core.component.KoinComponent
@@ -16,6 +20,7 @@ import org.koin.core.component.inject
 internal class GitHubClientImpl : GitHubClient, KoinComponent {
 
     private val apolloClient by inject<ApolloClient>()
+    private val httpClient by inject<HttpClient>()
 
     override fun getRepositories(): Flow<GetRepositoriesQuery.Repositories> = apolloClient
         .query(query = GetRepositoriesQuery(first = Optional.present(value = 50)))
@@ -41,4 +46,8 @@ internal class GitHubClientImpl : GitHubClient, KoinComponent {
         .query(query = GetAwesomeListQuery(first = Optional.present(value = 30)))
         .watch()
         .mapNotNull { it.data?.search }
+
+    override suspend fun getTrendingRepositories(): List<TrendingRepositoryRemote> {
+        return httpClient.get(urlString = "https://api.gitterapp.com/repositories").body()
+    }
 }

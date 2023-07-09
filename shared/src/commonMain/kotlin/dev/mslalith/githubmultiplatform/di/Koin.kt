@@ -12,6 +12,7 @@ fun initKoin(
         modules(
             commonModule,
             networkModule,
+            repoAndDataSourceModule,
             voyagerModule,
             getPlatformModule()
         )

@@ -1,0 +1,15 @@
+CREATE TABLE trendingRepositoriesTable (
+    author TEXT NOT NULL,
+    author_avatar TEXT NOT NULL,
+    repo_name TEXT NOT NULL PRIMARY KEY,
+    description TEXT,
+    language TEXT,
+    language_color TEXT,
+    stars INTEGER NOT NULL
+);
+
+findAll:
+SELECT * FROM trendingRepositoriesTable;
+
+insert:
+INSERT OR REPLACE INTO trendingRepositoriesTable(author, author_avatar, repo_name, description, language, language_color, stars) VALUES ?;
