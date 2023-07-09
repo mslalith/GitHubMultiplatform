@@ -18,8 +18,12 @@ class TrendingRepositoriesRepoImpl : TrendingRepositoriesRepo, KoinComponent {
     private val remoteDataSource by inject<RemoteTrendingRepositoriesDataSource>()
 
     override suspend fun fetch() {
-        remoteDataSource.fetch().forEach {
-            localDataSource.upsert(repository = it.toTrendingRepository())
+        try {
+            remoteDataSource.fetch().forEach {
+                localDataSource.upsert(repository = it.toTrendingRepository())
+            }
+        } catch (ex: Exception) {
+            ex.printStackTrace()
         }
     }
 

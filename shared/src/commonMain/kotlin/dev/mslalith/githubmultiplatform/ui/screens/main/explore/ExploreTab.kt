@@ -20,6 +20,7 @@ import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
 import dev.mslalith.githubmultiplatform.ui.screens.awesomelist.AwesomeListScreen
+import dev.mslalith.githubmultiplatform.ui.screens.trendingrepositorylist.TrendingRepositoryListScreen
 
 internal object ExploreTab : Tab, ScreenTitle {
 
@@ -48,7 +49,7 @@ internal object ExploreTab : Tab, ScreenTitle {
             modifier = Modifier.fillMaxSize()
         ) {
             Discover(
-                onTrendingRepositoriesClick = {},
+                onTrendingRepositoriesClick = { navigator.push(item = TrendingRepositoryListScreen()) },
                 onAwesomeListsClick = { navigator.push(item = AwesomeListScreen()) }
             )
         }
