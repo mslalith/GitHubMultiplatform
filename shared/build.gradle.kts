@@ -11,6 +11,7 @@ plugins {
     id(libs.plugins.apollo.get().pluginId)
     id(libs.plugins.buildkonfig.get().pluginId)
     id(libs.plugins.moko.resources.get().pluginId)
+    alias(libs.plugins.sqldelight)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -44,7 +45,7 @@ kotlin {
             export(libs.moko.graphics)
         }
     }
-    
+
     sourceSets {
         @Suppress("UNUSED_VARIABLE")
         val commonMain by getting {
@@ -59,6 +60,7 @@ kotlin {
                 api(libs.moko.resources.compose)
                 implementation(libs.composeIcons.octicons)
                 implementation(libs.kamel)
+                implementation(libs.sqldelight.coroutines)
 
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
@@ -82,6 +84,7 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.android)
                 implementation(libs.androidx.security.crypto)
+                implementation(libs.sqldelight.android)
             }
         }
 
@@ -89,6 +92,7 @@ kotlin {
         val iosMain by getting {
             dependencies {
                 implementation(libs.ktor.darwin)
+                implementation(libs.sqldelight.ios)
             }
         }
     }
@@ -122,6 +126,12 @@ buildkonfig {
 multiplatformResources {
     multiplatformResourcesPackage = "dev.mslalith.githubmultiplatform"
     multiplatformResourcesClassName = "SharedRes"
+}
+
+sqldelight {
+    database(name = "GitHubDatabase") {
+        packageName = "dev.mslalith.githubmultiplatform.database"
+    }
 }
 
 fun loadSecretProperties(): Properties {

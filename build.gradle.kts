@@ -10,6 +10,7 @@ plugins {
     id(libs.plugins.jetbrainsCompose.get().pluginId) version libs.versions.composeMultiplatform.get() apply false
     id(libs.plugins.apollo.get().pluginId) version libs.versions.apollo.get() apply false
     id(libs.plugins.buildkonfig.get().pluginId) version libs.versions.buildkonfig.get() apply false
+    id(libs.plugins.sqldelight.get().pluginId) version libs.versions.sqldelight.get() apply false
     id(libs.plugins.detekt.get().pluginId) version libs.versions.detekt.get()
 }
 

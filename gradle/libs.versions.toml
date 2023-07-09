@@ -16,6 +16,7 @@ ktor = "2.3.1"
 mokoResources = "0.23.0"
 mokoGraphics = "0.9.0"
 multiplatformSettings = "1.0.0"
+sqldelight = "1.5.5"
 voyager = "1.0.0-rc06"
 
 [libraries]
@@ -51,6 +52,10 @@ moko-graphics = { module = "dev.icerock.moko:graphics", version.ref = "mokoGraph
 multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
 multiplatform-settings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings" }
 
+sqldelight-android = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-ios = { module = "com.squareup.sqldelight:native-driver", version.ref = "sqldelight" }
+sqldelight-coroutines = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
@@ -68,6 +73,7 @@ apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "mokoResources" }
+sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
 
 [bundles]
 apollo = ["apollo-runtime", "apollo-normalized-cache-inmemory", "apollo-normalized-cache-sqlite"]
