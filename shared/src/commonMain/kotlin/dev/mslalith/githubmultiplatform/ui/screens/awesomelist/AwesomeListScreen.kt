@@ -44,9 +44,9 @@ import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.button.StarButton
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
-import dev.mslalith.githubmultiplatform.ui.screens.awesomelist.AwesomeListScreenState.Failed
-import dev.mslalith.githubmultiplatform.ui.screens.awesomelist.AwesomeListScreenState.Loading
-import dev.mslalith.githubmultiplatform.ui.screens.awesomelist.AwesomeListScreenState.Success
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Failed
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Loading
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
@@ -80,7 +80,7 @@ class AwesomeListScreen : Screen, ScreenTitle {
 
                     is Success -> {
                         Column {
-                            val repositories = (state as Success).repositories
+                            val repositories = (state as Success).value
                             AwesomeRepositoriesList(repositories = repositories)
                         }
                     }
