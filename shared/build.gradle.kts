@@ -65,6 +65,7 @@ kotlin {
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
 
+                implementation(libs.bundles.arrow)
                 implementation(libs.bundles.apollo)
                 implementation(libs.bundles.ktor)
                 implementation(libs.bundles.voyager)

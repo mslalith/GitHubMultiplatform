@@ -1,11 +1,16 @@
 package dev.mslalith.githubmultiplatform.ui.screens.login
 
+import arrow.core.Either
+import arrow.core.left
+import arrow.core.raise.either
+import arrow.core.right
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import dev.mslalith.githubmultiplatform.data.model.LoggedInUser
 import dev.mslalith.githubmultiplatform.data.network.auth.AuthClient
 import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Login
+import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.LoginInProgress
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.NavigateToMain
 import dev.mslalith.githubmultiplatform.ui.screens.login.LoginScreenState.Splash
 import kotlinx.coroutines.flow.update
@@ -23,16 +28,32 @@ class LoginScreenModel : StateScreenModel<LoginScreenState>(initialState = Splas
     fun getAuthUrl(): String = authClient.getAuthUrl()
 
     fun handleDeepLink(deepLink: String) {
-        deepLink.takeIf { it.startsWith(prefix = "githubmultiplatform://callback") }
+        val code = deepLink.takeIf { it.startsWith(prefix = "githubmultiplatform://callback") }
             ?.substringAfter(delimiter = "code=", missingDelimiterValue = "")
             ?.takeIf { it.isNotEmpty() }
-            ?.let { handleDeepLinkInternal(code = it) }
+
+        if (code == null) moveStateTo(state = Login) else handleDeepLinkInternal(code = code)
     }
 
     private fun handleDeepLinkInternal(code: String) = coroutineScope.launch {
-        val token = getAccessToken(code = code)
-        getLoggedInUser(token = token)
-        moveStateTo(state = NavigateToMain)
+        moveStateTo(state = LoginInProgress)
+        moveStateTo(
+            state = when (login(code = code)) {
+                is Either.Left -> Login
+                is Either.Right -> NavigateToMain
+            }
+        )
+    }
+
+    private suspend fun login(code: String) = either<Unit, Unit> {
+        try {
+            val token = getAccessToken(code = code)
+            getLoggedInUser(token = token)
+            Unit.right()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            Unit.left()
+        }
     }
 
     private suspend fun getAccessToken(code: String): String {

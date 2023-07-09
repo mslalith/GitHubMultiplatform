@@ -3,6 +3,7 @@ agp = "8.2.0-alpha11"
 androidxActivityCompose = "1.7.2"
 androidxSecurityCrypto = "1.0.0"
 apollo = "4.0.0-alpha.1"
+arrow = "1.2.0-RC"
 buildkonfig = "0.13.3"
 composeIcons = "1.1.0"
 composeMultiplatform = "1.4.1"
@@ -27,6 +28,8 @@ apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime" }
 apollo-normalized-cache-inmemory = { module = "com.apollographql.apollo3:apollo-normalized-cache" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo3:apollo-normalized-cache-sqlite" }
 apollo-adapters = { module = "com.apollographql.apollo3:apollo-adapters" }
+
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 
 composeIcons-octicons = { module = "br.com.devsrsouza.compose.icons:octicons", version.ref = "composeIcons" }
 
@@ -77,6 +80,7 @@ sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
 
 [bundles]
 apollo = ["apollo-runtime", "apollo-normalized-cache-inmemory", "apollo-normalized-cache-sqlite"]
+arrow = ["arrow-core"]
 ktor = ["ktor-core", "ktor-contentNegotiation", "ktor-serialization-json"]
 voyager = ["voyager-navigator", "voyager-bottomSheetNavigator", "voyager-tabNavigator", "voyager-transitions", "voyager-koin"]
 multiplatformSettings = ["multiplatform-settings", "multiplatform-settings-coroutines"]
