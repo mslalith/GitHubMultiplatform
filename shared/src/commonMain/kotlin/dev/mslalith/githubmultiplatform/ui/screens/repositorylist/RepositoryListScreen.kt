@@ -32,6 +32,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
+import dev.mslalith.githubmultiplatform.data.model.Repositories
 import dev.mslalith.githubmultiplatform.data.model.Repository
 import dev.mslalith.githubmultiplatform.ui.bottomsheets.SelectableListBottomSheet
 import dev.mslalith.githubmultiplatform.ui.common.FilterItem
@@ -40,9 +41,9 @@ import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenFilters
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
-import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Failed
-import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Loading
-import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreenState.Success
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Failed
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Loading
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
@@ -100,7 +101,7 @@ class RepositoryListScreen : Screen, ScreenTitle, ScreenFilters {
 
                     is Success -> {
                         Column {
-                            val repositories = (state as Success).repositories
+                            val repositories = (state as Success).value
                             RepositoriesList(repositories = repositories)
                         }
                     }
@@ -112,7 +113,7 @@ class RepositoryListScreen : Screen, ScreenTitle, ScreenFilters {
 
 @Composable
 private fun RepositoriesList(
-    repositories: List<Repository>
+    repositories: Repositories
 ) {
     LazyColumn(
         contentPadding = PaddingValues(vertical = 12.dp)

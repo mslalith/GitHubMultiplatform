@@ -3,6 +3,8 @@ package dev.mslalith.githubmultiplatform.data.model
 import dev.mslalith.githubmultiplatform.platform.CommonSerializable
 import kotlinx.datetime.LocalDateTime
 
+typealias Repositories = List<Repository>
+
 data class Repository(
     val id: String,
     val name: String,
