@@ -2,7 +2,7 @@ package dev.mslalith.githubmultiplatform.ui.screens.issueslist
 
 import androidx.compose.runtime.snapshotFlow
 import cafe.adriel.voyager.core.model.coroutineScope
-import dev.mslalith.githubmultiplatform.data.model.Issue
+import dev.mslalith.githubmultiplatform.data.model.Issues
 import dev.mslalith.githubmultiplatform.data.model.Selectable
 import dev.mslalith.githubmultiplatform.domain.usecase.GetIssuesUseCase
 import dev.mslalith.githubmultiplatform.ui.filters.base.FilterState
@@ -11,8 +11,9 @@ import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilter
 import dev.mslalith.githubmultiplatform.ui.filters.issue.state.IssueStateFilterState
 import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilter
 import dev.mslalith.githubmultiplatform.ui.filters.issue.visibility.IssueVisibilityFilterState
-import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Loading
-import dev.mslalith.githubmultiplatform.ui.screens.issueslist.IssuesListScreenState.Success
+import dev.mslalith.githubmultiplatform.ui.state.CommonState
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Loading
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Success
 import dev.mslalith.githubmultiplatform.utils.screen.SerializableStateScreenModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -24,7 +25,9 @@ import kotlinx.coroutines.flow.update
 import org.koin.core.component.inject
 import kotlin.jvm.Transient
 
-class IssuesListScreenModel : SerializableStateScreenModel<IssuesListScreenState>(initialState = Loading) {
+class IssuesListScreenModel : SerializableStateScreenModel<CommonState<Issues>>(
+    initialState = Loading
+) {
 
     @delegate:Transient
     private val getIssuesUseCase by inject<GetIssuesUseCase>()
@@ -46,7 +49,7 @@ class IssuesListScreenModel : SerializableStateScreenModel<IssuesListScreenState
     fun clearFilters() = allFilters.forEach { it.reset() }
 
     @Transient
-    private val issues: Flow<List<Issue>> = getIssuesUseCase.run()
+    private val issues: Flow<Issues> = getIssuesUseCase.run()
         .map { pagedIssues -> pagedIssues.issues.sortedByDescending { it.createdAt } }
         .combine(
             flow = snapshotFlow { issueStateFilterState.selectedType },
@@ -60,17 +63,17 @@ class IssuesListScreenModel : SerializableStateScreenModel<IssuesListScreenState
     init {
         issues
             .onStart { mutableState.update { Loading } }
-            .onEach { issues -> mutableState.update { Success(issues = issues) } }
+            .onEach { issues -> mutableState.update { Success(value = issues) } }
             .launchIn(scope = coroutineScope)
     }
 
-    private fun filterByIssueState(issues: List<Issue>, state: IssueStateFilter): List<Issue> = when (state) {
+    private fun filterByIssueState(issues: Issues, state: IssueStateFilter): Issues = when (state) {
         IssueStateFilter.All -> issues
         IssueStateFilter.Open -> issues.filterNot { it.isClosed }
         IssueStateFilter.Closed -> issues.filter { it.isClosed }
     }
 
-    private fun filterByIssueVisibility(issues: List<Issue>, state: IssueVisibilityFilter): List<Issue> = when (state) {
+    private fun filterByIssueVisibility(issues: Issues, state: IssueVisibilityFilter): Issues = when (state) {
         IssueVisibilityFilter.All -> issues
         IssueVisibilityFilter.Private -> issues.filter { it.isRepoPrivate }
         IssueVisibilityFilter.Public -> issues.filterNot { it.isRepoPrivate }

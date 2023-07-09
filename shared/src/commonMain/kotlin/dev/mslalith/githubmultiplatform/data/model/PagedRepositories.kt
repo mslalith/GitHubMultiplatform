@@ -12,5 +12,5 @@ data class PagedStarredRepositories(
 
 data class PagedIssues(
     val pageInfo: PageInfo,
-    val issues: List<Issue>
+    val issues: Issues
 )

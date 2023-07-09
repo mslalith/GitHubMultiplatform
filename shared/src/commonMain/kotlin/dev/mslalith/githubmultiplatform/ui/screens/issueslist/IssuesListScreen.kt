@@ -46,6 +46,7 @@ import compose.icons.octicons.Skip24
 import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Issue
+import dev.mslalith.githubmultiplatform.data.model.Issues
 import dev.mslalith.githubmultiplatform.type.IssueState
 import dev.mslalith.githubmultiplatform.type.IssueStateReason
 import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
@@ -60,6 +61,9 @@ import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenFilters
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.topbar.ScreenAwareTopBar
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Failed
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Loading
+import dev.mslalith.githubmultiplatform.ui.state.CommonState.Success
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_400
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Gray_Dark_800
 import dev.mslalith.githubmultiplatform.ui.theme.Bg_Green
@@ -136,15 +140,15 @@ class IssuesListScreen : Screen, ScreenTitle, ScreenActions, ScreenFilters {
                 modifier = Modifier.padding(paddingValues = it)
             ) {
                 when (state) {
-                    IssuesListScreenState.Failed -> Text(text = "Failed")
-                    IssuesListScreenState.Loading -> Box(
+                    Failed -> Text(text = "Failed")
+                    Loading -> Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) { CircularProgressIndicator() }
 
-                    is IssuesListScreenState.Success -> {
+                    is Success -> {
                         Column {
-                            val issues = (state as IssuesListScreenState.Success).issues
+                            val issues = (state as Success).value
                             IssuesList(issues = issues)
                         }
                     }
@@ -156,7 +160,7 @@ class IssuesListScreen : Screen, ScreenTitle, ScreenActions, ScreenFilters {
 
 @Composable
 private fun IssuesList(
-    issues: List<Issue>
+    issues: Issues
 ) {
     LazyColumn(
         contentPadding = PaddingValues(vertical = 12.dp)

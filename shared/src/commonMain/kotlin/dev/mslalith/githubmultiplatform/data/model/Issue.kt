@@ -8,6 +8,8 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlin.math.roundToLong
 
+typealias Issues = List<Issue>
+
 data class Issue(
     val id: String,
     val title: String,
