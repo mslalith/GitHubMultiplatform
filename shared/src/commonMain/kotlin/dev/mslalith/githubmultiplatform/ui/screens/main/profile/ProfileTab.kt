@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.Octicons
@@ -30,10 +31,13 @@ import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.ui.common.HorizontalLine
 import dev.mslalith.githubmultiplatform.ui.common.RoundIcon
 import dev.mslalith.githubmultiplatform.ui.common.VerticalSpace
+import dev.mslalith.githubmultiplatform.ui.common.navigator.LocalAppNavigator
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenActions
 import dev.mslalith.githubmultiplatform.ui.common.screen.ScreenTitle
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionItemType
 import dev.mslalith.githubmultiplatform.ui.common.sectionitem.SectionListItem
+import dev.mslalith.githubmultiplatform.ui.screens.repositorylist.RepositoryListScreen
+import dev.mslalith.githubmultiplatform.ui.screens.starredrepositorylist.StarredRepositoryListScreen
 import dev.mslalith.githubmultiplatform.ui.state.CommonState.Failed
 import dev.mslalith.githubmultiplatform.ui.state.CommonState.Loading
 import dev.mslalith.githubmultiplatform.ui.state.CommonState.Success
@@ -72,6 +76,7 @@ internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
 
     @Composable
     override fun Content() {
+        val navigator = LocalAppNavigator.currentOrThrow
         val screenModel = rememberScreenModel { ProfileTabModel() }
         val state by screenModel.state.collectAsState()
 
@@ -116,7 +121,7 @@ internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
                                     color = Bg_Gray_Dark_500
                                 )
                             },
-                            onClick = {}
+                            onClick = { navigator.push(item = RepositoryListScreen()) }
                         )
                         SectionListItem(
                             sectionItemType = SectionItemType.StarredRepositories,
@@ -126,7 +131,7 @@ internal object ProfileTab : Tab, ScreenTitle, ScreenActions {
                                     color = Bg_Gray_Dark_500
                                 )
                             },
-                            onClick = {}
+                            onClick = { navigator.push(item = StarredRepositoryListScreen()) }
                         )
                     }
                 }
