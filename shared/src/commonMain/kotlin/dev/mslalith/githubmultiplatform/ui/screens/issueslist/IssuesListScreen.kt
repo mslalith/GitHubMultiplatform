@@ -47,6 +47,7 @@ import dev.icerock.moko.resources.StringResource
 import dev.mslalith.githubmultiplatform.SharedRes
 import dev.mslalith.githubmultiplatform.data.model.Issue
 import dev.mslalith.githubmultiplatform.data.model.Issues
+import dev.mslalith.githubmultiplatform.extensions.timeAgo
 import dev.mslalith.githubmultiplatform.type.IssueState
 import dev.mslalith.githubmultiplatform.type.IssueStateReason
 import dev.mslalith.githubmultiplatform.ui.bottomsheets.ImageVectorIcon
@@ -226,7 +227,7 @@ private fun IssueItem(
                 )
                 FillSpace()
                 Text(
-                    text = issue.createAgo,
+                    text = issue.createdAt.timeAgo(),
                     color = Bg_Gray_Dark_400,
                     fontSize = 14.sp
                 )

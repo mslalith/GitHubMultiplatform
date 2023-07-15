@@ -8,10 +8,13 @@ import dev.mslalith.githubmultiplatform.GetIssuesQuery
 import dev.mslalith.githubmultiplatform.GetProfileQuery
 import dev.mslalith.githubmultiplatform.GetRepositoriesQuery
 import dev.mslalith.githubmultiplatform.GetStarredRepositoriesQuery
+import dev.mslalith.githubmultiplatform.data.model.remote.NotificationRemote
 import dev.mslalith.githubmultiplatform.data.model.remote.TrendingRepositoryRemote
+import dev.mslalith.githubmultiplatform.data.settings.SharedSettings
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import io.ktor.client.request.header
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapNotNull
 import org.koin.core.component.KoinComponent
@@ -21,6 +24,7 @@ internal class GitHubClientImpl : GitHubClient, KoinComponent {
 
     private val apolloClient by inject<ApolloClient>()
     private val httpClient by inject<HttpClient>()
+    private val sharedSettings by inject<SharedSettings>()
 
     override fun getRepositories(): Flow<GetRepositoriesQuery.Repositories> = apolloClient
         .query(query = GetRepositoriesQuery(first = Optional.present(value = 50)))
@@ -49,5 +53,12 @@ internal class GitHubClientImpl : GitHubClient, KoinComponent {
 
     override suspend fun getTrendingRepositories(): List<TrendingRepositoryRemote> {
         return httpClient.get(urlString = "https://api.gitterapp.com/repositories").body()
+    }
+
+    override suspend fun getNotifications(): List<NotificationRemote> {
+        val token = sharedSettings.accessToken
+        return httpClient.get(urlString = "https://api.github.com/notifications?all=true") {
+            header("Authorization", "Bearer $token")
+        }.body()
     }
 }
