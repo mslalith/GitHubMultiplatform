@@ -1,6 +1,6 @@
 # GitHubMultiplatform
 
-<video src="https://github.com/mslalith/focus_launcher/assets/15076234/d6138537-81e1-464c-a2eb-0aadd30da6c5">
+https://github.com/mslalith/GitHubMultiplatform/assets/15076234/6b6f7140-a65a-49f9-8a09-742307a22447
 
 
 ## Built With
